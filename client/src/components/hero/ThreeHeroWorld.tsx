@@ -147,8 +147,12 @@ export const ThreeHeroWorld: React.FC<ThreeHeroWorldProps> = ({
     const camera = new THREE.PerspectiveCamera(46, width / height, 0.1, 450);
 
     const initialPreset = CAMERA_PRESETS[propsRef.current.cameraPreset];
-    camera.position.copy(initialPreset.cam);
-    const currentLookAt = initialPreset.look.clone();
+    // Begin from a distant establishing angle, then reveal the overview composition.
+    const introDuration = 3.4;
+    const introCamPos = initialPreset.cam.clone().add(new THREE.Vector3(-8, 6, 28));
+    const introLookAt = initialPreset.look.clone().add(new THREE.Vector3(0, 3, -8));
+    camera.position.copy(introCamPos);
+    const currentLookAt = introLookAt.clone();
     camera.lookAt(currentLookAt);
 
     // 3. High-Performance WebGL Renderer
@@ -453,8 +457,15 @@ export const ThreeHeroWorld: React.FC<ThreeHeroWorldProps> = ({
       );
 
       // Smooth camera interpolation
-      camera.position.lerp(destCamPos, 0.05);
-      currentLookAt.lerp(destLookAt, 0.05);
+      const introProgress = Math.min(time / introDuration, 1);
+      const introEase = introProgress * introProgress * (3 - 2 * introProgress);
+      if (introProgress < 1) {
+        camera.position.lerpVectors(introCamPos, destCamPos, introEase);
+        currentLookAt.lerpVectors(introLookAt, destLookAt, introEase);
+      } else {
+        camera.position.lerp(destCamPos, 0.05);
+        currentLookAt.lerp(destLookAt, 0.05);
+      }
       camera.lookAt(currentLookAt);
 
       // Subtle Rotational Camera Roll & Pitch Tilt (Responsive 3D Parallax feel)
