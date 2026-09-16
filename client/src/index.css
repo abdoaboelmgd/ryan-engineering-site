@@ -53,3 +53,13 @@ body{font-family:'AlexandriaLocal','IBM Plex Sans Arabic',sans-serif;background:
 .home-main .hero{min-height:calc(100vh - 78px);height:calc(100vh - 78px)}
 .home-main .hero-grid{min-height:calc(100vh - 78px)}
 @media(max-width:720px){.home-main .hero,.home-main .hero-grid{min-height:calc(100vh - 68px);height:calc(100vh - 68px)}}
+
+/* Restored first-version metrics strip below the Hero */
+.home-main>.stats{display:grid;max-width:none;width:100%;margin:0;padding:14px 22px;background:#f3efe7;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;border-radius:0;box-shadow:none;overflow:hidden;position:relative;z-index:3}
+.home-main>.stats .stat{min-height:150px;background:rgba(255,255,255,.96);border-radius:16px;justify-content:center;padding:18px 12px;box-shadow:0 8px 20px rgba(71,45,28,.09);overflow:hidden}
+.home-main>.stats .stat:last-child{background:linear-gradient(135deg,rgba(65,22,32,.18),rgba(65,22,32,.56)),url('/manus-storage/team-field_3e354906.jpg') center/cover;color:#fff}
+.home-main>.stats .stat:last-child strong,.home-main>.stats .stat:last-child span{color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+.home-main>.stats .stat strong{font-size:32px;color:var(--burgundy);font-family:'Playfair Display',serif}
+.home-main>.stats .stat span{font-size:13px;color:var(--text);text-align:center;line-height:1.5}
+.home-main>.stats .stat i{display:none}
+@media(max-width:720px){.home-main>.stats{grid-template-columns:1fr 1fr;padding:10px;gap:10px}.home-main>.stats .stat{min-height:112px;border-radius:12px}.home-main>.stats .stat strong{font-size:27px}.home-main>.stats .stat span{font-size:11px}}
