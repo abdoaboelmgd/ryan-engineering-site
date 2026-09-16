@@ -1,404 +1,390 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { StoryboardId, ViewSettings } from './types';
-import { SceneModule, createSurveyorScene } from './scene/SurveyorSceneModule';
-import { createConstructionScene } from './scene/ConstructionSceneModule';
-import { createReportsScene } from './scene/ReportsSceneModule';
-import { createRealEstateScene } from './scene/RealEstateSceneModule';
-import { MaterialCache } from './scene/MaterialCache';
 
 interface ThreeHeroBackgroundProps {
-  activeScene: StoryboardId;
-  viewSettings: ViewSettings;
-  onSceneTargetReached?: () => void;
-  onPerformanceStats?: (stats: { fps: number; drawCalls: number; activeObjects: number }) => void;
+  /** تفعيل حركة البارالاكس وتتبع حركة الماوس */
+  parallaxEnabled?: boolean;
+  /** تفعيل الظلال ثلاثية الأبعاد فائقة الدقة */
+  shadowsEnabled?: boolean;
+  /** جولة كاميرا انسيابية بطيئة */
+  autoTour?: boolean;
+  /** دالة رد نداء عند النقر على أي عنصر هندسي */
+  onItemClick?: (itemName: string) => void;
+  /** كلاسات Tailwind إضافية للحاوية */
+  className?: string;
 }
 
-// Map scene camera coordinates along the Z-Depth Corridor
-const SCENE_TARGETS: Record<
-  StoryboardId,
-  {
-    camX: number;
-    camY: number;
-    camZ: number;
-    lookX: number;
-    lookY: number;
-    lookZ: number;
-  }
-> = {
-  '01': { camX: 0, camY: 7, camZ: 48, lookX: 0, lookY: 3.5, lookZ: 30 },
-  '02': { camX: 8, camY: 10, camZ: 28, lookX: 5, lookY: 6, lookZ: 14 },
-  '03': { camX: -3, camY: 5.5, camZ: 9, lookX: -2, lookY: 2.5, lookZ: -4 },
-  '04': { camX: 0, camY: 12, camZ: -6, lookX: 0, lookY: 3, lookZ: -20 },
-};
-
 export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
-  activeScene,
-  viewSettings,
-  onPerformanceStats,
+  parallaxEnabled = true,
+  shadowsEnabled = true,
+  autoTour = true,
+  onItemClick,
+  className = '',
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const animFrameId = useRef<number | null>(null);
 
-  // Lazy Loaded Scene Modules Storage
-  const sceneModulesRef = useRef<Map<StoryboardId, SceneModule>>(new Map());
-  const sceneRef = useRef<THREE.Scene | null>(null);
-
-  // Mouse Parallax & Dynamic State
-  const stateRef = useRef({
-    mouseX: 0,
-    mouseY: 0,
-    targetMouseX: 0,
-    targetMouseY: 0,
-    activeScene,
-    settings: viewSettings,
-    clock: new THREE.Clock(),
-    frameCount: 0,
-    lastFpsTime: performance.now(),
-  });
-
-  // Keep stateRef in sync with React props without triggering canvas recreation
-  useEffect(() => {
-    stateRef.current.activeScene = activeScene;
-  }, [activeScene]);
-
-  useEffect(() => {
-    stateRef.current.settings = viewSettings;
-    // Broadcast wireframe changes to all active modules
-    sceneModulesRef.current.forEach((mod) => {
-      mod.setWireframe(viewSettings.wireframe);
-    });
-  }, [viewSettings]);
-
-  // -------------------------------------------------------------
-  // LAZY LOADING MANAGER FOR STORYBOARD SCENES
-  // -------------------------------------------------------------
-  useEffect(() => {
-    const scene = sceneRef.current;
-    if (!scene) return;
-
-    // Load active scene module if not already loaded (Lazy Instantiation)
-    if (!sceneModulesRef.current.has(activeScene)) {
-      let newModule: SceneModule | null = null;
-      switch (activeScene) {
-        case '01':
-          newModule = createSurveyorScene();
-          break;
-        case '02':
-          newModule = createConstructionScene();
-          break;
-        case '03':
-          newModule = createReportsScene();
-          break;
-        case '04':
-          newModule = createRealEstateScene();
-          break;
-      }
-
-      if (newModule) {
-        newModule.setWireframe(stateRef.current.settings.wireframe);
-        scene.add(newModule.group);
-        sceneModulesRef.current.set(activeScene, newModule);
-      }
-    }
-
-    // Unload distant scenes to conserve GPU memory and keep draw calls minimal
-    // Keep active scene plus immediate neighbor for smooth transitions
-    const sceneKeys: StoryboardId[] = Array.from(sceneModulesRef.current.keys());
-    const scenesToRetain = new Set<StoryboardId>([activeScene]);
-
-    // If on scene 01, can keep 02 loaded; if 04, keep 03
-    if (activeScene === '01') scenesToRetain.add('02');
-    if (activeScene === '02') {
-      scenesToRetain.add('01');
-      scenesToRetain.add('03');
-    }
-    if (activeScene === '03') {
-      scenesToRetain.add('02');
-      scenesToRetain.add('04');
-    }
-    if (activeScene === '04') scenesToRetain.add('03');
-
-    sceneKeys.forEach((key) => {
-      if (!scenesToRetain.has(key)) {
-        const mod = sceneModulesRef.current.get(key);
-        if (mod) {
-          scene.remove(mod.group);
-          mod.dispose();
-          sceneModulesRef.current.delete(key);
-        }
-      }
-    });
-  }, [activeScene]);
-
-  // -------------------------------------------------------------
-  // CORE THREE.JS INITIALIZATION (Run once)
-  // -------------------------------------------------------------
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // 1. Scene & Atmosphere Fog
+    let width = container.clientWidth || window.innerWidth;
+    let height = container.clientHeight || window.innerHeight;
+
+    // 1. Scene & Atmosphere Setup (Fixed Golden Sunrise)
     const scene = new THREE.Scene();
-    sceneRef.current = scene;
-    scene.background = new THREE.Color(0x06070a);
-    scene.fog = new THREE.FogExp2(0x06070a, 0.016);
+    scene.background = new THREE.Color(0xfde68a);
+    scene.fog = new THREE.FogExp2(0xfef3c7, 0.009);
 
-    // 2. Camera setup with standard FOV
-    const width = container.clientWidth || window.innerWidth;
-    const height = container.clientHeight || window.innerHeight;
-    const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 350);
+    // 2. Camera Setup (Faithful Composition from Reference)
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+    const baseCamPos = new THREE.Vector3(0.5, 4.2, 12.8);
+    const baseLookAt = new THREE.Vector3(0.5, 2.5, 0);
+    camera.position.copy(baseCamPos);
+    camera.lookAt(baseLookAt);
 
-    const initialPos = SCENE_TARGETS[stateRef.current.activeScene];
-    camera.position.set(initialPos.camX, initialPos.camY, initialPos.camZ);
-    camera.lookAt(initialPos.lookX, initialPos.lookY, initialPos.lookZ);
-
-    // 3. High Performance Renderer (capped pixel ratio 1.5, powerPreference)
+    // 3. WebGL Renderer with ACES Tone Mapping & High-Res PCF Soft Shadows
     const renderer = new THREE.WebGLRenderer({
-      antialias: window.devicePixelRatio <= 1.5,
+      antialias: true,
       powerPreference: 'high-performance',
-      precision: 'mediump',
-      stencil: false,
+      alpha: false,
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.1;
+    renderer.toneMappingExposure = 1.15;
+    renderer.shadowMap.enabled = shadowsEnabled;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     container.appendChild(renderer.domElement);
 
-    // 4. Lighting Rig
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
+    // 4. Fixed Golden Sunrise Lighting Rig
+    const ambientLight = new THREE.AmbientLight(0xfef3c7, 0.7);
     scene.add(ambientLight);
 
-    const mainKeyLight = new THREE.DirectionalLight(0xfff3d6, 1.4);
-    mainKeyLight.position.set(30, 45, 40);
-    scene.add(mainKeyLight);
+    // Main Golden Sun (Upper-right diagonal casting long architectural shadows)
+    const sunLight = new THREE.DirectionalLight(0xfff3d6, 2.2);
+    sunLight.position.set(22, 28, 16);
+    sunLight.castShadow = shadowsEnabled;
+    sunLight.shadow.mapSize.width = 4096;
+    sunLight.shadow.mapSize.height = 4096;
+    sunLight.shadow.camera.near = 0.5;
+    sunLight.shadow.camera.far = 130;
+    sunLight.shadow.camera.left = -25;
+    sunLight.shadow.camera.right = 25;
+    sunLight.shadow.camera.top = 25;
+    sunLight.shadow.camera.bottom = -25;
+    sunLight.shadow.bias = -0.00012;
+    sunLight.shadow.normalBias = 0.035;
+    scene.add(sunLight);
 
-    const crimsonRimLight = new THREE.DirectionalLight(0x9e1333, 2.0);
-    crimsonRimLight.position.set(-30, 20, -10);
-    scene.add(crimsonRimLight);
+    // Dedicated Desk Contact Shadow Light
+    const deskShadowLight = new THREE.DirectionalLight(0xffedd5, 0.9);
+    deskShadowLight.position.set(6, 12, 8);
+    deskShadowLight.target.position.set(0.2, 0.9, 4.8);
+    deskShadowLight.castShadow = shadowsEnabled;
+    deskShadowLight.shadow.mapSize.width = 2048;
+    deskShadowLight.shadow.mapSize.height = 2048;
+    deskShadowLight.shadow.camera.near = 0.1;
+    deskShadowLight.shadow.camera.far = 25;
+    deskShadowLight.shadow.camera.left = -3;
+    deskShadowLight.shadow.camera.right = 3;
+    deskShadowLight.shadow.camera.top = 3;
+    deskShadowLight.shadow.camera.bottom = -3;
+    deskShadowLight.shadow.bias = -0.0002;
+    deskShadowLight.shadow.normalBias = 0.02;
+    scene.add(deskShadowLight);
+    scene.add(deskShadowLight.target);
 
-    const goldFillLight = new THREE.PointLight(0xd4af37, 1.8, 60);
-    goldFillLight.position.set(5, 12, 20);
-    scene.add(goldFillLight);
+    // 5. Materials
+    const concreteMat = new THREE.MeshStandardMaterial({
+      color: 0xd6d3d1,
+      roughness: 0.88,
+      metalness: 0.05,
+    });
+    const woodDeskMat = new THREE.MeshStandardMaterial({
+      color: 0x854d0e,
+      roughness: 0.65,
+      metalness: 0.08,
+    });
+    const yellowCraneMat = new THREE.MeshStandardMaterial({
+      color: 0xf59e0b,
+      roughness: 0.4,
+      metalness: 0.5,
+    });
+    const tripodAluMat = new THREE.MeshStandardMaterial({
+      color: 0xfbbf24,
+      roughness: 0.35,
+      metalness: 0.7,
+    });
+    const darkHardwareMat = new THREE.MeshStandardMaterial({
+      color: 0x1f2937,
+      roughness: 0.45,
+      metalness: 0.8,
+    });
+    const laserMat = new THREE.MeshBasicMaterial({
+      color: 0xef4444,
+      transparent: true,
+      opacity: 0.85,
+    });
 
-    // 5. Shared Depth Particles (Budgeted to 700 particles for high 60fps performance)
-    const particleCount = 700;
-    const particleGeo = new THREE.BufferGeometry();
-    const particlePositions = new Float32Array(particleCount * 3);
-    const particleColors = new Float32Array(particleCount * 3);
+    // 6. Architectural Elements: Terrace Slab & Site Ground
+    const terraceGeo = new THREE.BoxGeometry(16, 0.6, 12);
+    const terraceMesh = new THREE.Mesh(terraceGeo, concreteMat);
+    terraceMesh.position.set(0, 0.5, 3.5);
+    terraceMesh.receiveShadow = true;
+    scene.add(terraceMesh);
 
-    const cBurgundy = new THREE.Color(0x9e1333);
-    const cGold = new THREE.Color(0xd4af37);
-    const cCyan = new THREE.Color(0x38bdf8);
+    // Site Foundation Ground
+    const groundGeo = new THREE.PlaneGeometry(350, 350);
+    const groundMat = new THREE.MeshStandardMaterial({
+      color: 0xd97706,
+      roughness: 0.95,
+      metalness: 0.02,
+    });
+    const groundMesh = new THREE.Mesh(groundGeo, groundMat);
+    groundMesh.rotation.x = -Math.PI / 2;
+    groundMesh.position.set(0, -6, -50);
+    groundMesh.receiveShadow = true;
+    scene.add(groundMesh);
 
-    for (let i = 0; i < particleCount; i++) {
-      const idx = i * 3;
-      particlePositions[idx] = (Math.random() - 0.5) * 80;
-      particlePositions[idx + 1] = Math.random() * 26 - 2;
-      particlePositions[idx + 2] = Math.random() * 90 - 30;
+    // 7. Desk Elements (Foreground Desk & Survey Tools)
+    const deskGroup = new THREE.Group();
+    deskGroup.position.set(0.2, 0.85, 4.8);
 
-      const choice = Math.random();
-      const col = choice < 0.4 ? cBurgundy : choice < 0.75 ? cGold : cCyan;
-      particleColors[idx] = col.r;
-      particleColors[idx + 1] = col.g;
-      particleColors[idx + 2] = col.b;
+    // Tabletop
+    const deskTop = new THREE.Mesh(new THREE.BoxGeometry(6.2, 0.16, 3.2), woodDeskMat);
+    deskTop.castShadow = true;
+    deskTop.receiveShadow = true;
+    deskGroup.add(deskTop);
+
+    // Safety Helmet
+    const helmetGroup = new THREE.Group();
+    helmetGroup.name = 'helmet';
+    helmetGroup.position.set(-1.4, 0.28, 0.3);
+    const domeMesh = new THREE.Mesh(
+      new THREE.SphereGeometry(0.36, 24, 16, 0, Math.PI * 2, 0, Math.PI * 0.55),
+      new THREE.MeshStandardMaterial({ color: 0xfacc15, roughness: 0.25, metalness: 0.15 })
+    );
+    domeMesh.castShadow = true;
+    helmetGroup.add(domeMesh);
+    deskGroup.add(helmetGroup);
+
+    // Blueprint Roll & Sheet
+    const blueprintMat = new THREE.MeshStandardMaterial({
+      color: 0x0284c7,
+      roughness: 0.6,
+      metalness: 0.05,
+    });
+    const sheetMesh = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.015, 1.6), blueprintMat);
+    sheetMesh.position.set(0.3, 0.09, 0.1);
+    sheetMesh.rotation.y = -0.06;
+    sheetMesh.castShadow = true;
+    sheetMesh.receiveShadow = true;
+    deskGroup.add(sheetMesh);
+
+    // Tablet
+    const tabletGroup = new THREE.Group();
+    tabletGroup.name = 'tablet';
+    tabletGroup.position.set(1.7, 0.1, 0.25);
+    const tabletBody = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.04, 1.2), darkHardwareMat);
+    tabletBody.castShadow = true;
+    tabletBody.receiveShadow = true;
+    tabletGroup.add(tabletBody);
+    deskGroup.add(tabletGroup);
+
+    scene.add(deskGroup);
+
+    // 8. Survey Theodolite on Tripod (Surveyor Station)
+    const theodoliteGroup = new THREE.Group();
+    theodoliteGroup.name = 'theodolite';
+    theodoliteGroup.position.set(-2.6, 0.8, 4.2);
+
+    // Tripod Legs
+    [-0.55, 0.55, 0].forEach((xOff, idx) => {
+      const zOff = idx === 2 ? -0.65 : 0.45;
+      const legMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.03, 2.5, 12), tripodAluMat);
+      legMesh.position.set(xOff * 0.5, 1.15, zOff * 0.5);
+      legMesh.rotation.z = -xOff * 0.35;
+      legMesh.rotation.x = zOff * 0.35;
+      legMesh.castShadow = true;
+      legMesh.receiveShadow = true;
+      theodoliteGroup.add(legMesh);
+    });
+
+    // Theodolite Body
+    const theodoliteHead = new THREE.Group();
+    theodoliteHead.position.set(0, 2.35, 0);
+    const baseCyl = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.28, 0.3, 16), darkHardwareMat);
+    baseCyl.castShadow = true;
+    theodoliteHead.add(baseCyl);
+
+    const telescope = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.09, 0.75, 16), darkHardwareMat);
+    telescope.rotation.x = Math.PI / 2 + 0.15;
+    telescope.position.set(0, 0.28, 0);
+    telescope.castShadow = true;
+    theodoliteHead.add(telescope);
+
+    // Surveying Laser Beam
+    const laserBeam = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, 60, 8), laserMat);
+    laserBeam.position.set(0, 0.28, -30);
+    laserBeam.rotation.x = Math.PI / 2;
+    theodoliteHead.add(laserBeam);
+
+    theodoliteGroup.add(theodoliteHead);
+    scene.add(theodoliteGroup);
+
+    // 9. Construction Tower & Golden Cranes
+    const towerGroup = new THREE.Group();
+    towerGroup.position.set(-7.5, -4, -18);
+    for (let floor = 0; floor < 14; floor++) {
+      const slab = new THREE.Mesh(new THREE.BoxGeometry(11, 0.4, 9), concreteMat);
+      slab.position.set(0, floor * 1.55, 0);
+      slab.castShadow = true;
+      slab.receiveShadow = true;
+      towerGroup.add(slab);
     }
+    scene.add(towerGroup);
 
-    particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
-    particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
+    // Yellow Tower Crane
+    const craneGroup = new THREE.Group();
+    craneGroup.position.set(-6, -4, -22);
+    const craneMast = new THREE.Mesh(new THREE.BoxGeometry(0.9, 32, 0.9), yellowCraneMat);
+    craneMast.position.set(0, 16, 0);
+    craneMast.castShadow = true;
+    craneGroup.add(craneMast);
 
-    const particleMat = new THREE.PointsMaterial({
-      size: 0.18,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.75,
-      blending: THREE.AdditiveBlending,
-    });
-    const depthParticleField = new THREE.Points(particleGeo, particleMat);
-    scene.add(depthParticleField);
+    const craneJib = new THREE.Mesh(new THREE.BoxGeometry(26, 0.8, 0.8), yellowCraneMat);
+    craneJib.position.set(7, 32, 0);
+    craneJib.castShadow = true;
+    craneGroup.add(craneJib);
+    scene.add(craneGroup);
 
-    // 6. Laser Scan Plane
-    const scanGeo = new THREE.PlaneGeometry(80, 24);
-    scanGeo.rotateX(-Math.PI / 2);
-    const scanMat = new THREE.MeshBasicMaterial({
-      color: 0x38bdf8,
-      transparent: true,
-      opacity: 0.12,
-      side: THREE.DoubleSide,
-      blending: THREE.AdditiveBlending,
-    });
-    const scanPlane = new THREE.Mesh(scanGeo, scanMat);
-    scanPlane.position.y = 1.2;
-    scene.add(scanPlane);
+    // 10. Distant Riyadh Horizon Silhouette
+    const skylineGroup = new THREE.Group();
+    skylineGroup.position.set(18, -4, -65);
+    for (let i = 0; i < 18; i++) {
+      const bHeight = 12 + Math.random() * 26;
+      const bWidth = 4 + Math.random() * 6;
+      const bMesh = new THREE.Mesh(
+        new THREE.BoxGeometry(bWidth, bHeight, bWidth),
+        new THREE.MeshStandardMaterial({
+          color: 0xfef08a,
+          roughness: 0.95,
+          metalness: 0.05,
+        })
+      );
+      bMesh.position.set((i - 9) * 8.5, bHeight / 2, (Math.random() - 0.5) * 20);
+      skylineGroup.add(bMesh);
+    }
+    scene.add(skylineGroup);
 
-    // 7. Initial load of the starting active scene
-    const initialModule = createSurveyorScene();
-    initialModule.setWireframe(stateRef.current.settings.wireframe);
-    scene.add(initialModule.group);
-    sceneModulesRef.current.set(stateRef.current.activeScene, initialModule);
+    // 11. Mouse & Parallax State
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetCamX = baseCamPos.x;
+    let targetCamY = baseCamPos.y;
 
-    // Mouse Move listener with throttled smooth interpolation
-    const handleMouseMove = (e: MouseEvent) => {
-      const { innerWidth, innerHeight } = window;
-      stateRef.current.targetMouseX = (e.clientX / innerWidth - 0.5) * 2;
-      stateRef.current.targetMouseY = (e.clientY / innerHeight - 0.5) * 2;
+    const onMouseMove = (e: MouseEvent) => {
+      const normX = (e.clientX / window.innerWidth) * 2 - 1;
+      const normY = -(e.clientY / window.innerHeight) * 2 + 1;
+      mouseX = normX;
+      mouseY = normY;
     };
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
 
-    const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        const { innerWidth, innerHeight } = window;
-        stateRef.current.targetMouseX =
-          (e.touches[0].clientX / innerWidth - 0.5) * 2;
-        stateRef.current.targetMouseY =
-          (e.touches[0].clientY / innerHeight - 0.5) * 2;
-      }
-    };
+    // Interactive Raycaster for Clicks
+    const raycaster = new THREE.Raycaster();
+    const mouseVec = new THREE.Vector2();
 
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    const onClick = (e: MouseEvent) => {
+      mouseVec.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseVec.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      raycaster.setFromCamera(mouseVec, camera);
 
-    // Resize Observer for responsive canvas
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const newWidth = entry.contentRect.width;
-        const newHeight = entry.contentRect.height;
-        if (newWidth > 0 && newHeight > 0) {
-          camera.aspect = newWidth / newHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(newWidth, newHeight);
+      const intersects = raycaster.intersectObjects(
+        [helmetGroup, tabletGroup, theodoliteGroup],
+        true
+      );
+      if (intersects.length > 0) {
+        let rootObj: THREE.Object3D | null = intersects[0].object;
+        while (rootObj && !['helmet', 'tablet', 'theodolite'].includes(rootObj.name)) {
+          rootObj = rootObj.parent;
+        }
+        if (rootObj && onItemClick) {
+          onItemClick(rootObj.name);
         }
       }
-    });
-    resizeObserver.observe(container);
+    };
+    window.addEventListener('click', onClick);
 
-    // Current camera motion smoothers
-    const camLookAt = new THREE.Vector3(
-      initialPos.lookX,
-      initialPos.lookY,
-      initialPos.lookZ
-    );
-    const currentCamTarget = new THREE.Vector3();
+    // Resize Handler
+    const onResize = () => {
+      if (!container) return;
+      const w = container.clientWidth || window.innerWidth;
+      const h = container.clientHeight || window.innerHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    };
+    window.addEventListener('resize', onResize);
 
-    // -------------------------------------------------------------
-    // RENDER / ANIMATION LOOP
-    // -------------------------------------------------------------
+    // 12. Main Render Loop
+    let clock = new THREE.Clock();
+
     const animate = () => {
       animFrameId.current = requestAnimationFrame(animate);
 
-      const t = stateRef.current.clock.getElapsedTime();
-      const delta = stateRef.current.clock.getDelta();
-      const { settings, activeScene: currScene } = stateRef.current;
+      const delta = clock.getDelta();
+      const time = clock.getElapsedTime();
 
-      // Mouse smoothing
-      stateRef.current.mouseX +=
-        (stateRef.current.targetMouseX - stateRef.current.mouseX) * 0.05;
-      stateRef.current.mouseY +=
-        (stateRef.current.targetMouseY - stateRef.current.mouseY) * 0.05;
+      // Smooth Crane Rotation
+      craneJib.rotation.y = Math.sin(time * 0.18) * 0.45;
 
-      // 1. Update Camera Position and LookAt
-      const targetPos = SCENE_TARGETS[currScene];
-      const depthOffset = (settings.depthZ / 100) * 12;
-      const flySwayX = settings.autoFly ? Math.sin(t * 0.4) * 0.8 : 0;
-      const flySwayY = settings.autoFly ? Math.cos(t * 0.5) * 0.4 : 0;
-
-      const destCamX =
-        targetPos.camX + stateRef.current.mouseX * 2.5 + flySwayX;
-      const destCamY =
-        targetPos.camY - stateRef.current.mouseY * 1.5 + flySwayY;
-      const destCamZ = targetPos.camZ - depthOffset;
-
-      const lerpFactor = 0.045;
-      camera.position.x += (destCamX - camera.position.x) * lerpFactor;
-      camera.position.y += (destCamY - camera.position.y) * lerpFactor;
-      camera.position.z += (destCamZ - camera.position.z) * lerpFactor;
-
-      currentCamTarget.set(
-        targetPos.lookX + stateRef.current.mouseX * 0.8,
-        targetPos.lookY - stateRef.current.mouseY * 0.5,
-        targetPos.lookZ
-      );
-      camLookAt.lerp(currentCamTarget, lerpFactor);
-      camera.lookAt(camLookAt);
-
-      // 2. Animate Only Currently Loaded Scene Modules
-      sceneModulesRef.current.forEach((mod) => {
-        mod.update(t, delta);
-      });
-
-      // 3. Animate Depth Particles (slow drift)
-      depthParticleField.rotation.y = t * 0.02;
-
-      // 4. Laser Scan Plane sweep
-      if (settings.laserScan) {
-        scanPlane.visible = true;
-        scanPlane.position.z = 45 - ((t * 8) % 75);
+      // Parallax & Smooth Camera Movement
+      if (parallaxEnabled) {
+        targetCamX = baseCamPos.x + mouseX * 1.35;
+        targetCamY = baseCamPos.y + mouseY * 0.85;
       } else {
-        scanPlane.visible = false;
+        targetCamX = baseCamPos.x;
+        targetCamY = baseCamPos.y;
       }
 
-      // 5. Calculate Performance Telemetry
-      stateRef.current.frameCount++;
-      const now = performance.now();
-      if (now - stateRef.current.lastFpsTime >= 500) {
-        const fps = Math.round(
-          (stateRef.current.frameCount * 1000) / (now - stateRef.current.lastFpsTime)
-        );
-        stateRef.current.frameCount = 0;
-        stateRef.current.lastFpsTime = now;
-
-        if (onPerformanceStats) {
-          onPerformanceStats({
-            fps,
-            drawCalls: renderer.info.render.calls,
-            activeObjects: renderer.info.render.triangles,
-          });
-        }
+      if (autoTour) {
+        targetCamX += Math.sin(time * 0.35) * 0.4;
+        targetCamY += Math.cos(time * 0.25) * 0.18;
       }
 
-      // Render Scene
+      camera.position.x += (targetCamX - camera.position.x) * 0.045;
+      camera.position.y += (targetCamY - camera.position.y) * 0.045;
+      camera.lookAt(baseLookAt);
+
+      // Render Directly without Bloom
       renderer.render(scene, camera);
     };
 
     animate();
 
-    // -------------------------------------------------------------
-    // CLEANUP
-    // -------------------------------------------------------------
+    // 13. Cleanup on Unmount
     return () => {
       if (animFrameId.current) cancelAnimationFrame(animFrameId.current);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchmove', handleTouchMove);
-      resizeObserver.disconnect();
-
-      // Dispose all active modules
-      sceneModulesRef.current.forEach((mod) => {
-        mod.dispose();
-      });
-      sceneModulesRef.current.clear();
-
-      MaterialCache.disposeAll();
-
-      // Dispose scene elements
-      particleGeo.dispose();
-      particleMat.dispose();
-      scanGeo.dispose();
-      scanMat.dispose();
-
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('click', onClick);
+      window.removeEventListener('resize', onResize);
+      renderer.dispose();
       if (renderer.domElement && renderer.domElement.parentNode) {
         renderer.domElement.parentNode.removeChild(renderer.domElement);
       }
-      renderer.dispose();
     };
-  }, []);
+  }, [parallaxEnabled, shadowsEnabled, autoTour, onItemClick]);
 
   return (
     <div
       ref={containerRef}
-      id="three-hero-canvas-container"
-      className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-none"
+      className={`absolute inset-0 w-full h-full overflow-hidden pointer-events-auto ${className}`}
       style={{ zIndex: 0 }}
     />
   );
 };
+
+export default ThreeHeroBackground;
