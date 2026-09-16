@@ -69,3 +69,7 @@ body{font-family:'AlexandriaLocal','IBM Plex Sans Arabic',sans-serif;background:
 .hero h1,.hero h1 em{color:#7b1e3b!important;font-weight:800;letter-spacing:-1.5px;text-shadow:1px 1px 0 #fff8ed,3px 3px 0 #e6cda9,5px 5px 0 rgba(65,18,31,.32),0 10px 22px rgba(0,0,0,.28);-webkit-text-stroke:1px rgba(255,248,235,.55)}
 .hero p{position:relative;max-width:610px;padding:14px 20px 14px 16px;color:#7b1e3b!important;font-weight:700;line-height:1.95;background:linear-gradient(105deg,rgba(255,249,239,.96),rgba(246,229,204,.9));border-right:6px solid #7b1e3b;box-shadow:8px 8px 0 rgba(123,30,59,.28),0 12px 28px rgba(0,0,0,.24);clip-path:polygon(0 0,98% 0,100% 18%,100% 100%,2% 100%,0 82%);text-shadow:1px 1px 0 rgba(255,255,255,.8)}
 @media(max-width:720px){.hero h1,.hero h1 em{font-size:clamp(34px,9.5vw,44px);text-shadow:1px 1px 0 #fff8ed,2px 2px 0 #e6cda9,4px 4px 0 rgba(65,18,31,.3),0 8px 16px rgba(0,0,0,.25)}.hero p{padding:11px 14px 11px 12px;border-right-width:4px;box-shadow:5px 5px 0 rgba(123,30,59,.25),0 8px 18px rgba(0,0,0,.2)}}
+
+/* Simplified Hero title: remove the geometric extrusion while preserving clarity */
+.hero h1,.hero h1 em{color:#7b1e3b!important;text-shadow:0 2px 4px rgba(255,248,237,.9),0 4px 12px rgba(0,0,0,.22);-webkit-text-stroke:0;font-weight:700}
+@media(max-width:720px){.hero h1,.hero h1 em{ text-shadow:0 2px 4px rgba(255,248,237,.9),0 3px 9px rgba(0,0,0,.2)}}
