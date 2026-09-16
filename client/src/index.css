@@ -76,3 +76,5 @@ body{font-family:'IBM Plex Sans Arabic','Arial',sans-serif;background:#fff;color
 .hero-three-loading{position:absolute;inset:0;background:linear-gradient(135deg,#efe8df,#d7c7b4);opacity:.72}
 
 .article-points{margin:14px 0;padding:0 20px;color:var(--muted);line-height:1.9;font-size:13px}.article-points li::marker{color:var(--gold)}.article-process{font-size:13px;color:var(--muted);line-height:1.9}.article-process strong{color:var(--burgundy)}
+
+.article-keywords{font-size:11px;color:var(--gold);font-weight:700;line-height:1.8;margin:6px 0 10px}
