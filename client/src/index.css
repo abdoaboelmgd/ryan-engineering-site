@@ -48,3 +48,8 @@ body{font-family:'AlexandriaLocal','IBM Plex Sans Arabic',sans-serif;background:
 .hero-grid,.hero-dots{position:relative;z-index:2}
 @media(max-width:720px){.hero-three-bg{opacity:.78;background:linear-gradient(90deg,rgba(8,8,7,.88),rgba(8,8,7,.42))}.hero-three-bg:after{background:linear-gradient(180deg,rgba(6,7,10,.28),rgba(6,7,10,.16) 50%,rgba(6,7,10,.64))}}
 @media(prefers-reduced-motion:reduce){.hero-three-bg{opacity:.58}}
+
+/* Match the attached full-screen Hero composition */
+.home-main .hero{min-height:calc(100vh - 78px);height:calc(100vh - 78px)}
+.home-main .hero-grid{min-height:calc(100vh - 78px)}
+@media(max-width:720px){.home-main .hero,.home-main .hero-grid{min-height:calc(100vh - 68px);height:calc(100vh - 68px)}}
