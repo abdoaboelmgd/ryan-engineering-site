@@ -72,3 +72,5 @@ body{font-family:'IBM Plex Sans Arabic','Arial',sans-serif;background:#fff;color
 /* Simplified Hero title: remove the geometric extrusion while preserving clarity */
 .hero h1,.hero h1 em{color:#7b1e3b!important;text-shadow:0 2px 4px rgba(255,248,237,.9),0 4px 12px rgba(0,0,0,.22);-webkit-text-stroke:0;font-weight:700}
 @media(max-width:720px){.hero h1,.hero h1 em{ text-shadow:0 2px 4px rgba(255,248,237,.9),0 3px 9px rgba(0,0,0,.2)}}
+
+.hero-three-loading{position:absolute;inset:0;background:linear-gradient(135deg,#efe8df,#d7c7b4);opacity:.72}
