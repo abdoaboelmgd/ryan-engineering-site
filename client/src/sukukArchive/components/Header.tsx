@@ -1,13 +1,9 @@
 import { sukukAsset } from '../asset';
 import React, { useState, useEffect } from 'react';
 import { PHONE_DISPLAY, PHONE_NUMBER } from '../data/siteData';
-import { Code2, Phone, Menu, X } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 
-interface HeaderProps {
-  onOpenCodeModal?: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onOpenCodeModal }) => {
+export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -74,20 +70,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCodeModal }) => {
           ))}
         </nav>
 
-        {/* Action Controls: Code Viewer Modal + Call CTA */}
+        {/* Action Controls: Call CTA */}
         <div className="flex items-center gap-3">
-          {/* Code Viewer Button */}
-          <button
-            onClick={onOpenCodeModal}
-            id="view-code-button"
-            className="flex items-center gap-1.5 bg-[#C9973C]/20 hover:bg-[#C9973C] text-[#FEB922] hover:text-[#2B0F16] border border-[#C9973C]/40 px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-sm"
-            title="استعراض الكود المصدري المستخرج للموقع"
-          >
-            <Code2 className="w-4 h-4" />
-            <span className="hidden sm:inline">الكود المستخرج</span>
-            <span className="sm:hidden">الكود</span>
-          </button>
-
           {/* Desktop Phone CTA */}
           <a
             href={`tel:${PHONE_NUMBER}`}
@@ -137,16 +121,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCodeModal }) => {
                 <Phone className="w-4 h-4" />
                 <span>{PHONE_DISPLAY}</span>
               </a>
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenCodeModal?.();
-                }}
-                className="flex items-center justify-center gap-2 bg-white/10 text-rkGold font-bold py-2.5 rounded-xl border border-rkGold/30 text-sm"
-              >
-                <Code2 className="w-4 h-4" />
-                <span>عرض كود الموقع المستخرج</span>
-              </button>
             </div>
           </nav>
         </div>

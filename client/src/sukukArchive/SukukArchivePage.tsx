@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { WhyUs } from './components/WhyUs';
@@ -12,15 +12,12 @@ import { FAQ } from './components/FAQ';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingActions } from './components/FloatingActions';
-import { CodeViewerModal } from './components/CodeViewerModal';
 
 export default function App() {
-  const [isCodeModalOpen, setIsCodeModalOpen] = useState(false);
-
   return (
     <div dir="rtl" className="sukuk-archive-page min-h-screen flex flex-col bg-[#F7F4EE] text-[#2F2F2F] relative selection:bg-rkGold selection:text-[#2B0F16]">
       {/* Main Header */}
-      <Header onOpenCodeModal={() => setIsCodeModalOpen(true)} />
+      <Header />
 
       {/* Main Content Sections */}
       <main className="flex-grow">
@@ -60,7 +57,6 @@ export default function App() {
 
       {/* Floating Action Buttons (WhatsApp & Call) */}
       <FloatingActions />
-      <CodeViewerModal isOpen={isCodeModalOpen} onClose={() => setIsCodeModalOpen(false)} />
 
     </div>
   );
