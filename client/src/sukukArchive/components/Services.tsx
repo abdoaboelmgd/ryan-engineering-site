@@ -43,7 +43,7 @@ export const Services: React.FC<{ config?: ServicesConfig }> = ({ config }) => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ${config?.items ? 'lp-services-centered' : ''}`}>
           {items.map((srv, index) => {
             const formattedIndex = String(index + 1).padStart(2, '0');
             const ServiceIcon = SERVICE_ICONS[index] ?? FileText;
