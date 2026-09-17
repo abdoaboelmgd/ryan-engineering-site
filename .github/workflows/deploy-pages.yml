@@ -48,6 +48,10 @@ jobs:
             mkdir -p "dist/public/lp/$route"
             cp dist/public/index.html "dist/public/lp/$route/index.html"
           done
+          # Materialize the Sukuk service route and its short reference-style alias.
+          mkdir -p dist/public/services/deed-update dist/public/sukuk
+          cp dist/public/index.html dist/public/services/deed-update/index.html
+          cp dist/public/index.html dist/public/sukuk/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
