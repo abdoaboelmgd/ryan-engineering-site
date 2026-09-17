@@ -43,6 +43,11 @@ jobs:
           cp dist/public/index.html dist/public/404.html
           mkdir -p dist/public/thank-you
           cp dist/public/index.html dist/public/thank-you/index.html
+          # Materialize campaign landing routes so direct requests return HTTP 200.
+          for route in surveying-riyadh property-deeds-riyadh engineering-consulting-riyadh building-permits-riyadh; do
+            mkdir -p "dist/public/lp/$route"
+            cp dist/public/index.html "dist/public/lp/$route/index.html"
+          done
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
