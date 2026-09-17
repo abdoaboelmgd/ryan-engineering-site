@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="مكتب ريان لتحديث الصكوك العقارية - افضل مكتب معتمد بالرياض والقصيم والدمام لتحديث، فرز، ودمج الصكوك العقارية إلكترونياً بسرعة ودقة.">
+    <title>مكتب ريان لتحديث الصكوك العقارية</title>
+
+    <!-- Google Fonts: Cairo & Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        rkNavy: '#2C5364',
+                        rkNavyDark: '#1F3D4A',
+                        rkNavyDeep: '#0F2E3D',
+                        rkGold: '#F2C230',
+                        rkGoldLight: '#F7D97A',
+                        rkGoldDark: '#C99A1C',
+                        rkWa: '#25D366',
+                        rkBg: '#F4F2EC',
+                        rkCard: '#ffffff',
+                        rkText: '#2b2b2b',
+                        rkMuted: '#6b7780',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Styles -->
+    <style>
+        /* ====== حركات الظهور ====== */
+        @keyframes rkFadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .rk-reveal { opacity: 0; }
+        .rk-reveal.rk-in { animation: rkFadeUp 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards; }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @media(prefers-reduced-motion: reduce) {
+            .rk-reveal { opacity: 1 !important; animation: none !important; }
+        }
+
+        /* ====== أساسيات ====== */
+        html { scroll-behavior: smooth; }
+        body { background-color: #F4F2EC; color: #2b2b2b; overflow-x: hidden; }
+
+        /* ====== الهيرو ====== */
+        .rk-hero {
+            background:
+                linear-gradient(135deg, rgba(15, 46, 61, 0.94) 0%, rgba(31, 61, 74, 0.92) 100%),
+                repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(242, 194, 48, 0.06) 39px, rgba(242, 194, 48, 0.06) 40px),
+                repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(242, 194, 48, 0.06) 39px, rgba(242, 194, 48, 0.06) 40px),
+                url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* ====== تحسينات فخمة (Pro) ====== */
+        /* تأثيرات كروت الخدمات وغيرها */
+        .rk-card-hover {
+            transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.25s, border-color 0.25s;
+        }
+        .rk-card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(15, 46, 61, 0.18);
+            border-color: #F2C230;
+        }
+        
+        .rk-icon-hover { transition: transform 0.25s, background 0.25s; }
+        .rk-card-hover:hover .rk-icon-hover {
+            transform: scale(1.12) rotate(-4deg);
+            background: #F2C230;
+            color: #fff !important;
+        }
+
+        /* تأثيرات كروت المشاريع (الصور) */
+        .rk-gallery-item {
+            cursor: pointer;
+        }
+        .rk-gallery-item img {
+            transition: transform 0.7s ease;
+        }
+        .rk-gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* أزرار فخمة */
+        .rk-btn { transition: transform 0.2s, box-shadow 0.2s; }
+        .rk-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); }
+        .rk-btn-call:hover { box-shadow: 0 12px 30px rgba(242, 194, 48, 0.4); }
+
+        /* عناوين الأقسام بلمسة ذهبية */
+        .section-title { position: relative; display: inline-block; }
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 56px;
+            height: 3px;
+            background: linear-gradient(90deg, #F2C230, #F7D97A);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ====== شريط الشركاء المتحرك ====== */
+        /* التحديث الجديد: مسافات وأحجام أصغر في الجوال وأكبر في الشاشات الواسعة */
+        .marquee-wrapper { overflow: hidden; width: 100%; white-space: nowrap; position: relative; padding: 1rem 0; }
+        .marquee-wrapper::before, .marquee-wrapper::after {
+            content: ""; position: absolute; top: 0; width: 50px; height: 100%; z-index: 2; pointer-events: none;
+        }
+        .marquee-wrapper::before { left: 0; background: linear-gradient(to right, #F4F2EC 0%, transparent 100%); }
+        .marquee-wrapper::after { right: 0; background: linear-gradient(to left, #F4F2EC 0%, transparent 100%); }
+        
+        .marquee-wrapper.bg-light::before { background: linear-gradient(to right, #e8e6e1 0%, transparent 100%); }
+        .marquee-wrapper.bg-light::after { background: linear-gradient(to left, #e8e6e1 0%, transparent 100%); }
+
+        .marquee-content {
+            display: inline-flex; align-items: center; gap: 0.5rem; animation: marquee 30s linear infinite; padding-right: 0.5rem;
+        }
+        @media (min-width: 768px) {
+            .marquee-wrapper::before, .marquee-wrapper::after { width: 100px; }
+            .marquee-content { gap: 1.5rem; padding-right: 1.5rem; }
+        }
+
+        .marquee-wrapper:hover .marquee-content { animation-play-state: paused; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(50%); } }
+        
+        /* شعارات الشركاء (العملاء) */
+        .partner-logo {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: white; border: 1px solid #e5e7eb; border-radius: 9999px; /* Pill shape */
+            padding: 0.25rem 0.5rem; height: 40px; min-width: 80px; /* أحجام أصغر للجوال */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03); transition: all 0.3s ease;
+        }
+        .partner-logo img { max-height: 25px; max-width: 70px; object-fit: contain; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s; }
+        
+        @media (min-width: 768px) {
+            .partner-logo { padding: 0.5rem 1.5rem; height: 70px; min-width: 150px; }
+            .partner-logo img { max-height: 40px; max-width: 140px; }
+        }
+
+        .partner-logo:hover { border-color: #F2C230; box-shadow: 0 5px 15px rgba(242,194,48,0.15); }
+        .partner-logo:hover img { filter: grayscale(0%); opacity: 1; }
+
+        /* شعارات الاعتمادات (ملونة دائمًا وبدون إطار) */
+        .accredited-logo {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: transparent; border: none; box-shadow: none;
+            padding: 0.25rem; height: 40px; min-width: 80px; /* أحجام أصغر للجوال */
+        }
+        .accredited-logo img { max-height: 30px; max-width: 80px; object-fit: contain; filter: none; opacity: 1; transition: transform 0.3s ease; }
+        
+        @media (min-width: 768px) {
+            .accredited-logo { padding: 0.5rem; height: 70px; min-width: 120px; }
+            .accredited-logo img { max-height: 50px; max-width: 140px; }
+        }
+
+        .accredited-logo:hover img { transform: scale(1.05); }
+
+
+        /* ====== الأسئلة الشائعة ====== */
+        .rk-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .open .rk-faq-a { max-height: 300px; padding-bottom: 18px; }
+        .rk-faq-q::after { content: "+"; font-size: 24px; color: #F2C230; transition: transform 0.2s; }
+        .open .rk-faq-q::after { transform: rotate(45deg); }
+
+        /* نبض الواتساب */
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .pulse-wa { animation: pulse-wa 2s infinite; }
+    </style>
+</head>
+<body class="antialiased selection:bg-rkGold selection:text-rkNavyDeep">
+
+    <!-- Header Section -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-rkNavyDeep/95 backdrop-blur-md border-b border-white/10 py-3 shadow-lg">
+        <div class="container mx-auto px-4 lg:max-w-7xl flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-12 h-12 flex items-center justify-center">
+                    <img src="logo.png" alt="شعار مكتب ريان" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-white font-bold text-lg leading-tight">مكتب ريان</h1>
+                    <p class="text-rkGoldLight text-xs font-semibold tracking-wide">لتحديث الصكوك العقارية</p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex gap-6 text-white/90 font-medium text-sm">
+                <a href="#home" class="hover:text-rkGold transition-colors">الرئيسية</a>
+                <a href="#about" class="hover:text-rkGold transition-colors">لماذا نحن</a>
+                <a href="#services" class="hover:text-rkGold transition-colors">خدماتنا</a>
+                <a href="#partners" class="hover:text-rkGold transition-colors">عملائنا</a>
+                <a href="#projects" class="hover:text-rkGold transition-colors">أعمالنا</a>
+                <a href="#contact" class="hover:text-rkGold transition-colors">تواصل معنا</a>
+            </nav>
+
+            <!-- CTA -->
+            <a href="tel:0503130302" class="hidden md:flex items-center gap-2 text-white font-bold hover:text-rkGold transition-colors" dir="ltr">
+                <i class="fas fa-phone-alt text-rkGold"></i> 050 313 0302
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-rkNavy shadow-xl border-t border-white/10">
+            <nav class="flex flex-col p-4 text-white font-medium">
+                <a href="#home" class="py-3 border-b border-white/10 hover:text-rkGold mobile-link">الرئيسية</a>
+                <a href="#about" class="py-3 border-b border-white/10 hover:text-rkGold mobile-link">لماذا نحن</a>
+                <a href="#services" class="py-3 border-b border-white/10 hover:text-rkGold mobile-link">خدماتنا</a>
+                <a href="#partners" class="py-3 border-b border-white/10 hover:text-rkGold mobile-link">عملائنا</a>
+                <a href="#projects" class="py-3 border-b border-white/10 hover:text-rkGold mobile-link">أعمالنا</a>
+                <a href="#contact" class="py-3 hover:text-rkGold mobile-link">تواصل معنا</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="rk-hero min-h-[90vh] flex items-center pt-24 pb-12">
+        <div class="container mx-auto px-4 lg:max-w-7xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Text Content -->
+                <div class="text-center lg:text-right rk-reveal">
+                    <span class="inline-block bg-rkGold/20 text-rkGold px-4 py-1.5 rounded-full text-sm font-bold mb-6 border border-rkGold/30 backdrop-blur-sm">
+                        <i class="fas fa-check-circle ml-1"></i> مكتب معتمد رسمياً لتحديث الصكوك
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.3] mb-6">
+                        أفضل مكتب لتحديث الصكوك <br>
+                        <span class="text-rkGold drop-shadow-md">معتمد بالرياض والمملكة</span>
+                    </h1>
+                    <p class="text-lg text-gray-300 mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0 font-medium">
+                        مكتب ريان لتحديث الصكوك العقارية — نجمع بين الدقة المتناهية والخبرة العميقة في تحديث، فرز، ودمج الصكوك العقارية وتوثيقها إلكترونياً. 
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="https://wa.me/966503130302" target="_blank" class="rk-btn bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-2 text-lg">
+                            <i class="fab fa-whatsapp text-2xl"></i> استشارة عبر الواتساب
+                        </a>
+                        <a href="tel:0503130302" class="rk-btn rk-btn-call bg-rkGold hover:bg-rkGoldDark text-rkNavyDeep font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-2 text-lg">
+                            <i class="fas fa-phone-alt"></i> اتصل بنا الآن
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Fast Contact Form Card -->
+                <div class="rk-reveal delay-100">
+                    <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-[0_20px_60px_rgba(0,0,0,0.4)] border-t-4 border-rkGold">
+                        <h3 class="text-2xl font-bold text-rkNavy mb-2 text-center">طلب استشارة سريعة</h3>
+                        <p class="text-sm text-rkMuted mb-6 text-center">املأ بياناتك وسيتم تحويلك مباشرة للواتساب</p>
+                        
+                        <form onsubmit="event.preventDefault(); rkSendFast();" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-bold text-rkNavy mb-2">الاسم الكريم <span class="text-red-500">*</span></label>
+                                <input type="text" id="rk-fast-name" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-rkGold focus:ring-1 focus:ring-rkGold transition-colors" placeholder="أدخل اسمك هنا">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-rkNavy mb-2">رقم الجوال <span class="text-red-500">*</span></label>
+                                <input type="tel" id="rk-fast-phone" required dir="ltr" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-rkGold focus:ring-1 focus:ring-rkGold transition-colors text-right" placeholder="05x xxx xxxx">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-rkNavy mb-2">الخدمة المطلوبة</label>
+                                <select id="rk-fast-service" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-rkGold focus:ring-1 focus:ring-rkGold transition-colors appearance-none cursor-pointer">
+                                    <option value="استفسار عام">استفسار عام</option>
+                                    <option value="تحديث الصك">تحديث الصك</option>
+                                    <option value="فرز الصكوك">فرز الصكوك العقارية</option>
+                                    <option value="دمج الصكوك">دمج الصكوك</option>
+                                    <option value="صك بديل">استخراج صك بديل (تالف/مفقود)</option>
+                                    <option value="نقل ملكية الصك">نقل ملكية الصك</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full bg-rkNavy hover:bg-rkNavyDeep text-white font-bold py-4 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 mt-4 text-lg">
+                                <i class="fab fa-whatsapp text-xl text-[#25D366]"></i> إرسال الطلب
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Ribbon -->
+    <div class="container mx-auto px-4 lg:max-w-7xl relative z-10 -mt-10 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl p-6 text-center shadow-lg rk-card-hover rk-reveal border border-gray-100">
+                <div class="w-16 h-16 mx-auto bg-rkGold/15 rounded-full flex items-center justify-center text-rkGoldDark text-3xl mb-4 rk-icon-hover">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h4 class="font-bold text-rkNavy mb-2 text-xl">مكتب معتمد رسمياً</h4>
+                <p class="text-sm text-rkMuted">معتمدون لدى الجهات الحكومية والبلديات</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 text-center shadow-lg rk-card-hover rk-reveal delay-100 border border-gray-100">
+                <div class="w-16 h-16 mx-auto bg-rkGold/15 rounded-full flex items-center justify-center text-rkGoldDark text-3xl mb-4 rk-icon-hover">
+                    <i class="fas fa-hard-hat"></i>
+                </div>
+                <h4 class="font-bold text-rkNavy mb-2 text-xl">خبرة هندسية واسعة</h4>
+                <p class="text-sm text-rkMuted">كوادر متخصصة بخبرات تتجاوز 15 عاماً</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 text-center shadow-lg rk-card-hover rk-reveal delay-200 border border-gray-100">
+                <div class="w-16 h-16 mx-auto bg-rkGold/15 rounded-full flex items-center justify-center text-rkGoldDark text-3xl mb-4 rk-icon-hover">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h4 class="font-bold text-rkNavy mb-2 text-xl">إنجاز سريع ودقيق</h4>
+                <p class="text-sm text-rkMuted">نلتزم بالوقت مع ضمان أعلى معايير الجودة</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <section id="about" class="py-16">
+        <div class="container mx-auto px-4 lg:max-w-7xl text-center">
+            <h2 class="section-title text-3xl md:text-4xl font-bold text-rkNavy mb-4">لماذا تختار مكتب ريان الهندسي؟</h2>
+            <p class="text-rkMuted mb-12 max-w-2xl mx-auto text-lg">شريكك الموثوق لجميع خدماتك الهندسية والمساحية. نجمع بين الدقة العالية، الاعتماد الرسمي، والإنجاز السريع لتسهيل مشاريعك.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-right">
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 rk-card-hover rk-reveal shadow-sm">
+                    <div class="w-14 h-14 bg-rkNavy text-rkGold rounded-xl flex items-center justify-center font-bold text-2xl mb-6 shadow-md"><i class="fas fa-shield-alt"></i></div>
+                    <h4 class="text-xl font-bold text-rkNavy mb-3">اعتماد رسمي موثوق</h4>
+                    <p class="text-rkMuted text-sm leading-relaxed">معتمدون لدى البلديات ووزارة الإسكان ومنصات (بلدي، إحكام) لتسهيل واستخراج جميع معاملاتك ومشاريعك بكل أمان وقانونية.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 rk-card-hover rk-reveal delay-100 shadow-sm">
+                    <div class="w-14 h-14 bg-rkNavy text-rkGold rounded-xl flex items-center justify-center font-bold text-2xl mb-6 shadow-md"><i class="fas fa-cubes"></i></div>
+                    <h4 class="text-xl font-bold text-rkNavy mb-3">حلول هندسية متكاملة</h4>
+                    <p class="text-rkMuted text-sm leading-relaxed">نوفر جميع الخدمات تحت سقف واحد: من الرفع المساحي والتصميم المعماري، إلى الإشراف الميداني واستخراج كافة رخص البناء والتشغيل.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 rk-card-hover rk-reveal delay-200 shadow-sm">
+                    <div class="w-14 h-14 bg-rkNavy text-rkGold rounded-xl flex items-center justify-center font-bold text-2xl mb-6 shadow-md"><i class="fas fa-satellite-dish"></i></div>
+                    <h4 class="text-xl font-bold text-rkNavy mb-3">أحدث التقنيات المساحية</h4>
+                    <p class="text-rkMuted text-sm leading-relaxed">نعتمد على أحدث أجهزة الرفع المساحي (GPS & Total Stations) والبرمجيات الهندسية المتقدمة لضمان أقصى درجات الدقة والاحترافية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid (Updated with all 16 services & buttons) -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-2 md:px-4 lg:max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-rkNavy mb-4">خدماتنا المتخصصة في تحديث الصكوك</h2>
+                <p class="text-rkMuted text-lg">باقة متكاملة من خدمات تحديث وتوثيق الصكوك العقارية لتلبية كافة احتياجاتك</p>
+            </div>
+
+            <!-- Grid: 2 cols on mobile, 3 on md, 4 on lg -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
+                
+                <!-- Service Item Template -->
+                <script>
+                    const services = [
+                        { id: 1, title: 'تحديث الصك', icon: 'fa-file-contract', desc: 'تحديث الصكوك العقارية القديمة وتحويلها إلى صكوك إلكترونية معتمدة.' },
+                        { id: 2, title: 'فرز الصكوك', icon: 'fa-layer-group', desc: 'فرز وتجزئة الصكوك العقارية إلى قطع أو وحدات مستقلة معتمدة.' },
+                        { id: 3, title: 'دمج الصكوك', icon: 'fa-object-group', desc: 'دمج عدة صكوك متجاورة في صك عقاري واحد موحد.' },
+                        { id: 4, title: 'تصحيح بيانات الصك', icon: 'fa-clipboard-check', desc: 'تصحيح المساحة والحدود وبيانات المالك في الصك العقاري.' },
+
+                        { id: 5, title: 'استخراج صك بديل', icon: 'fa-file-signature', desc: 'استخراج صك بديل لصك تالف أو مفقود بإجراءات نظامية سريعة.' },
+                        { id: 6, title: 'نقل ملكية الصك', icon: 'fa-exchange-alt', desc: 'إتمام إجراءات نقل ملكية الصكوك بين الأطراف أو الورثة بسلاسة.' },
+                        { id: 7, title: 'تحديث المخطط الهندسي للصك', icon: 'fa-draw-polygon', desc: 'مطابقة وتحديث المخطط الهندسي المرفق بالصك مع الواقع الفعلي.' },
+                        { id: 8, title: 'متابعة معاملات كتابة العدل', icon: 'fa-stamp', desc: 'متابعة كامل إجراءات المعاملة لدى كتابة العدل حتى الاعتماد النهائي.' }
+                    ];
+
+                    services.forEach(srv => {
+                        document.write(`
+                        <div class="bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden rk-card-hover rk-reveal flex flex-col group relative">
+                            <div class="p-4 md:p-6 flex-grow text-center flex flex-col items-center justify-start relative z-10">
+                                <div class="w-14 h-14 md:w-16 md:h-16 bg-white shadow-sm border border-gray-100 rounded-2xl flex items-center justify-center text-rkGoldDark text-2xl md:text-3xl mb-4 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+                                    <i class="fas ${srv.icon}"></i>
+                                </div>
+                                <h4 class="font-bold text-rkNavy mb-2 text-sm md:text-lg">${srv.title}</h4>
+                                <p class="text-xs md:text-sm text-gray-500 leading-relaxed">${srv.desc}</p>
+                            </div>
+                            
+                            <!-- Action Buttons inside Card -->
+                            <div class="grid grid-cols-2 gap-px bg-gray-200 border-t border-gray-200 mt-auto">
+                                <a href="tel:0503130302" class="bg-white hover:bg-gray-50 py-3 text-rkNavy font-bold text-xs md:text-sm flex flex-col items-center justify-center gap-1 transition-colors" title="اتصال هاتفي">
+                                    <i class="fas fa-phone-alt text-rkGoldDark"></i>
+                                    <span>اتصال</span>
+                                </a>
+                                <a href="https://wa.me/966503130302?text=أرغب%20بالاستفسار%20عن%20خدمة:%20${srv.title}" target="_blank" class="bg-white hover:bg-[#e8fceb] py-3 text-[#0b3d23] font-bold text-xs md:text-sm flex flex-col items-center justify-center gap-1 transition-colors" title="تواصل واتساب">
+                                    <i class="fab fa-whatsapp text-[#25D366] text-lg"></i>
+                                    <span>واتساب</span>
+                                </a>
+                            </div>
+                        </div>
+                        `);
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Process -->
+    <section class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-4 lg:max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold text-rkNavy mb-4">آلية وإجراءات العمل</h2>
+                <p class="text-rkMuted text-lg">نتبع منهجية واضحة ومبسطة لضمان راحتك من أول تواصل حتى تسليم المشروع</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+                <div class="hidden lg:block absolute top-10 right-[12%] left-[12%] h-1 bg-gray-200 z-0 border-t border-dashed border-gray-400"></div>
+
+                <div class="bg-white rounded-2xl p-8 text-center border border-gray-100 relative z-10 shadow-sm hover:-translate-y-2 transition-transform duration-300 rk-reveal">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-rkNavy text-rkGold font-bold text-2xl flex items-center justify-center mb-4 ring-4 ring-white shadow-md">1</div>
+                    <h4 class="font-bold text-rkNavy mb-2 text-lg">الطلب والاستشارة</h4>
+                    <p class="text-sm text-gray-500">تواصل معنا لشرح متطلباتك وسنقدم لك استشارة مجانية وعرض سعر.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 text-center border border-gray-100 relative z-10 shadow-sm hover:-translate-y-2 transition-transform duration-300 rk-reveal delay-100">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-rkNavy text-rkGold font-bold text-2xl flex items-center justify-center mb-4 ring-4 ring-white shadow-md">2</div>
+                    <h4 class="font-bold text-rkNavy mb-2 text-lg">العمل الميداني والتصميم</h4>
+                    <p class="text-sm text-gray-500">يقوم فريقنا بالنزول المساحي أو إعداد المخططات الهندسية بدقة.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 text-center border border-gray-100 relative z-10 shadow-sm hover:-translate-y-2 transition-transform duration-300 rk-reveal delay-200">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-rkNavy text-rkGold font-bold text-2xl flex items-center justify-center mb-4 ring-4 ring-white shadow-md">3</div>
+                    <h4 class="font-bold text-rkNavy mb-2 text-lg">الاعتمادات والرخص</h4>
+                    <p class="text-sm text-gray-500">نرفع المعاملات عبر المنصات الحكومية ونتابعها حتى صدور الرخص.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 text-center border border-gray-100 relative z-10 shadow-sm hover:-translate-y-2 transition-transform duration-300 rk-reveal delay-300">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-rkNavy text-rkGold font-bold text-2xl flex items-center justify-center mb-4 ring-4 ring-white shadow-md">4</div>
+                    <h4 class="font-bold text-rkNavy mb-2 text-lg">الإشراف والتسليم</h4>
+                    <p class="text-sm text-gray-500">نشرف على التنفيذ لضمان الجودة، ونسلمك المشروع مطابقاً للمواصفات.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners / عملائنا -->
+    <section id="partners" class="py-16 bg-[#F4F2EC]">
+        <div class="container mx-auto px-4 lg:max-w-7xl">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-black text-rkNavy mb-4">عملائنا</h2>
+                <p class="text-gray-600 max-w-4xl mx-auto leading-relaxed text-sm md:text-base">
+                    في مكتب ريان للمساحة، نعتز بثقة عملائنا من مختلف القطاعات الحكومية والخاصة والأفراد، ممن اختارونا لتنفيذ مشاريعهم المساحية والهندسية.
+                    تشمل قاعدة عملائنا شركات وطنية كبرى، وجهات حكومية، وهيئات تطوير، ومطورين عقاريين، مما يعكس التزامنا بالاحترافية والدقة في كل مشروع ننفذه.
+                </p>
+                <p class="text-rkGoldDark font-bold mt-4">ومن بين عملائنا:</p>
+            </div>
+
+            <!-- Client Logos Marquee (Using department folder) -->
+            <div class="marquee-wrapper rk-reveal">
+                <div class="marquee-content" style="animation-duration: 40s;">
+                    <!-- Original Set -->
+                    <div class="partner-logo"><img src="department/logo_01.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_02.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_03.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_04.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_05.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_06.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_07.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_08.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_09.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_10.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_11.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_12.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_13.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_14.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_15.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_16.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_17.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_18.png" alt="عميل"></div>
+
+                    <!-- Duplicate Set for Seamless Loop -->
+                    <div class="partner-logo"><img src="department/logo_01.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_02.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_03.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_04.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_05.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_06.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_07.png" alt="عميل"></div>
+                    <div class="partner-logo"><img src="department/logo_08.png" alt="عميل"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accredited By / معتمدون لدى -->
+    <section class="py-12 bg-[#e8e6e1] border-t border-gray-300">
+        <div class="container mx-auto px-4 lg:max-w-7xl">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-black text-rkNavy">معتمدون لدى</h2>
+            </div>
+
+            <!-- Accredited Logos Marquee (Using imagesclint folder) -->
+            <div class="marquee-wrapper bg-light rk-reveal delay-100">
+                <div class="marquee-content" style="animation-direction: reverse; animation-duration: 45s;">
+                    <!-- Original Set -->
+                    <div class="accredited-logo"><img src="imagesclint/logo_01.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_02.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_03.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_04.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_05.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_06.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_07.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_08.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_09.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_10.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_11.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_12.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_13.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_14.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_15.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_16.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_17.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_18.png" alt="اعتماد"></div>
+
+                    <!-- Duplicate Set for Seamless Loop -->
+                    <div class="accredited-logo"><img src="imagesclint/logo_01.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_02.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_03.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_04.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_05.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_06.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_07.png" alt="اعتماد"></div>
+                    <div class="accredited-logo"><img src="imagesclint/logo_08.png" alt="اعتماد"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Portfolio (Grid with provided images) -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:max-w-7xl">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-rkNavy mb-4">من أعمالنا ومشاريعنا</h2>
+                <p class="text-rkMuted text-lg">جانب من الإنجازات الهندسية والمساحية في مختلف المواقع والمشاريع</p>
+            </div>
+            
+            <!-- Grid displaying the user provided images (3 cols mobile as requested, 3 tablet, 4 desktop) -->
+            <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
+                
+                <div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-8.jpeg" alt="مهندسو مساحة يقومون بعمليات الرفع" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">رفع مساحي للمباني</h4>
+                            <p class="text-rkGoldLight text-xs">توقيع ومطابقة المخططات الإنشائية</p>
+                        </div>
+                    </div>
+                </div>
+
+           <div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-9.jpeg" alt="مهندسو مساحة يقومون بعمليات الرفع" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">رفع مساحي للمباني</h4>
+                            <p class="text-rkGoldLight text-xs">توقيع ومطابقة المخططات الإنشائية</p>
+                        </div>
+                    </div>
+                </div>
+
+<div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-10.jpeg" alt="مهندسو مساحة يقومون بعمليات الرفع" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">رفع مساحي للمباني</h4>
+                            <p class="text-rkGoldLight text-xs">توقيع ومطابقة المخططات الإنشائية</p>
+                        </div>
+                    </div>
+                </div>
+
+<div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-11.jpeg" alt="مهندسو مساحة يقومون بعمليات الرفع" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">رفع مساحي للمباني</h4>
+                            <p class="text-rkGoldLight text-xs">توقيع ومطابقة المخططات الإنشائية</p>
+                        </div>
+                    </div>
+                </div>
+
+<div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-12.jpeg" alt="مهندسو مساحة يقومون بعمليات الرفع" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">رفع مساحي للمباني</h4>
+                            <p class="text-rkGoldLight text-xs">توقيع ومطابقة المخططات الإنشائية</p>
+                        </div>
+                    </div>
+                </div>
+
+<div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-13.jpeg" alt="مهندسو مساحة يقومون بعمليات الرفع" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">رفع مساحي للمباني</h4>
+                            <p class="text-rkGoldLight text-xs">توقيع ومطابقة المخططات الإنشائية</p>
+                        </div>
+                    </div>
+                </div>
+
+
+<div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-14.jpeg" alt="مهندسو مساحة يقومون بعمليات الرفع" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">رفع مساحي للمباني</h4>
+                            <p class="text-rkGoldLight text-xs">توقيع ومطابقة المخططات الإنشائية</p>
+                        </div>
+                    </div>
+                </div>
+
+
+<div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-15.jpeg" alt="مهندسو مساحة يقومون بعمليات الرفع" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">رفع مساحي للمباني</h4>
+                            <p class="text-rkGoldLight text-xs">توقيع ومطابقة المخططات الإنشائية</p>
+                        </div>
+                    </div>
+                </div>
+
+
+ <div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-4.jpeg" alt="صورة توضح الهيكل المعدني" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">إشراف مشاريع تجارية</h4>
+                            <p class="text-rkGoldLight text-xs">متابعة الهياكل المعدنية والخرسانية</p>
+                        </div>
+                    </div>
+                </div>
+
+ <div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-16.jpeg" alt="صورة توضح الهيكل المعدني" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">إشراف مشاريع تجارية</h4>
+                            <p class="text-rkGoldLight text-xs">متابعة الهياكل المعدنية والخرسانية</p>
+                        </div>
+                    </div>
+                </div>
+
+ <div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-17.jpeg" alt="صورة توضح الهيكل المعدني" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">إشراف مشاريع تجارية</h4>
+                            <p class="text-rkGoldLight text-xs">متابعة الهياكل المعدنية والخرسانية</p>
+                        </div>
+                    </div>
+                </div>
+
+ <div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-18.jpeg" alt="صورة توضح الهيكل المعدني" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">إشراف مشاريع تجارية</h4>
+                            <p class="text-rkGoldLight text-xs">متابعة الهياكل المعدنية والخرسانية</p>
+                        </div>
+                    </div>
+                </div>
+
+ <div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-19.jpeg" alt="صورة توضح الهيكل المعدني" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">إشراف مشاريع تجارية</h4>
+                            <p class="text-rkGoldLight text-xs">متابعة الهياكل المعدنية والخرسانية</p>
+                        </div>
+                    </div>
+                </div>
+
+ <div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-20.jpeg" alt="صورة توضح الهيكل المعدني" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">إشراف مشاريع تجارية</h4>
+                            <p class="text-rkGoldLight text-xs">متابعة الهياكل المعدنية والخرسانية</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rk-gallery-item rk-reveal delay-100 group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-1.jpeg" alt="أعمال رفع مساحي دقيقة" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">أعمال الحفريات</h4>
+                            <p class="text-rkGoldLight text-xs">متابعة دقيقة للأعماق والمناسيب</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rk-gallery-item rk-reveal delay-200 group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-2.jpeg" alt="فريق المساحة يستخدم أجهزة GPS" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">تخطيط الأراضي</h4>
+                            <p class="text-rkGoldLight text-xs">رفع مساحي باستخدام أجهزة GPS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rk-gallery-item rk-reveal delay-300 group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-3.jpeg" alt="توقيع مساحي لشبكات التسليح" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">توقيع القواعد الخرسانية</h4>
+                            <p class="text-rkGoldLight text-xs">إشراف هندسي ومساحي ميداني</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rk-gallery-item rk-reveal group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-4.jpeg" alt="صورة توضح الهيكل المعدني" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">إشراف مشاريع تجارية</h4>
+                            <p class="text-rkGoldLight text-xs">متابعة الهياكل المعدنية والخرسانية</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rk-gallery-item rk-reveal delay-100 group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-5.jpeg" alt="تجهيز القواعد والشدات الخشبية" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">توقيع المحاور والأعمدة</h4>
+                            <p class="text-rkGoldLight text-xs">مرحلة تأسيس القواعد</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rk-gallery-item rk-reveal delay-200 group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-6.jpeg" alt="مساح يستخدم جهاز المحطة الشاملة" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">أعلى درجات الدقة</h4>
+                            <p class="text-rkGoldLight text-xs">استخدام تقنيات مساحية حديثة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rk-gallery-item rk-reveal delay-300 group overflow-hidden rounded-2xl shadow-md relative aspect-[3/4] bg-gray-100">
+                    <img src="project-7.jpeg" alt="الرفع المساحي أمام أبراج" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-rkNavyDeep/90 via-rkNavyDeep/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-bold text-sm md:text-base mb-1">المشاريع الكبرى</h4>
+                            <p class="text-rkGoldLight text-xs">خبرة في التعامل مع المجمعات الضخمة</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="inline-flex items-center gap-2 bg-rkNavy text-white hover:bg-rkNavyDeep font-bold py-3 px-8 rounded-xl transition-colors shadow-md text-lg">
+                    <span>اطلب تسعيرة لمشروعك</span>
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="rk-stats py-16 bg-rkNavyDeep">
+        <div class="container mx-auto px-4 lg:max-w-6xl relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-white/10">
+                <div class="rk-stat rk-reveal py-4 md:py-0">
+                    <div class="text-4xl md:text-5xl font-black text-rkGold mb-2 big">+15</div>
+                    <div class="text-gray-300 font-medium">سنة من الخبرة</div>
+                </div>
+                <div class="rk-stat rk-reveal delay-100 py-4 md:py-0">
+                    <div class="text-4xl md:text-5xl font-black text-rkGold mb-2 big">+3500</div>
+                    <div class="text-gray-300 font-medium">عميل يثق بنا</div>
+                </div>
+                <div class="rk-stat rk-reveal delay-200 py-4 md:py-0">
+                    <div class="text-4xl md:text-5xl font-black text-rkGold mb-2 big">100%</div>
+                    <div class="text-gray-300 font-medium">دقة واعتمادية</div>
+                </div>
+                <div class="rk-stat rk-reveal delay-300 py-4 md:py-0">
+                    <div class="text-4xl md:text-5xl font-black text-rkGold mb-2 big">3</div>
+                    <div class="text-gray-300 font-medium">فروع رئيسية</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-50 border-b border-gray-200">
+        <div class="container mx-auto px-4 lg:max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold text-rkNavy mb-4">ماذا يقول عملاؤنا</h2>
+                <p class="text-rkMuted">ثقة عملائنا هي الأساس الذي نبني عليه نجاحاتنا المستمرة</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white border border-gray-100 shadow-sm p-8 rounded-2xl rk-card-hover rk-reveal">
+                    <div class="text-rkGold mb-4 text-xl tracking-widest">★★★★★</div>
+                    <p class="text-sm leading-loose text-gray-600 mb-6 italic">"تعاملت مع مكتب ريان في استخراج رخصة البناء والرفع المساحي، إنجاز سريع واحترافية عالية جداً. فريق عمل متجاوب ويستحق الشكر."</p>
+                    <div class="flex items-center gap-3 border-t border-gray-100 pt-4">
+                        <div class="w-12 h-12 rounded-full bg-rkNavy/10 text-rkNavy flex items-center justify-center font-bold text-lg">م</div>
+                        <div>
+                            <div class="font-bold text-rkNavy text-sm">م. عبدالله الشهري</div>
+                            <div class="text-xs text-rkMuted">مالك مشروع تجاري</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white border border-gray-100 shadow-sm p-8 rounded-2xl rk-card-hover rk-reveal delay-100">
+                    <div class="text-rkGold mb-4 text-xl tracking-widest">★★★★★</div>
+                    <p class="text-sm leading-loose text-gray-600 mb-6 italic">"خدمة استشارية ممتازة. التصاميم كانت دقيقة ومطابقة للأنظمة البلدية تماماً. ساعدوني في تحديث الصك وفرز الوحدات بكل سهولة."</p>
+                    <div class="flex items-center gap-3 border-t border-gray-100 pt-4">
+                        <div class="w-12 h-12 rounded-full bg-rkNavy/10 text-rkNavy flex items-center justify-center font-bold text-lg">س</div>
+                        <div>
+                            <div class="font-bold text-rkNavy text-sm">سعد القحطاني</div>
+                            <div class="text-xs text-rkMuted">مستثمر عقاري</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white border border-gray-100 shadow-sm p-8 rounded-2xl rk-card-hover rk-reveal delay-200">
+                    <div class="text-rkGold mb-4 text-xl tracking-widest">★★★★★</div>
+                    <p class="text-sm leading-loose text-gray-600 mb-6 italic">"أنجزوا لي تصاريح الإنشاء والرفع الطبوغرافي بدون أي تعقيد. أجهزة حديثة، مصداقية في المواعيد، وجودة تامة في المخرجات الهندسية."</p>
+                    <div class="flex items-center gap-3 border-t border-gray-100 pt-4">
+                        <div class="w-12 h-12 rounded-full bg-rkNavy/10 text-rkNavy flex items-center justify-center font-bold text-lg">ف</div>
+                        <div>
+                            <div class="font-bold text-rkNavy text-sm">فهد العتيبي</div>
+                            <div class="text-xs text-rkMuted">مؤسسة مقاولات عامة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:max-w-3xl">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-3xl font-bold text-rkNavy mb-4">الأسئلة الشائعة</h2>
+                <p class="text-rkMuted">إجابات سريعة لأهم استفساراتكم حول خدماتنا</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden rk-reveal">
+                    <div class="rk-faq-q p-5 font-bold text-rkNavy cursor-pointer flex justify-between items-center" onclick="this.parentElement.classList.toggle('open')">
+                        هل المكتب معتمد لدى الجهات الرسمية؟
+                    </div>
+                    <div class="rk-faq-a px-5 pb-0 bg-white">
+                        <p class="text-sm text-gray-600 leading-relaxed pt-4 border-t border-gray-100">نعم، بكل تأكيد. مكتب ريان معتمد رسمياً لدى وزارة الشؤون البلدية والقروية والإسكان، منصة بلدي، منصة إحكام، وجميع الأمانات والبلديات في مناطق عملنا.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden rk-reveal delay-100">
+                    <div class="rk-faq-q p-5 font-bold text-rkNavy cursor-pointer flex justify-between items-center" onclick="this.parentElement.classList.toggle('open')">
+                        ما هي المناطق التي تغطونها بخدماتكم؟
+                    </div>
+                    <div class="rk-faq-a px-5 pb-0 bg-white">
+                        <p class="text-sm text-gray-600 leading-relaxed pt-4 border-t border-gray-100">لدينا فروع ومقرات مجهزة في (الرياض، القصيم، والدمام)، ونستطيع خدمة عملائنا في هذه المدن والمناطق المجاورة لها بكفاءة وسرعة عالية.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden rk-reveal delay-200">
+                    <div class="rk-faq-q p-5 font-bold text-rkNavy cursor-pointer flex justify-between items-center" onclick="this.parentElement.classList.toggle('open')">
+                        هل الاستشارة الأولية وتقديم عروض الأسعار مجانية؟
+                    </div>
+                    <div class="rk-faq-a px-5 pb-0 bg-white">
+                        <p class="text-sm text-gray-600 leading-relaxed pt-4 border-t border-gray-100">نعم. يمكنك التواصل معنا عبر الواتساب أو النموذج أدناه وسيقوم مهندسونا بدراسة طلبك ومخططاتك وتقديم الاستشارة الأولية وعرض السعر مجاناً.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW Contact Section (Based on Image Request) -->
+    <section id="contact" class="py-20 bg-[#a7a9ac] relative overflow-hidden">
+        <div class="container mx-auto px-4 lg:max-w-6xl relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black text-rkNavyDeep mb-4">تواصل معنا الآن</h2>
+                <p class="text-gray-700 text-lg">إذا كنت تريد طلب معاينة أو لديك أي استفسار حول خدماتنا، يسعدنا تواصلك معنا لتقديم الدعم الكامل.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                
+                <!-- Contact Form (Light Background) -->
+                <div class="bg-[#cdc9c1] rounded-3xl p-8 md:p-10 shadow-xl relative overflow-hidden rk-reveal">
+                    <!-- Decorative curve -->
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#dfdcd6] rounded-full opacity-50 pointer-events-none"></div>
+
+                    <h3 class="text-2xl font-bold text-[#0F2E3D] mb-8 relative z-10 text-center lg:text-right">طلب خدمة أو استفسار</h3>
+                    <div class="w-full h-0.5 bg-rkGold mb-8"></div>
+                    
+                    <form onsubmit="event.preventDefault(); rkSendContact();" class="relative z-10">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-[#0F2E3D] font-bold text-sm mb-2 text-right">الاسم الكريم <span class="text-red-600">*</span></label>
+                                <input type="text" id="contact-name" required class="w-full bg-transparent border border-gray-400 rounded-lg px-4 py-3 focus:outline-none focus:border-[#0F2E3D] focus:bg-white/50 transition-colors placeholder-gray-500" placeholder="أدخل اسمك بالكامل">
+                            </div>
+                            <div>
+                                <label class="block text-[#0F2E3D] font-bold text-sm mb-2 text-right">رقم الجوال <span class="text-red-600">*</span></label>
+                                <input type="tel" id="contact-phone" required dir="ltr" class="w-full bg-transparent border border-gray-400 rounded-lg px-4 py-3 text-right focus:outline-none focus:border-[#0F2E3D] focus:bg-white/50 transition-colors placeholder-gray-500" placeholder="05x xxx xxxx">
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block text-[#0F2E3D] font-bold text-sm mb-2 text-right">نوع الخدمة المطلوبة</label>
+                            <div class="relative">
+                                <select id="contact-service" class="w-full bg-transparent border border-gray-400 rounded-lg px-4 py-3 appearance-none focus:outline-none focus:border-[#0F2E3D] focus:bg-white/50 transition-colors cursor-pointer text-gray-700">
+                                    <option value="" disabled selected>اختر الخدمة من القائمة...</option>
+                                    <option value="تحديث الصك">تحديث الصك</option>
+                                    <option value="فرز الصكوك">فرز الصكوك العقارية</option>
+                                    <option value="دمج الصكوك">دمج الصكوك</option>
+                                    <option value="صك بديل">استخراج صك بديل (تالف/مفقود)</option>
+                                    <option value="نقل ملكية الصك">نقل ملكية الصك</option>
+                                    <option value="اخرى">خدمة أخرى / استفسار عام</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-gray-500">
+                                    <i class="fas fa-chevron-down text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <label class="block text-[#0F2E3D] font-bold text-sm mb-2 text-right">تفاصيل الطلب (اختياري)</label>
+                            <textarea id="contact-details" rows="4" class="w-full bg-transparent border border-gray-400 rounded-lg px-4 py-3 focus:outline-none focus:border-[#0F2E3D] focus:bg-white/50 transition-colors placeholder-gray-500 resize-none" placeholder="اكتب تفاصيل مشروعك أو استفسارك هنا..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-[#112a35] hover:bg-[#0a1b22] text-white font-bold text-lg py-4 rounded-xl transition-colors flex items-center justify-center gap-3">
+                            إرسال الطلب <i class="fas fa-paper-plane flip-horizontal"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info (Dark Background) -->
+                <div class="bg-[#112a35] rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden rk-reveal delay-100 flex flex-col justify-center">
+                    <!-- Decorative circles -->
+                    <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full border-[30px] border-[#163645] opacity-50 pointer-events-none"></div>
+                    <div class="absolute -bottom-10 -left-10 w-60 h-60 rounded-full border-[20px] border-[#1a4254] opacity-30 pointer-events-none"></div>
+
+                    <h3 class="text-3xl font-black text-[#dcb13c] mb-12 relative z-10 text-center lg:text-right">معلومات الاتصال</h3>
+
+                    <div class="space-y-10 relative z-10">
+                        <!-- Phone -->
+                        <div class="flex items-center gap-6 justify-end">
+                            <div class="text-right">
+                                <div class="text-gray-400 text-sm mb-1">الرقم المباشر</div>
+                                <a href="tel:0503130302" class="text-white font-bold text-xl hover:text-[#dcb13c] transition-colors block" dir="ltr">050 313 0302</a>
+                            </div>
+                            <div class="w-14 h-14 bg-[#1a3a47] rounded-2xl flex items-center justify-center text-[#dcb13c] text-xl flex-shrink-0 shadow-inner">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-center gap-6 justify-end">
+                            <div class="text-right">
+                                <div class="text-gray-400 text-sm mb-1">البريد الإلكتروني</div>
+                                <a href="mailto:info@ryan-sa.com" class="text-white font-bold text-lg hover:text-[#dcb13c] transition-colors block">info@ryan-sa.com</a>
+                            </div>
+                            <div class="w-14 h-14 bg-[#1a3a47] rounded-2xl flex items-center justify-center text-[#dcb13c] text-xl flex-shrink-0 shadow-inner">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+
+                        <!-- Branches -->
+                        <div class="flex items-start gap-6 justify-end">
+                            <div class="text-right">
+                                <div class="text-gray-400 text-sm mb-3">فروعنا في المملكة</div>
+                                <ul class="text-white space-y-3 text-sm leading-relaxed">
+                                    <li><span class="text-[#dcb13c] font-black me-1">•</span> <strong class="font-bold">الرياض:</strong> حي المونسية، شارع النجاح</li>
+                                    <li><span class="text-[#dcb13c] font-black me-1">•</span> <strong class="font-bold">الدمام:</strong> حي الضباب، طريق الملك</li>
+                                    <li><span class="text-[#dcb13c] font-black me-1">•</span> <strong class="font-bold">القصيم:</strong> بريدة، طريق الملك عبدالعزيز</li>
+                                </ul>
+                            </div>
+                            <div class="w-14 h-14 bg-[#1a3a47] rounded-2xl flex items-center justify-center text-[#dcb13c] text-xl flex-shrink-0 shadow-inner mt-2">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b1c24] py-8 border-t-2 border-[#1a3a47]">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center gap-4 mb-6">
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-rkGold hover:text-rkNavyDeep transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-rkGold hover:text-rkNavyDeep transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-rkGold hover:text-rkNavyDeep transition-colors"><i class="fab fa-snapchat"></i></a>
+            </div>
+            <p class="text-xs md:text-sm text-gray-500">
+                جميع الحقوق محفوظة &copy; 2026 مكتب ريان للمساحة والاستشارات الهندسية
+            </p>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 left-6 z-[99] flex flex-col gap-3">
+        <a href="https://wa.me/966503130302" class="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-lg pulse-wa transition-transform hover:scale-110" aria-label="واتساب">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:0503130302" class="w-12 h-12 bg-rkGold text-rkNavyDeep rounded-full flex items-center justify-center text-xl shadow-lg transition-transform hover:scale-110 mx-auto" aria-label="اتصال">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Header Scroll & Mobile Menu
+        const header = document.querySelector('header');
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-3');
+            } else {
+                header.classList.add('py-3');
+                header.classList.remove('py-2');
+            }
+        });
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // WhatsApp Form Submit (Fast form in Hero)
+        function rkSendFast() {
+            const name = document.getElementById('rk-fast-name').value.trim();
+            const phone = document.getElementById('rk-fast-phone').value.trim();
+            const service = document.getElementById('rk-fast-service').value;
+            
+            if(!name || !phone) return;
+
+            const msg = `طلب استشارة سريعة%0A`
+                      + `------------------%0A`
+                      + `الاسم: ${encodeURIComponent(name)}%0A`
+                      + `الجوال: ${encodeURIComponent(phone)}%0A`
+                      + `الخدمة المطلوبة: ${encodeURIComponent(service)}`;
+            
+            window.open(`https://wa.me/966503130302?text=${msg}`, '_blank');
+        }
+
+        // WhatsApp Form Submit (Detailed form in Contact section)
+        function rkSendContact() {
+            const name = document.getElementById('contact-name').value.trim();
+            const phone = document.getElementById('contact-phone').value.trim();
+            const serviceEl = document.getElementById('contact-service');
+            const service = serviceEl.options[serviceEl.selectedIndex].text;
+            const details = document.getElementById('contact-details').value.trim();
+            
+            if(!name || !phone) return;
+
+            let msg = `طلب خدمة من الموقع%0A`
+                    + `------------------%0A`
+                    + `الاسم: ${encodeURIComponent(name)}%0A`
+                    + `الجوال: ${encodeURIComponent(phone)}%0A`
+                    + `نوع الخدمة: ${encodeURIComponent(service)}%0A`;
+            
+            if(details) {
+                msg += `التفاصيل: ${encodeURIComponent(details)}%0A`;
+            }
+            
+            window.open(`https://wa.me/966503130302?text=${msg}`, '_blank');
+        }
+
+        // Scroll Reveal Animations & Number Counter
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('rk-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.rk-reveal').forEach(el => observer.observe(el));
+
+            // Numbers Counter
+            let counted = false;
+            const statsSection = document.querySelector('.rk-stats');
+            
+            if(statsSection) {
+                const numObserver = new IntersectionObserver((entries) => {
+                    if(entries[0].isIntersecting && !counted) {
+                        counted = true;
+                        document.querySelectorAll('.big').forEach(el => {
+                            const target = parseInt(el.innerText.replace(/\D/g, ''));
+                            if(!target) return;
+                            
+                            const prefix = el.innerText.includes('+') ? '+' : '';
+                            const suffix = el.innerText.includes('%') ? '%' : '';
+                            
+                            let current = 0;
+                            const duration = 2000; 
+                            const step = target / (duration / 16); 
+
+                            const timer = setInterval(() => {
+                                current += step;
+                                if(current >= target) {
+                                    el.innerText = prefix + target + suffix;
+                                    clearInterval(timer);
+                                } else {
+                                    el.innerText = prefix + Math.floor(current) + suffix;
+                                }
+                            }, 16);
+                        });
+                    }
+                }, { threshold: 0.5 });
+                numObserver.observe(statsSection);
+            }
+        });
+    </script>
+</body>
+</html>

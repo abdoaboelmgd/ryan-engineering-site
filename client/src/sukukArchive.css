@@ -1,0 +1,220 @@
+/* ====== Hero Background ====== */
+.rk-hero {
+  background:
+    linear-gradient(135deg, rgba(43, 15, 22, 0.96) 0%, rgba(63, 22, 32, 0.93) 50%, rgba(92, 31, 46, 0.92) 100%),
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201, 151, 60, 0.07) 39px, rgba(201, 151, 60, 0.07) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201, 151, 60, 0.07) 39px, rgba(201, 151, 60, 0.07) 40px),
+    url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ====== Card & Button Hover Effects ====== */
+.rk-card-hover {
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.25s, border-color 0.25s;
+}
+.rk-card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(92, 31, 46, 0.16);
+  border-color: #C9973C;
+}
+
+.rk-icon-hover {
+  transition: transform 0.25s, background 0.25s;
+}
+.rk-card-hover:hover .rk-icon-hover {
+  transform: scale(1.12) rotate(-4deg);
+  background: #C9973C;
+  color: #fff !important;
+}
+
+.rk-gallery-item {
+  cursor: pointer;
+}
+.rk-gallery-item img {
+  transition: transform 0.7s ease;
+}
+.rk-gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.rk-btn {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.rk-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+.rk-btn-call:hover {
+  box-shadow: 0 12px 30px rgba(201, 151, 60, 0.4);
+}
+
+.section-title {
+  position: relative;
+  display: inline-block;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #C9973C, #D8B87E);
+  margin: 14px auto 0;
+  border-radius: 4px;
+}
+
+/* ====== Marquee ====== */
+.marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+  position: relative;
+  padding: 1rem 0;
+}
+.marquee-wrapper::before,
+.marquee-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #F7F4EE 0%, transparent 100%);
+}
+.marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #F7F4EE 0%, transparent 100%);
+}
+
+.marquee-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: marqueeAnim 35s linear infinite;
+  padding-right: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .marquee-wrapper::before,
+  .marquee-wrapper::after {
+    width: 120px;
+  }
+  .marquee-content {
+    gap: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.marquee-wrapper:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeAnim {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+.partner-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  padding: 0.35rem 0.75rem;
+  height: 44px;
+  min-width: 90px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+}
+.partner-logo img {
+  max-height: 28px;
+  max-width: 75px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.75;
+  transition: all 0.3s;
+}
+
+@media (min-width: 768px) {
+  .partner-logo {
+    padding: 0.5rem 1.5rem;
+    height: 70px;
+    min-width: 150px;
+  }
+  .partner-logo img {
+    max-height: 42px;
+    max-width: 140px;
+  }
+}
+
+.partner-logo:hover {
+  border-color: #C9973C;
+  box-shadow: 0 5px 15px rgba(201,151,60,0.22);
+}
+.partner-logo:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.accredited-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 1rem;
+  padding: 0.4rem 0.8rem;
+  height: 48px;
+  min-width: 95px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.accredited-logo img {
+  max-height: 34px;
+  max-width: 85px;
+  object-fit: contain;
+  filter: none;
+  opacity: 0.95;
+  transition: transform 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .accredited-logo {
+    padding: 0.5rem 1.25rem;
+    height: 70px;
+    min-width: 130px;
+  }
+  .accredited-logo img {
+    max-height: 50px;
+    max-width: 120px;
+  }
+}
+.accredited-logo:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* WhatsApp pulse */
+@keyframes pulse-wa {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+.pulse-wa {
+  animation: pulse-wa 2s infinite;
+}
