@@ -30,8 +30,8 @@ export default function UnifiedLandingPage({ page }: { page: any }) {
   }));
   const hero: HeroConfig = {
     eyebrow: `حلول معتمدة في ${page.service}`,
-    headline: page.heroHeadline || `أفضل مكتب معتمد لخدمات ${page.service}`,
-    highlightedHeadline: page.heroHighlight || page.service,
+    headline: 'أفضل مكتب معتمد في المملكة',
+    highlightedHeadline: page.service,
     description: page.heroCopy,
     defaultService: page.choices?.[0] || page.service,
     choices: page.choices,
