@@ -2,23 +2,35 @@ import React, { useState } from 'react';
 import { PHONE_NUMBER, WHATSAPP_NUMBER } from '../data/siteData';
 import { Phone, CheckCircle2, ShieldCheck, Award, Zap, Send } from 'lucide-react';
 
-export const Hero: React.FC = () => {
+export interface HeroConfig {
+  eyebrow?: string;
+  headline?: string;
+  highlightedHeadline?: string;
+  description?: string;
+  defaultService?: string;
+  choices?: string[];
+  formTitle?: string;
+  ctaLabel?: string;
+  whatsappMessage?: string;
+}
+
+export const Hero: React.FC<{ config?: HeroConfig }> = ({ config }) => {
   const [fastName, setFastName] = useState('');
   const [fastPhone, setFastPhone] = useState('');
-  const [fastService, setFastService] = useState('تحديث الصك');
+  const [fastService, setFastService] = useState(config?.defaultService || 'تحديث الصك');
 
   const handleFastSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!fastName.trim() || !fastPhone.trim()) return;
 
     const msg =
-      `طلب استشارة سريعة\n` +
+      `${config?.formTitle || 'طلب استشارة سريعة'}\n` +
       `------------------\n` +
       `الاسم: ${fastName.trim()}\n` +
       `الجوال: ${fastPhone.trim()}\n` +
       `الخدمة المطلوبة: ${fastService}`;
 
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(config?.whatsappMessage ? `${config.whatsappMessage}\n\n${msg}` : msg)}`, '_blank');
   };
 
   return (
@@ -29,19 +41,18 @@ export const Hero: React.FC = () => {
           <div className="lg:col-span-7 text-center lg:text-right">
             <div className="inline-flex items-center gap-2 bg-rkGold/20 text-rkGold px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold mb-6 border border-rkGold/40 backdrop-blur-sm shadow-sm">
               <CheckCircle2 className="w-4 h-4 text-rkGold shrink-0" />
-              <span>معتمد رسمياً لدى منصة بلدي وإحكام وكتابة العدل</span>
+              <span>{config?.eyebrow || 'معتمد رسمياً لدى منصة بلدي وإحكام وكتابة العدل'}</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-black text-white leading-[1.25] sm:leading-[1.2] mb-6 tracking-tight">
-              أفضل مكتب معتمد في المملكة <br className="hidden sm:inline" />
+              {config?.headline || 'أفضل مكتب معتمد في المملكة'} <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-l from-[#F2C230] via-rkGold to-[#F7D97A] drop-shadow-sm">
-                لتحديث الصكوك
+                {config?.highlightedHeadline || 'لتحديث الصكوك'}
               </span>
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-stone-200 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
-              مكتب ريان للمساحة والاستشارات الهندسية — نجمع بين دقة الرصد الميداني والخبرة النظامية الشاملة في تحديث،
-              فرز، دمج، وتوثيق الصكوك العقارية إلكترونياً بأعلى معايير الاعتماد.
+              {config?.description || 'مكتب ريان للمساحة والاستشارات الهندسية — نجمع بين دقة الرصد الميداني والخبرة النظامية الشاملة في تحديث، فرز، دمج، وتوثيق الصكوك العقارية إلكترونياً بأعلى معايير الاعتماد.'}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
@@ -104,7 +115,7 @@ export const Hero: React.FC = () => {
           <div className="lg:col-span-5">
             <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.4)] border-t-4 border-rkGold relative">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-black text-[#2B0F16] mb-1.5">طلب استشارة سريعة</h3>
+                <h3 className="text-2xl font-black text-[#2B0F16] mb-1.5">{config?.formTitle || 'طلب استشارة سريعة'}</h3>
                 <p className="text-xs sm:text-sm text-stone-500">املأ بياناتك وسيتم تحويلك مباشرة للواتساب للتواصل الفوري</p>
               </div>
 
@@ -150,13 +161,7 @@ export const Hero: React.FC = () => {
                     onChange={(e) => setFastService(e.target.value)}
                     className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-rkGold focus:ring-1 focus:ring-rkGold transition-colors cursor-pointer text-right text-stone-800 text-sm"
                   >
-                    <option value="استفسار عام">استفسار عام</option>
-                    <option value="تحديث الصك">تحديث الصك</option>
-                    <option value="فرز الصكوك">فرز الصكوك العقارية</option>
-                    <option value="دمج الصكوك">دمج الصكوك</option>
-                    <option value="استخراج صك بديل (تالف/مفقود)">استخراج صك بديل (تالف/مفقود)</option>
-                    <option value="تصحيح بيانات الصك">تصحيح بيانات الصك</option>
-                    <option value="نقل ملكية الصك">نقل ملكية الصك</option>
+                    {(config?.choices || ['استفسار عام','تحديث الصك','فرز الصكوك العقارية','دمج الصكوك','استخراج صك بديل (تالف/مفقود)','تصحيح بيانات الصك','نقل ملكية الصك']).map(choice => <option key={choice} value={choice}>{choice}</option>)}
                   </select>
                 </div>
 

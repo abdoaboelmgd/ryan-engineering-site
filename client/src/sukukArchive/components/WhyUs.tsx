@@ -1,8 +1,14 @@
 import React from 'react';
 import { ShieldCheck, Compass, Satellite } from 'lucide-react';
 
-export const WhyUs: React.FC = () => {
-  const reasons = [
+export interface WhyUsConfig {
+  title?: string;
+  description?: string;
+  reasons?: { title: string; desc: string }[];
+}
+
+export const WhyUs: React.FC<{ config?: WhyUsConfig }> = ({ config }) => {
+  const defaultReasons = [
     {
       icon: <ShieldCheck className="w-8 h-8 text-rkGold" />,
       title: 'اعتماد رسمي موثوق',
@@ -19,6 +25,7 @@ export const WhyUs: React.FC = () => {
       desc: 'نستخدم أحدث أجهزة GPS والمحطات الشاملة (Total Station) لتقديم تقارير مساحية دقيقة معتمدة وخالية تماماً من الأخطاء.',
     },
   ];
+  const reasons = config?.reasons?.map((reason, index) => ({ ...reason, icon: defaultReasons[index % defaultReasons.length].icon })) || defaultReasons;
 
   return (
     <section id="about" className="py-20 sm:py-24 bg-[#F7F4EE] border-t border-stone-200/60">
@@ -30,11 +37,11 @@ export const WhyUs: React.FC = () => {
           </div>
 
           <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2B0F16] mb-4 tracking-tight">
-            لماذا تختار مكتب ريان لتحديث الصكوك؟
+            {config?.title || 'لماذا تختار مكتب ريان لتحديث الصكوك؟'}
           </h2>
 
           <p className="text-stone-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            شريكك الهندسي والمساحي المعتمد. نجمع بين الدقة الميدانية المتناهية، والاعتماد الرسمي، والإنجاز السريع لتيسير كافة معاملاتك العقارية بأمان تام.
+            {config?.description || 'شريكك الهندسي والمساحي المعتمد. نجمع بين الدقة الميدانية المتناهية، والاعتماد الرسمي، والإنجاز السريع لتيسير كافة معاملاتك العقارية بأمان تام.'}
           </p>
         </div>
 

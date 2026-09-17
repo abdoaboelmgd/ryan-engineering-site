@@ -44,7 +44,7 @@ jobs:
           mkdir -p dist/public/thank-you
           cp dist/public/index.html dist/public/thank-you/index.html
           # Materialize campaign landing routes so direct requests return HTTP 200.
-          for route in surveying-riyadh property-deeds-riyadh engineering-consulting-riyadh building-permits-riyadh; do
+          for route in surveying-riyadh engineering-consulting-riyadh building-permits-riyadh; do
             mkdir -p "dist/public/lp/$route"
             cp dist/public/index.html "dist/public/lp/$route/index.html"
           done

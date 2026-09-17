@@ -1,10 +1,18 @@
 import React from 'react';
 import { SERVICES_DATA, PHONE_NUMBER, WHATSAPP_NUMBER } from '../data/siteData';
 import { Phone, CheckCircle2, MessageSquare, ArrowUpRight, ShieldCheck, Zap, FileText, Layers, Boxes, FileCheck2, FileSearch, Users, MapPin, Landmark } from 'lucide-react';
+import { ServiceItem } from '../types';
 
 const SERVICE_ICONS = [FileText, Layers, Boxes, FileCheck2, FileSearch, Users, MapPin, Landmark];
 
-export const Services: React.FC = () => {
+export interface ServicesConfig {
+  title?: string;
+  description?: string;
+  items?: ServiceItem[];
+}
+
+export const Services: React.FC<{ config?: ServicesConfig }> = ({ config }) => {
+  const items = config?.items || SERVICES_DATA;
   return (
     <section id="services" className="py-20 sm:py-24 bg-gradient-to-b from-[#F7F4EE]/50 via-white to-[#F7F4EE]/30 relative overflow-hidden">
       {/* Background Subtle Architectural Grid */}
@@ -26,17 +34,17 @@ export const Services: React.FC = () => {
           </div>
 
           <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2B0F16] mb-4 tracking-tight">
-            خدماتنا المتخصصة في الصكوك العقارية
+            {config?.title || 'خدماتنا المتخصصة في الصكوك العقارية'}
           </h2>
 
           <p className="text-stone-600 text-sm sm:text-base md:text-lg leading-relaxed">
-            حزمة متكاملة من الحلول المساحية والتوثيقية الاحترافية بأعلى معايير الدقة الهندسية، مصممة لتيسير فرز وتحديث ودمج وتوثيق عقارك بكل يسر.
+            {config?.description || 'حزمة متكاملة من الحلول المساحية والتوثيقية الاحترافية بأعلى معايير الدقة الهندسية، مصممة لتيسير فرز وتحديث ودمج وتوثيق عقارك بكل يسر.'}
           </p>
         </div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SERVICES_DATA.map((srv, index) => {
+          {items.map((srv, index) => {
             const formattedIndex = String(index + 1).padStart(2, '0');
             const ServiceIcon = SERVICE_ICONS[index] ?? FileText;
             const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
