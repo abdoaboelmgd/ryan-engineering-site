@@ -19,7 +19,21 @@ import { SERVICES_DATA } from './sukukArchive/data/siteData';
 export default function UnifiedLandingPage({ page }: { page: any }) {
   useEffect(() => {
     document.title = page.title;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', page.description);
+    const upsertMeta = (selector: string, attrs: Record<string, string>) => {
+      let node = document.head.querySelector(selector) as HTMLMetaElement | null;
+      if (!node) { node = document.createElement('meta'); document.head.appendChild(node); }
+      Object.entries(attrs).forEach(([key, value]) => node!.setAttribute(key, value));
+    };
+    upsertMeta('meta[name="description"]', { name: 'description', content: page.description });
+    const keywordText = [page.primaryKeyword, ...(page.keywordGroups?.primary || []), ...(page.keywordGroups?.supporting || [])].filter(Boolean).join(', ');
+    upsertMeta('meta[name="keywords"]', { name: 'keywords', content: keywordText });
+    upsertMeta('meta[property="og:title"]', { property: 'og:title', content: page.title });
+    upsertMeta('meta[property="og:description"]', { property: 'og:description', content: page.description });
+    upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
+    let canonical = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) { canonical = document.createElement('link'); document.head.appendChild(canonical); }
+    canonical.rel = 'canonical';
+    canonical.href = `${window.location.origin}${import.meta.env.BASE_URL}lp/${page.slug}/`;
     track('landing_page_view', { page: page.slug, service: page.service });
   }, [page]);
 
@@ -45,5 +59,6 @@ export default function UnifiedLandingPage({ page }: { page: any }) {
     reasons: ['دقة وخبرة مرتبطة بالخدمة', 'متطلبات ومخرجات واضحة', 'متابعة مهنية حتى اكتمال الإجراء'].map((title, i) => ({ title, desc: [page.description, 'نراجع البيانات والموقع ونوضح المطلوب قبل التنفيذ.', 'نبقي التواصل منظماً ونشرح الخطوة التالية بوضوح.'][i] })),
   };
   const groups = page.keywordGroups || {};
-  return <div dir="rtl" className="sukuk-archive-page unified-lp"><Header /><main><Hero config={hero} /><section className="unified-keyword-band"><div className="container"><div className="unified-keyword-heading"><Sparkles size={18}/><div><span>صلة البحث بالخدمة</span><h2>محتوى واضح يبدأ من احتياجك</h2></div></div><div className="unified-keyword-pills"><b>{page.primaryKeyword || page.service}</b>{[...(groups.primary || []), ...(groups.supporting || []), ...(groups.longtail || [])].slice(0, 12).map((keyword: string) => <span key={keyword}>{keyword}</span>)}</div></div></section><WhyUs config={why} /><Services config={services} /><WorkProcess /><PartnersMarquee /><ProjectsGallery /><StatsBar /><Testimonials /><FAQ /><section className="unified-lp-final"><div className="container"><div><span className="eyebrow">خطوتك التالية</span><h2>{page.cta || `اطلب خدمة ${page.service}`}</h2><p>أرسل تفاصيلك الأساسية وسنوضح لك المتطلبات والمخرج المناسب لخدمتك.</p><a href={whatsappLink(page.whatsapp)} target="_blank" rel="noreferrer"><MessageCircle size={18}/> تحدث مع مهندس عبر واتساب</a></div><div className="unified-final-card"><Phone size={25}/><strong>نموذج طلب {page.service}</strong><span>تواصل مباشر وشرح واضح للخطوة التالية</span></div></div></section><ContactSection /></main><Footer /><FloatingActions /></div>;
+  const schema = { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: `مكتب ريان - ${page.service}`, description: page.description, areaServed: ['الرياض', 'المملكة العربية السعودية'], serviceType: page.service, url: `${window.location.origin}${import.meta.env.BASE_URL}lp/${page.slug}/` };
+  return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} /><div dir="rtl" className="sukuk-archive-page unified-lp"><Header /><main><Hero config={hero} /><section className="unified-keyword-band"><div className="container"><div className="unified-keyword-heading"><Sparkles size={18}/><div><span>صلة البحث بالخدمة</span><h2>محتوى واضح يبدأ من احتياجك</h2></div></div><div className="unified-keyword-pills"><b>{page.primaryKeyword || page.service}</b>{[...(groups.primary || []), ...(groups.supporting || []), ...(groups.longtail || [])].slice(0, 12).map((keyword: string) => <span key={keyword}>{keyword}</span>)}</div></div></section><WhyUs config={why} /><Services config={services} /><WorkProcess /><PartnersMarquee /><ProjectsGallery /><StatsBar /><Testimonials /><FAQ /><section className="unified-lp-final"><div className="container"><div><span className="eyebrow">خطوتك التالية</span><h2>{page.cta || `اطلب خدمة ${page.service}`}</h2><p>أرسل تفاصيلك الأساسية وسنوضح لك المتطلبات والمخرج المناسب لخدمتك.</p><a href={whatsappLink(page.whatsapp)} target="_blank" rel="noreferrer"><MessageCircle size={18}/> تحدث مع مهندس عبر واتساب</a></div><div className="unified-final-card"><Phone size={25}/><strong>نموذج طلب {page.service}</strong><span>تواصل مباشر وشرح واضح للخطوة التالية</span></div></div></section><ContactSection /></main><Footer /><FloatingActions /></div></>;
 }
