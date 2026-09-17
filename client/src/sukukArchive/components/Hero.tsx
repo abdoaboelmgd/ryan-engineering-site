@@ -52,14 +52,14 @@ export const Hero: React.FC = () => {
                 id="hero-whatsapp-cta"
                 className="w-full sm:w-auto rk-btn bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3.5 px-8 rounded-xl flex items-center justify-center gap-2.5 text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all"
               >
-                <i className="fab fa-whatsapp text-2xl"></i>
+                <svg className="w-7 h-7 fill-current text-white" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" /></svg>
                 <span>استشارة فورية عبر الواتساب</span>
               </a>
 
               <a
                 href={`tel:${PHONE_NUMBER}`}
                 id="hero-call-cta"
-                className="w-full sm:w-auto rk-btn rk-btn-call bg-rkGold hover:bg-rkGoldDark text-[#2B0F16] font-extrabold py-3.5 px-8 rounded-xl flex items-center justify-center gap-2.5 text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all border border-amber-200/50"
+                className="w-full sm:w-auto bg-[#C9973C] hover:bg-[#B8860B] text-[#2B0F16] font-extrabold py-3.5 px-8 rounded-xl flex items-center justify-center gap-2.5 text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all border border-amber-200"
               >
                 <Phone className="w-5 h-5 fill-current" />
                 <span>اتصل بنا الآن</span>
@@ -163,10 +163,10 @@ export const Hero: React.FC = () => {
                 <button
                   type="submit"
                   id="hero-submit-btn"
-                  className="w-full bg-[#5C1F2E] hover:bg-[#3F1620] text-rkGold font-bold py-3.5 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg mt-2 border border-rkGold/30"
+                  className="w-full bg-[#5C1F2E] hover:bg-[#3F1620] text-white hover:text-[#FEB922] font-bold py-3.5 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg mt-2 border border-[#C9973C]/40 cursor-pointer"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>إرسال الطلب عبر الواتساب</span>
+                  <Send className="w-4 h-4 text-white" />
+                  <span className="text-white font-bold">إرسال الطلب عبر الواتساب</span>
                 </button>
 
                 <p className="text-[11px] text-gray-400 text-center mt-2">

@@ -45,7 +45,7 @@ export const WhyUs: React.FC = () => {
               className="bg-white p-8 rounded-3xl border border-stone-200/80 rk-card-hover shadow-sm hover:shadow-xl hover:border-rkGold transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="w-16 h-16 bg-[#5C1F2E] rounded-2xl flex items-center justify-center mb-6 shadow-md border border-rkGold/30 text-rkGold">
+                <div className="w-16 h-16 bg-[#5C1F2E] rounded-2xl flex items-center justify-center mb-6 shadow-md border border-[#C9973C]/40 text-[#C9973C]">
                   {item.icon}
                 </div>
                 <h4 className="text-xl font-extrabold text-[#2B0F16] mb-3">{item.title}</h4>

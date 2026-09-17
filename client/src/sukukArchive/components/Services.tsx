@@ -1,6 +1,8 @@
 import React from 'react';
 import { SERVICES_DATA, PHONE_NUMBER, WHATSAPP_NUMBER } from '../data/siteData';
-import { Phone, CheckCircle2, MessageSquare, ArrowUpRight, ShieldCheck, Zap } from 'lucide-react';
+import { Phone, CheckCircle2, MessageSquare, ArrowUpRight, ShieldCheck, Zap, FileText, Layers, Boxes, FileCheck2, FileSearch, Users, MapPin, Landmark } from 'lucide-react';
+
+const SERVICE_ICONS = [FileText, Layers, Boxes, FileCheck2, FileSearch, Users, MapPin, Landmark];
 
 export const Services: React.FC = () => {
   return (
@@ -36,6 +38,7 @@ export const Services: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {SERVICES_DATA.map((srv, index) => {
             const formattedIndex = String(index + 1).padStart(2, '0');
+            const ServiceIcon = SERVICE_ICONS[index] ?? FileText;
             const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
               `السلام عليكم ورحمة الله، أرغب في الاستفسار وطلب خدمة: ${srv.title}`
             )}`;
@@ -65,7 +68,7 @@ export const Services: React.FC = () => {
                   {/* Icon & Title */}
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-50 to-[#F7F4EE] border border-rkGold/30 text-rkGold group-hover:bg-[#5C1F2E] group-hover:text-rkGold group-hover:border-[#5C1F2E] transition-all duration-300 flex items-center justify-center text-2xl shrink-0 shadow-2xs group-hover:scale-105">
-                      <i className={`fas ${srv.icon}`}></i>
+                      <ServiceIcon className="w-7 h-7 text-[#C9973C]" strokeWidth={1.8} />
                     </div>
                     <h3 className="font-extrabold text-[#2B0F16] text-base md:text-lg group-hover:text-[#5C1F2E] transition-colors leading-snug">
                       {srv.title}
@@ -99,10 +102,10 @@ export const Services: React.FC = () => {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-grow bg-[#5C1F2E] hover:bg-[#3F1620] group-hover:bg-rkGold group-hover:text-[#2B0F16] text-white text-xs font-bold py-2.5 px-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-2xs"
+                    className="flex-grow bg-[#5C1F2E] hover:bg-[#3F1620] text-white hover:text-[#FEB922] text-xs font-bold py-2.5 px-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm"
                   >
-                    <MessageSquare className="w-3.5 h-3.5" />
-                    <span>طلب الخدمة</span>
+                    <MessageSquare className="w-3.5 h-3.5 text-white" />
+                    <span className="text-white font-bold">طلب الخدمة</span>
                     <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
 
@@ -143,7 +146,7 @@ export const Services: React.FC = () => {
               rel="noopener noreferrer"
               className="w-full md:w-auto bg-rkGold hover:bg-rkGoldDark text-[#2B0F16] font-bold text-sm py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md hover:scale-105"
             >
-              <i className="fab fa-whatsapp text-lg"></i>
+              <svg className="w-5 h-5 fill-current text-[#2B0F16]" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" /></svg>
               <span>استشارة مجانية فورية</span>
             </a>
           </div>

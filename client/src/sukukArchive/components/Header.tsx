@@ -80,7 +80,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCodeModal }) => {
           <button
             onClick={onOpenCodeModal}
             id="view-code-button"
-            className="flex items-center gap-1.5 bg-rkGold/20 hover:bg-rkGold text-rkGold hover:text-[#2B0F16] border border-rkGold/40 px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-sm"
+            className="flex items-center gap-1.5 bg-[#C9973C]/20 hover:bg-[#C9973C] text-[#FEB922] hover:text-[#2B0F16] border border-[#C9973C]/40 px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-sm"
             title="استعراض الكود المصدري المستخرج للموقع"
           >
             <Code2 className="w-4 h-4" />
@@ -92,7 +92,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCodeModal }) => {
           <a
             href={`tel:${PHONE_NUMBER}`}
             id="header-phone-cta"
-            className="hidden lg:flex items-center gap-2 text-white font-bold hover:text-rkGold transition-colors text-sm px-3.5 py-1.5 rounded-lg bg-white/10 border border-white/15 hover:border-rkGold/50"
+            className="hidden lg:flex items-center gap-2 text-white hover:text-[#FEB922] bg-white/10 border border-white/20 font-bold transition-colors text-sm px-3.5 py-1.5 rounded-lg hover:border-[#C9973C]/50"
             dir="ltr"
           >
             <Phone className="w-4 h-4 text-rkGold" />
@@ -131,7 +131,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCodeModal }) => {
             <div className="pt-4 flex flex-col gap-3">
               <a
                 href={`tel:${PHONE_NUMBER}`}
-                className="flex items-center justify-center gap-2 bg-rkGold text-[#2B0F16] font-bold py-2.5 rounded-xl shadow-md"
+                className="flex items-center justify-center gap-2 text-white hover:text-[#FEB922] bg-white/10 border border-white/20 font-bold py-2.5 rounded-xl shadow-md"
                 dir="ltr"
               >
                 <Phone className="w-4 h-4" />
