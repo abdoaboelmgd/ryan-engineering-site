@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { WhyUs } from './components/WhyUs';
@@ -13,8 +13,12 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingActions } from './components/FloatingActions';
 import { TrustRibbon } from './components/TrustRibbon';
+import { SmartCalculator } from './components/SmartCalculator';
+import { StickyConversionBar } from './components/StickyConversionBar';
+import { CodeViewerModal } from './components/CodeViewerModal';
 
 export default function App() {
+  const [isCodeModalOpen, setIsCodeModalOpen] = useState(false);
   useEffect(() => {
     const title = 'تحديث الصكوك العقارية إلكترونياً | مكتب ريان للمساحة والاستشارات الهندسية';
     const description = 'خدمات تحديث وفرز ودمج وتصحيح الصكوك العقارية والرفع المساحي في الرياض والمملكة العربية السعودية بمخرجات هندسية واضحة ومتابعة منظمة.';
@@ -34,8 +38,13 @@ export default function App() {
   }, []);
   return (
     <div dir="rtl" className="sukuk-archive-page min-h-screen flex flex-col bg-[#F7F4EE] text-[#2F2F2F] relative selection:bg-rkGold selection:text-[#2B0F16]">
+      <div className="bg-[#2B0F16] text-gray-300 py-2 px-4 text-xs flex justify-between items-center border-b border-rkGold/20 z-50">
+        <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-rkGold animate-pulse"/><span>الهوية الرسمية لموقع <strong>مكتب ريان للمساحة والاستشارات الهندسية</strong> مطبقة بالكامل.</span></div>
+        <button onClick={() => setIsCodeModalOpen(true)} className="text-rkGold hover:text-rkGoldLight font-bold underline cursor-pointer mr-2 transition-colors">عرض الكود المستخرج / تحميل الملف</button>
+      </div>
+
       {/* Main Header */}
-      <Header />
+      <Header onOpenCodeModal={() => setIsCodeModalOpen(true)} />
 
       {/* Main Content Sections */}
       <main className="flex-grow">
@@ -49,7 +58,10 @@ export default function App() {
         {/* 3. Core Specialized Sukuk Services */}
         <Services />
 
-        {/* 4. Work Process & Methodology */}
+        {/* 4. Smart duration and requirements calculator */}
+        <SmartCalculator />
+
+        {/* 5. Work Process & Methodology */}
         <WorkProcess />
 
         {/* 5. Clients & Official Accreditations Marquees */}
@@ -76,6 +88,8 @@ export default function App() {
 
       {/* Floating Action Buttons (WhatsApp & Call) */}
       <FloatingActions />
+      <StickyConversionBar />
+      <CodeViewerModal isOpen={isCodeModalOpen} onClose={() => setIsCodeModalOpen(false)} />
 
     </div>
   );

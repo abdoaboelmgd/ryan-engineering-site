@@ -1,7 +1,7 @@
 import { ServiceItem, ProjectItem, TestimonialItem, FAQItem, StatItem } from '../types';
 
-export const PHONE_NUMBER = '0503130302';
-export const PHONE_DISPLAY = '050 313 0302';
+export const PHONE_NUMBER = '966503130302';
+export const PHONE_DISPLAY = '0503130302';
 export const WHATSAPP_NUMBER = '966503130302';
 
 export const SERVICES_DATA: ServiceItem[] = [
