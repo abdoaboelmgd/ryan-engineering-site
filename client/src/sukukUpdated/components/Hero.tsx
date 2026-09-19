@@ -1,28 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PHONE_NUMBER, WHATSAPP_NUMBER } from '../data/siteData';
 import { Phone, CheckCircle2, ShieldCheck, Award, Zap } from 'lucide-react';
 import { MultiStepConsultation } from './MultiStepConsultation';
-import { ThreeHeroBackground } from './ThreeHeroBackground';
+import { sukukUpdatedAsset } from '../asset';
 
 export const Hero: React.FC = () => {
-  const [wireframe, setWireframe] = useState(false);
-
   return (
     <section id="home" className="min-h-[92vh] flex flex-col justify-center pt-28 pb-16 relative overflow-hidden bg-[#fef3c7]">
-      {/* 
-        1. خلفية الـ 3D التفاعلية Three.js (ThreeHeroBackground) 
-        - تأخذ كامل مساحة الهيرو في الخلفية (z-0)
-        - المشهد الهندسي المعماري: محطة الرصد، شرفة العمل، المخطط العقاري، برج المملكة وأفق الرياض
-        - تفاعل فيزيائي انسيابي مع حركة الماوس، جولة تلقائية، وظلال ثلاثية الأبعاد
-      */}
-      <div className="absolute inset-0 z-0">
-        <ThreeHeroBackground
-          wireframe={wireframe}
-          autoTour={true}
-          parallaxEnabled={true}
-          shadowsEnabled={true}
-        />
-      </div>
+      {/* صورة خدمة الصكوك مع طبقة بيج عميقة تحافظ على وضوح النص والنموذج */}
+      <div
+        className="sukuk-hero-image absolute inset-0 z-0"
+        style={{ backgroundImage: `url(${sukukUpdatedAsset('project-19.jpeg')})` }}
+        aria-hidden="true"
+      />
 
       {/* 
         2. المحتوى الأمامي ونموذج الاستشارة
@@ -42,16 +32,7 @@ export const Hero: React.FC = () => {
                 <span>اعتماد بلدي • إحكام • كتابة العدل</span>
               </div>
 
-              {/* Wireframe Toggle Chip */}
-              <button
-                type="button"
-                onClick={() => setWireframe(!wireframe)}
-                className="inline-flex items-center gap-1.5 bg-neutral-900/80 hover:bg-neutral-950 text-stone-300 hover:text-[#FEB922] px-3.5 py-1.5 rounded-full text-[11px] font-semibold border border-amber-400/30 backdrop-blur-md transition-all cursor-pointer shadow-lg"
-                title="التبديل بين التجسيم الهندسي الواقعي وشبكة المجسمات Wireframe"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#FEB922] animate-pulse"></span>
-                <span>{wireframe ? 'إظهار التجسيم الواقعي' : 'عرض الشبكة الهندسية (Wireframe)'}</span>
-              </button>
+
             </div>
 
             {/* Heading Container with Crystal-Clear Translucent Burgundy Backdrop */}

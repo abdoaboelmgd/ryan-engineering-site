@@ -289,3 +289,32 @@ body {
 .sukuk-updated-page .sukuk-glass-form textarea { min-height: 44px; }
 .sukuk-updated-page .sukuk-glass-form button,
 .sukuk-updated-page .sukuk-glass-form a { -webkit-tap-highlight-color: transparent; }
+
+/* Static Sukuk Hero image treatment and cream navigation/contact palette */
+.sukuk-updated-page .sukuk-hero-image {
+  background-position: center 42%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #D9C3A5;
+}
+.sukuk-updated-page .sukuk-hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(43,15,22,.83) 0%, rgba(92,31,46,.62) 48%, rgba(217,195,165,.72) 100%),
+    linear-gradient(180deg, rgba(92,58,31,.30), rgba(217,195,165,.58));
+}
+.sukuk-updated-page #main-header,
+.sukuk-updated-page #main-header #mobile-nav-dropdown { color: #2B0F16; }
+.sukuk-updated-page #main-header .text-white { color: #2B0F16 !important; }
+.sukuk-updated-page #main-header .text-gray-300,
+.sukuk-updated-page #main-header .text-gray-400 { color: #5C1F2E !important; }
+.sukuk-updated-page #main-header .border-white\/10 { border-color: rgba(92,31,46,.18); }
+.sukuk-updated-page #contact .sukuk-glass-form { box-shadow: 0 24px 70px rgba(43,15,22,.16), inset 0 1px 0 rgba(255,255,255,.85); }
+@media (max-width: 767px) {
+  .sukuk-updated-page .sukuk-hero-image { background-position: 58% center; }
+  .sukuk-updated-page .sukuk-hero-image::after {
+    background: linear-gradient(180deg, rgba(43,15,22,.72) 0%, rgba(92,31,46,.64) 52%, rgba(217,195,165,.76) 100%);
+  }
+}

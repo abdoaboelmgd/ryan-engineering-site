@@ -38,11 +38,11 @@ export default function SukukUpdatedPage() {
         {/* 1. Hero with interactive multi-step quick consultation */}
         <Hero />
 
-        {/* 2. Why Choose Us */}
-        <WhyUs />
-
-        {/* 3. Core Specialized Sukuk Services */}
+        {/* 2. Core Specialized Sukuk Services */}
         <Services />
+
+        {/* 3. Why Choose Ryan */}
+        <WhyUs />
 
         {/* 4. Smart Duration & Requirements Calculator (Conversion Booster) */}
         <SmartCalculator />
