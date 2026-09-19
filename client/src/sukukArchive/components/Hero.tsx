@@ -41,18 +41,18 @@ export const Hero: React.FC<{ config?: HeroConfig }> = ({ config }) => {
           <div className="lg:col-span-7 text-center lg:text-right">
             <div className="inline-flex items-center gap-2 bg-rkGold/20 text-rkGold px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold mb-6 border border-rkGold/40 backdrop-blur-sm shadow-sm">
               <CheckCircle2 className="w-4 h-4 text-rkGold shrink-0" />
-              <span>{config?.eyebrow || 'معتمد رسمياً لدى منصة بلدي وإحكام وكتابة العدل'}</span>
+              <span>{config?.eyebrow || 'مكتب معتمد رسمياً لتحديث الصكوك'}</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-black text-white leading-[1.25] sm:leading-[1.2] mb-6 tracking-tight">
-              {config?.headline || 'أفضل مكتب معتمد في المملكة'} <br className="hidden sm:inline" />
+              {config?.headline || 'أفضل مكتب لتحديث الصكوك'} <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-l from-[#F2C230] via-rkGold to-[#F7D97A] drop-shadow-sm">
-                {config?.highlightedHeadline || 'لتحديث الصكوك'}
+                {config?.highlightedHeadline || 'معتمد بالرياض والمملكة'}
               </span>
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-stone-200 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
-              {config?.description || 'مكتب ريان للمساحة والاستشارات الهندسية — نجمع بين دقة الرصد الميداني والخبرة النظامية الشاملة في تحديث، فرز، دمج، وتوثيق الصكوك العقارية إلكترونياً بأعلى معايير الاعتماد.'}
+              {config?.description || 'مكتب ريان لتحديث الصكوك العقارية — نجمع بين الدقة المتناهية والخبرة العميقة في تحديث، فرز، ودمج الصكوك العقارية وتوثيقها إلكترونياً.'}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
@@ -64,7 +64,7 @@ export const Hero: React.FC<{ config?: HeroConfig }> = ({ config }) => {
                 className="w-full sm:w-auto rk-btn bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3.5 px-8 rounded-xl flex items-center justify-center gap-2.5 text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all"
               >
                 <svg className="w-7 h-7 fill-current text-white" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" /></svg>
-                <span>استشارة فورية عبر الواتساب</span>
+                <span>استشارة عبر الواتساب</span>
               </a>
 
               <a
@@ -116,7 +116,7 @@ export const Hero: React.FC<{ config?: HeroConfig }> = ({ config }) => {
             <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.4)] border-t-4 border-rkGold relative">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-black text-[#2B0F16] mb-1.5">{config?.formTitle || 'طلب استشارة سريعة'}</h3>
-                <p className="text-xs sm:text-sm text-stone-500">املأ بياناتك وسيتم تحويلك مباشرة للواتساب للتواصل الفوري</p>
+                <p className="text-xs sm:text-sm text-stone-500">املأ بياناتك وسيتم تحويلك مباشرة للواتساب</p>
               </div>
 
               <form onSubmit={handleFastSubmit} className="space-y-4" id="hero-fast-form">
@@ -161,7 +161,7 @@ export const Hero: React.FC<{ config?: HeroConfig }> = ({ config }) => {
                     onChange={(e) => setFastService(e.target.value)}
                     className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-rkGold focus:ring-1 focus:ring-rkGold transition-colors cursor-pointer text-right text-stone-800 text-sm"
                   >
-                    {(config?.choices || ['استفسار عام','تحديث الصك','فرز الصكوك العقارية','دمج الصكوك','استخراج صك بديل (تالف/مفقود)','تصحيح بيانات الصك','نقل ملكية الصك']).map(choice => <option key={choice} value={choice}>{choice}</option>)}
+                    {(config?.choices || ['استفسار عام','تحديث الصك','فرز الصكوك العقارية','دمج الصكوك','استخراج صك بديل (تالف/مفقود)','نقل ملكية الصك']).map(choice => <option key={choice} value={choice}>{choice}</option>)}
                   </select>
                 </div>
 
@@ -170,13 +170,10 @@ export const Hero: React.FC<{ config?: HeroConfig }> = ({ config }) => {
                   id="hero-submit-btn"
                   className="w-full bg-[#5C1F2E] hover:bg-[#3F1620] text-white hover:text-[#FEB922] font-bold py-3.5 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg mt-2 border border-[#C9973C]/40 cursor-pointer"
                 >
-                  <Send className="w-4 h-4 text-white" />
-                  <span className="text-white font-bold">إرسال الطلب عبر الواتساب</span>
+                  <Send className="w-4 h-4 text-[#25D366]" />
+                  <span className="text-white font-bold">إرسال الطلب</span>
                 </button>
 
-                <p className="text-[11px] text-gray-400 text-center mt-2">
-                  🔒 بياناتك سرية ومحمية 100% ولا يتم مشاركتها أبداً
-                </p>
               </form>
             </div>
           </div>

@@ -17,7 +17,7 @@ import {
 export const ProjectsGallery: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('الكل');
-  const [visibleCount, setVisibleCount] = useState<number>(8);
+  const [visibleCount, setVisibleCount] = useState<number>(20);
 
   // Extract unique categories
   const categories = useMemo(() => {
@@ -70,55 +70,20 @@ export const ProjectsGallery: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 bg-amber-50 border border-rkGold/30 text-rkGoldDark text-xs font-bold px-3.5 py-1.5 rounded-full mb-3 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-rkGold" />
-            <span>سجل حافل بالإنجازات المساحية والهندسية</span>
+            <span>من أعمالنا ومشاريعنا</span>
           </div>
 
-          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2B0F16] mb-4 tracking-tight">
-            معرض أعمالنا ومشاريعنا الميدانية
+          <h2 className="section-title text-3xl md:text-4xl font-bold text-rkNavy mb-4">
+            من أعمالنا ومشاريعنا
           </h2>
 
-          <p className="text-stone-600 text-sm sm:text-base md:text-lg leading-relaxed">
-            استعراض موثق لنماذج من مشاريع الرفع المساحي وتوقيع القواعد وتحديث وفرز الصكوك العقارية والإشراف الهندسي عبر مختلف مناطق المملكة.
+          <p className="text-rkMuted text-lg">
+            جانب من الإنجازات الهندسية والمساحية في مختلف المواقع والمشاريع
           </p>
         </div>
 
-        {/* Category Filters Bar */}
-        <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-3 mb-12">
-          {categories.map((cat) => {
-            const isActive = activeCategory === cat;
-            const count =
-              cat === 'الكل'
-                ? PROJECTS_DATA.length
-                : PROJECTS_DATA.filter((p) => p.category === cat).length;
-
-            return (
-              <button
-                key={cat}
-                onClick={() => {
-                  setActiveCategory(cat);
-                  setVisibleCount(8);
-                }}
-                className={`flex items-center gap-2 text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition-all duration-200 cursor-pointer ${
-                  isActive
-                    ? 'bg-[#5C1F2E] text-white shadow-md border border-rkGold/40'
-                    : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200/80 shadow-2xs'
-                }`}
-              >
-                <span>{cat}</span>
-                <span
-                  className={`text-[11px] font-mono px-1.5 py-0.5 rounded-full ${
-                    isActive ? 'bg-rkGold text-[#2B0F16]' : 'bg-stone-100 text-stone-600'
-                  }`}
-                >
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
         {/* Professional Showcase Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
           {displayedProjects.map((proj) => {
             const whatsappProjectUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
               `السلام عليكم، أرغب في الاستفسار عن تنفيذ عمل مساحي أو هندسي مماثل لمشروع: ${proj.title} (${proj.location || ''})`

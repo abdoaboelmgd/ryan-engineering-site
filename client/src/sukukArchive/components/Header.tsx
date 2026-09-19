@@ -29,8 +29,8 @@ export const Header: React.FC = () => {
       id="main-header"
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#3F1620]/95 backdrop-blur-md py-2.5 shadow-xl border-b border-rkGold/20'
-          : 'bg-[#5C1F2E]/95 backdrop-blur-sm py-4 border-b border-rkGold/20'
+          ? 'bg-[#1F3D4A]/95 backdrop-blur-md py-2 shadow-xl border-b border-white/10'
+          : 'bg-[#0F2E3D]/95 backdrop-blur-md py-3 shadow-lg border-b border-white/10'
       }`}
     >
       <div className="container mx-auto px-4 lg:max-w-7xl flex justify-between items-center">
@@ -99,7 +99,7 @@ export const Header: React.FC = () => {
       {mobileMenuOpen && (
         <div
           id="mobile-nav-dropdown"
-          className="md:hidden bg-[#2B0F16] border-t border-rkGold/20 shadow-2xl px-6 py-4 transition-all"
+          className="md:hidden bg-[#2C5364] border-t border-white/10 shadow-2xl px-6 py-4 transition-all"
         >
           <nav className="flex flex-col text-white font-medium space-y-1">
             {navLinks.map((link) => (

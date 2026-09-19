@@ -28,42 +28,32 @@ export const WhyUs: React.FC<{ config?: WhyUsConfig }> = ({ config }) => {
   const reasons = config?.reasons?.map((reason, index) => ({ ...reason, icon: defaultReasons[index % defaultReasons.length].icon })) || defaultReasons;
 
   return (
-    <section id="about" className="py-20 sm:py-24 bg-[#F7F4EE] border-t border-stone-200/60">
+        <section id="about" className="py-16 bg-[#F4F2EC]">
       <div className="container mx-auto px-4 lg:max-w-7xl text-center">
         <div className="max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 bg-amber-50 border border-rkGold/30 text-rkGoldDark text-xs font-bold px-3.5 py-1.5 rounded-full mb-3 shadow-2xs">
-            <ShieldCheck className="w-3.5 h-3.5 text-rkGold" />
-            <span>الموثوقية والخبرة الهندسية في المملكة</span>
-          </div>
-
-          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2B0F16] mb-4 tracking-tight">
-            {config?.title || 'لماذا تختار مكتب ريان لتحديث الصكوك؟'}
+          <h2 className="section-title text-3xl md:text-4xl font-bold text-rkNavy mb-4">
+            {config?.title || 'لماذا تختار مكتب ريان الهندسي؟'}
           </h2>
 
-          <p className="text-stone-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            {config?.description || 'شريكك الهندسي والمساحي المعتمد. نجمع بين الدقة الميدانية المتناهية، والاعتماد الرسمي، والإنجاز السريع لتيسير كافة معاملاتك العقارية بأمان تام.'}
+          <p className="text-rkMuted mb-12 max-w-2xl mx-auto text-lg">
+            {config?.description || 'شريكك الموثوق لجميع خدماتك الهندسية والمساحية. نجمع بين الدقة العالية، الاعتماد الرسمي، والإنجاز السريع لتسهيل مشاريعك.'}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-right">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-right">
           {reasons.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white p-8 rounded-3xl border border-stone-200/80 rk-card-hover shadow-sm hover:shadow-xl hover:border-rkGold transition-all flex flex-col justify-between"
+              className="bg-white p-8 rounded-2xl border border-gray-100 rk-card-hover shadow-sm flex flex-col justify-between"
             >
               <div>
-                <div className="w-16 h-16 bg-[#5C1F2E] rounded-2xl flex items-center justify-center mb-6 shadow-md border border-[#C9973C]/40 text-[#C9973C]">
+                <div className="w-14 h-14 bg-rkNavy text-rkGold rounded-xl flex items-center justify-center font-bold text-2xl mb-6 shadow-md">
                   {item.icon}
                 </div>
-                <h4 className="text-xl font-extrabold text-[#2B0F16] mb-3">{item.title}</h4>
-                <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
+                <h4 className="text-xl font-bold text-rkNavy mb-3">{item.title}</h4>
+                <p className="text-rkMuted text-sm leading-relaxed">{item.desc}</p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-bold text-rkGoldDark">
-                <span>خدمة معتمدة وفورية</span>
-                <span className="text-stone-300">•</span>
-                <span>فريق مرخص</span>
-              </div>
             </div>
           ))}
         </div>

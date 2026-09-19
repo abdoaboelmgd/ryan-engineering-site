@@ -12,6 +12,7 @@ import { FAQ } from './components/FAQ';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingActions } from './components/FloatingActions';
+import { TrustRibbon } from './components/TrustRibbon';
 
 export default function App() {
   useEffect(() => {
@@ -40,6 +41,7 @@ export default function App() {
       <main className="flex-grow">
         {/* 1. Hero with interactive quick consultation */}
         <Hero />
+        <TrustRibbon />
 
         {/* 2. Why Choose Us */}
         <WhyUs />

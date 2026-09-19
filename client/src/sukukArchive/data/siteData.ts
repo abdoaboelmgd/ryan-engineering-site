@@ -124,14 +124,12 @@ export const CLIENT_LOGOS = [
 ];
 
 export const ACCREDITED_LOGOS = [
-  'imagesclint/logo_10.png',
-  'imagesclint/logo_11.png',
-  'imagesclint/logo_12.png',
-  'imagesclint/logo_13.png',
-  'imagesclint/logo_14.png',
-  'imagesclint/logo_15.png',
-  'imagesclint/logo_16.png',
-  'imagesclint/logo_17.png',
+  'imagesclint/logo_01.png', 'imagesclint/logo_02.png', 'imagesclint/logo_03.png',
+  'imagesclint/logo_04.png', 'imagesclint/logo_05.png', 'imagesclint/logo_06.png',
+  'imagesclint/logo_07.png', 'imagesclint/logo_08.png', 'imagesclint/logo_09.png',
+  'imagesclint/logo_10.png', 'imagesclint/logo_11.png', 'imagesclint/logo_12.png',
+  'imagesclint/logo_13.png', 'imagesclint/logo_14.png', 'imagesclint/logo_15.png',
+  'imagesclint/logo_16.png', 'imagesclint/logo_17.png', 'imagesclint/logo_18.png',
 ];
 
 export const PROJECTS_DATA: ProjectItem[] = [
@@ -315,13 +313,33 @@ export const PROJECTS_DATA: ProjectItem[] = [
     equipment: 'محطات GPS و Drone مساحية',
     badge: 'مركز أعمال',
   },
+  {
+    id: 19,
+    image: 'project-19.jpeg',
+    title: 'إشراف مشاريع تجارية',
+    subtitle: 'متابعة الهياكل المعدنية والخرسانية',
+    category: 'المشاريع الكبرى والتجارية',
+    location: 'الرياض',
+    equipment: 'أجهزة رصد مساحية دقيقة',
+    badge: 'إشراف تجاري',
+  },
+  {
+    id: 20,
+    image: 'project-20.jpeg',
+    title: 'إشراف مشاريع تجارية',
+    subtitle: 'متابعة الهياكل المعدنية والخرسانية',
+    category: 'المشاريع الكبرى والتجارية',
+    location: 'الدمام',
+    equipment: 'أجهزة رصد مساحية دقيقة',
+    badge: 'إشراف تجاري',
+  },
 ];
 
 export const STATS_DATA: StatItem[] = [
   { value: 15, prefix: '+', label: 'سنة من الخبرة' },
   { value: 3500, prefix: '+', label: 'عميل يثق بنا' },
   { value: 100, suffix: '%', label: 'دقة واعتمادية' },
-  { value: 24, suffix: '/7', label: 'دعم واستشارات' },
+  { value: 3, prefix: '', label: 'فروع رئيسية' },
 ];
 
 export const TESTIMONIALS_DATA: TestimonialItem[] = [
