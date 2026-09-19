@@ -318,3 +318,32 @@ body {
     background: linear-gradient(180deg, rgba(43,15,22,.72) 0%, rgba(92,31,46,.64) 52%, rgba(217,195,165,.76) 100%);
   }
 }
+
+/* Final reference-brand header and contact form refinements */
+.sukuk-updated-page #main-header {
+  background: linear-gradient(135deg, rgba(244,235,221,.98) 0%, rgba(232,215,193,.97) 52%, rgba(217,195,165,.96) 100%) !important;
+  color: #2B0F16;
+  box-shadow: 0 8px 30px rgba(43,15,22,.14);
+}
+.sukuk-updated-page #main-header #mobile-nav-dropdown {
+  background: linear-gradient(180deg, #F4EBDD 0%, #E8D7C1 100%) !important;
+}
+.sukuk-updated-page #contact .sukuk-glass-form,
+.sukuk-updated-page #contact .sukuk-glass-form h3,
+.sukuk-updated-page #contact .sukuk-glass-form label,
+.sukuk-updated-page #contact .sukuk-glass-form p {
+  color: #5C1F2E !important;
+}
+.sukuk-updated-page #contact .sukuk-glass-form label {
+  font-weight: 700;
+}
+.sukuk-updated-page #contact .sukuk-glass-form label .text-white\/70 {
+  color: rgba(92,31,46,.70) !important;
+}
+.sukuk-updated-page #contact .sukuk-glass-form .text-white {
+  color: #5C1F2E !important;
+}
+.sukuk-updated-page #contact .sukuk-glass-form button,
+.sukuk-updated-page #contact .sukuk-glass-form button .text-white {
+  color: #fff !important;
+}

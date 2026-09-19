@@ -21,7 +21,6 @@ export const Header: React.FC = () => {
     { label: 'حاسبة المدة', href: '#calculator' },
     { label: 'لماذا نحن', href: '#about' },
     { label: 'أعمالنا', href: '#projects' },
-    { label: 'آراء العملاء', href: '#testimonials' },
     { label: 'تواصل معنا', href: '#contact' },
   ];
 
@@ -48,17 +47,17 @@ export const Header: React.FC = () => {
             />
           </div>
           <div>
-            <h1 className="text-white font-bold text-lg leading-tight tracking-wide">
+            <h1 className="text-[#2B0F16] font-bold text-lg leading-tight tracking-wide">
               مكتب ريان
             </h1>
-            <p className="text-rkGoldLight text-xs font-semibold tracking-wide">
+            <p className="text-[#9E7124] text-xs font-semibold tracking-wide">
               للمساحة والاستشارات الهندسية
             </p>
           </div>
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6 text-white/95 font-medium text-sm">
+        <nav className="hidden md:flex items-center gap-6 text-[#2B0F16] font-medium text-sm">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -85,18 +84,18 @@ export const Header: React.FC = () => {
           <a
             href={`tel:${PHONE_NUMBER}`}
             id="header-phone-cta"
-            className="hidden lg:flex items-center gap-2 text-white font-bold hover:text-[#FEB922] transition-colors text-sm px-3.5 py-1.5 rounded-lg bg-white/10 border border-white/20 hover:border-[#C9973C]/60"
+            className="hidden lg:flex items-center gap-2 text-[#2B0F16] font-bold hover:text-[#FEB922] transition-colors text-sm px-3.5 py-1.5 rounded-lg bg-white/10 border border-white/20 hover:border-[#C9973C]/60"
             dir="ltr"
           >
             <Phone className="w-4 h-4 text-[#FEB922]" />
-            <span className="text-white font-bold tracking-wider">{PHONE_DISPLAY}</span>
+            <span className="text-[#2B0F16] font-bold tracking-wider">{PHONE_DISPLAY}</span>
           </a>
 
           {/* Mobile Menu Toggle Button */}
           <button
             id="mobile-menu-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+            className="md:hidden text-[#2B0F16] p-2 rounded-lg hover:bg-[#E8D7C1] transition-colors"
             aria-label="القائمة"
           >
             {mobileMenuOpen ? <X className="w-6 h-6 text-rkGold" /> : <Menu className="w-6 h-6" />}
@@ -110,13 +109,13 @@ export const Header: React.FC = () => {
           id="mobile-nav-dropdown"
           className="md:hidden bg-[#F4EBDD] border-t border-rkGold/30 shadow-2xl px-6 py-4 transition-all"
         >
-          <nav className="flex flex-col text-white font-medium space-y-1">
+          <nav className="flex flex-col text-[#2B0F16] font-medium space-y-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-3 border-b border-white/10 hover:text-rkGold transition-colors text-base"
+                className="py-3 border-b border-[#5C1F2E]/15 hover:text-rkGold transition-colors text-base"
               >
                 {link.label}
               </a>

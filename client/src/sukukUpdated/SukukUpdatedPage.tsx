@@ -7,7 +7,6 @@ import { SmartCalculator } from './components/SmartCalculator';
 import { WorkProcess } from './components/WorkProcess';
 import { PartnersMarquee } from './components/PartnersMarquee';
 import { ProjectsGallery } from './components/ProjectsGallery';
-import { Testimonials } from './components/Testimonials';
 import { StatsBar } from './components/StatsBar';
 import { FAQ } from './components/FAQ';
 import { ContactSection } from './components/ContactSection';
@@ -56,16 +55,14 @@ export default function SukukUpdatedPage() {
         {/* 7. Projects & Surveying Works Gallery (Interactive Space-Saving Magazine) */}
         <ProjectsGallery />
 
-        {/* 8. Verified Client Testimonials */}
-        <Testimonials />
 
-        {/* 9. Animated Statistics Bar */}
+        {/* 8. Animated Statistics Bar */}
         <StatsBar />
 
-        {/* 10. Frequently Asked Questions */}
+        {/* 9. Frequently Asked Questions */}
         <FAQ />
 
-        {/* 11. Contact Section & Branches */}
+        {/* 10. Contact Section & Branches */}
         <ContactSection />
       </main>
 
