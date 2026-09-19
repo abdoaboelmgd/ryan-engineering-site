@@ -10,7 +10,7 @@ export const Hero: React.FC = () => {
       {/* صورة خدمة الصكوك مع طبقة بيج عميقة تحافظ على وضوح النص والنموذج */}
       <div
         className="sukuk-hero-image absolute inset-0 z-0"
-        style={{ backgroundImage: `url(${sukukUpdatedAsset('project-19.jpeg')})` }}
+        style={{ backgroundImage: `url(${sukukUpdatedAsset('hero-sukuk.png')})` }}
         aria-hidden="true"
       />
 
