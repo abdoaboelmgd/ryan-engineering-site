@@ -27,6 +27,8 @@ export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
 
     let width = container.clientWidth || window.innerWidth;
     let height = container.clientHeight || window.innerHeight;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    const mobileReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // ==========================================
     // 1. تدرج ألوان السماء وعمق الأفق الجوي (Sky Gradient & Atmospheric Depth)
@@ -56,9 +58,10 @@ export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
     // ==========================================
     // 2. الكاميرا البانورامية فائقة الاتساع (Ultra-Wide Panorama Camera)
     // ==========================================
-    const camera = new THREE.PerspectiveCamera(54, width / height, 0.1, 750);
-    const baseCamPos = new THREE.Vector3(0.5, 5.6, 21.0);
-    const baseLookAt = new THREE.Vector3(-0.3, 2.7, -10.0);
+    // A wider mobile FOV keeps the full architectural composition visible in portrait screens.
+    const camera = new THREE.PerspectiveCamera(isMobile ? 68 : 54, width / height, 0.1, 750);
+    const baseCamPos = new THREE.Vector3(0.5, isMobile ? 5.9 : 5.6, isMobile ? 25.5 : 21.0);
+    const baseLookAt = new THREE.Vector3(-0.3, isMobile ? 3.2 : 2.7, -10.0);
     camera.position.copy(baseCamPos);
     camera.lookAt(baseLookAt);
 
@@ -71,10 +74,11 @@ export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
       alpha: false,
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Cap mobile pixel density to keep scrolling and form interaction smooth.
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.25 : 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.18;
-    renderer.shadowMap.enabled = shadowsEnabled;
+    renderer.shadowMap.enabled = shadowsEnabled && !isMobile;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     container.appendChild(renderer.domElement);
@@ -89,9 +93,9 @@ export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
     // ضوء الشمس المنسدل بزاوية علوية مائلة من اليمين مع خريطة ظلال فائقة الدقة 4096
     const sunLight = new THREE.DirectionalLight(0xfffae8, 2.2);
     sunLight.position.set(45, 42, -20);
-    sunLight.castShadow = shadowsEnabled;
-    sunLight.shadow.mapSize.width = 4096;
-    sunLight.shadow.mapSize.height = 4096;
+    sunLight.castShadow = shadowsEnabled && !isMobile;
+    sunLight.shadow.mapSize.width = isMobile ? 1024 : 4096;
+    sunLight.shadow.mapSize.height = isMobile ? 1024 : 4096;
     sunLight.shadow.camera.near = 1;
     sunLight.shadow.camera.far = 200;
     sunLight.shadow.camera.left = -45;
@@ -111,9 +115,9 @@ export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
     // إضاءة مخصصة ومركزة لمكتب المهندس وعناصره في المقدمة لإبراز التباين والعمق
     const deskFill = new THREE.DirectionalLight(0xffedd5, 1.15);
     deskFill.position.set(2, 14, 16);
-    deskFill.castShadow = true;
-    deskFill.shadow.mapSize.width = 2048;
-    deskFill.shadow.mapSize.height = 2048;
+    deskFill.castShadow = !isMobile;
+    deskFill.shadow.mapSize.width = isMobile ? 512 : 2048;
+    deskFill.shadow.mapSize.height = isMobile ? 512 : 2048;
     deskFill.shadow.camera.near = 1;
     deskFill.shadow.camera.far = 35;
     deskFill.shadow.camera.left = -16;
@@ -912,7 +916,8 @@ export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
     let targetMouseX = 0;
     let targetMouseY = 0;
 
-    const onPointerMove = (e: MouseEvent) => {
+    const onPointerMove = (e: PointerEvent | MouseEvent) => {
+      if (isMobile) return;
       const rawX = (e.clientX / window.innerWidth - 0.5) * 2;
       const rawY = (e.clientY / window.innerHeight - 0.5) * 2;
       targetMouseX = Math.sign(rawX) * Math.pow(Math.abs(rawX), 0.95);
@@ -949,7 +954,7 @@ export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
 
     window.addEventListener('mousemove', onPointerMove, { passive: true });
     window.addEventListener('mouseleave', onPointerLeave);
-    window.addEventListener('click', onClick);
+    container.addEventListener('click', onClick);
 
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
@@ -989,7 +994,7 @@ export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
       const time = clock.getElapsedTime();
 
       // حركة النوابض الفيزيائية
-      const springK = 0.045;
+      const springK = isMobile ? 0.025 : 0.045;
       const springDamping = 0.85;
       const fx = (targetMouseX - mouseX) * springK;
       const fy = (targetMouseY - mouseY) * springK;
@@ -1015,9 +1020,9 @@ export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
       // تتبع جهاز الرصد للماوس
       theodoliteHead.rotation.y += (mouseX * 0.35 - theodoliteHead.rotation.y) * 0.08;
 
-      const tourSwayX = autoTour ? Math.sin(time * 0.25) * 0.28 : 0;
-      const tourSwayY = autoTour ? Math.cos(time * 0.35) * 0.15 : 0;
-      const pScale = parallaxEnabled ? 1.0 : 0.0;
+      const tourSwayX = autoTour && !mobileReducedMotion ? Math.sin(time * (isMobile ? 0.16 : 0.25)) * (isMobile ? 0.12 : 0.28) : 0;
+      const tourSwayY = autoTour && !mobileReducedMotion ? Math.cos(time * (isMobile ? 0.22 : 0.35)) * (isMobile ? 0.07 : 0.15) : 0;
+      const pScale = parallaxEnabled && !isMobile ? 1.0 : 0.0;
 
       const px = mouseX * 2.8 * pScale + tourSwayX;
       const py = -mouseY * 1.6 * pScale + tourSwayY;
@@ -1035,7 +1040,7 @@ export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
       camera.lookAt(currentLookAt);
 
       if (parallaxEnabled) {
-        camera.rotation.z += -mouseX * 0.024;
+        camera.rotation.z += -mouseX * (isMobile ? 0.008 : 0.024);
       }
 
       const posAttr = particleGeom.attributes.position as THREE.BufferAttribute;
@@ -1055,7 +1060,7 @@ export const ThreeHeroBackground: React.FC<ThreeHeroBackgroundProps> = ({
       if (animFrameId.current) cancelAnimationFrame(animFrameId.current);
       window.removeEventListener('mousemove', onPointerMove);
       window.removeEventListener('mouseleave', onPointerLeave);
-      window.removeEventListener('click', onClick);
+      container.removeEventListener('click', onClick);
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       skyTexture.dispose();
