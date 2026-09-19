@@ -1,21 +1,17 @@
 import React from 'react';
-import { Phone, MessageCircle, ArrowUpRight, FileText, Layers, Boxes, FileCheck2, FileSignature, ArrowRightLeft, DraftingCompass, Stamp } from 'lucide-react';
+import { Phone, MessageCircle, ArrowUpRight, FileText, Layers, Compass, Building2 } from 'lucide-react';
 import { PHONE_NUMBER, WHATSAPP_NUMBER } from '../data/siteData';
 import { ServiceItem } from '../types';
 
-const SERVICE_ICONS = [FileText, Layers, Boxes, FileCheck2, FileSignature, ArrowRightLeft, DraftingCompass, Stamp];
+const SERVICE_ICONS = [FileText, Layers, Compass, Building2];
 export interface ServicesConfig { title?: string; description?: string; items?: ServiceItem[]; }
 
 export const Services: React.FC<{ config?: ServicesConfig }> = ({ config }) => {
   const defaultItems: ServiceItem[] = [
-    { id: 1, title: 'تحديث الصك', icon: 'fa-file-contract', desc: 'تحديث الصكوك العقارية القديمة وتحويلها إلى صكوك إلكترونية معتمدة.' },
-    { id: 2, title: 'فرز الصكوك', icon: 'fa-layer-group', desc: 'فرز وتجزئة الصكوك العقارية إلى قطع أو وحدات مستقلة معتمدة.' },
-    { id: 3, title: 'دمج الصكوك', icon: 'fa-object-group', desc: 'دمج عدة صكوك متجاورة في صك عقاري واحد موحد.' },
-    { id: 4, title: 'تصحيح بيانات الصك', icon: 'fa-clipboard-check', desc: 'تصحيح المساحة والحدود وبيانات المالك في الصك العقاري.' },
-    { id: 5, title: 'استخراج صك بديل', icon: 'fa-file-signature', desc: 'استخراج صك بديل لصك تالف أو مفقود بإجراءات نظامية سريعة.' },
-    { id: 6, title: 'نقل ملكية الصك', icon: 'fa-exchange-alt', desc: 'إتمام إجراءات نقل ملكية الصكوك بين الأطراف أو الورثة بسلاسة.' },
-    { id: 7, title: 'تحديث المخطط الهندسي للصك', icon: 'fa-draw-polygon', desc: 'مطابقة وتحديث المخطط الهندسي المرفق بالصك مع الواقع الفعلي.' },
-    { id: 8, title: 'متابعة معاملات كتابة العدل', icon: 'fa-stamp', desc: 'متابعة كامل إجراءات المعاملة لدى كتابة العدل حتى الاعتماد النهائي.' },
+    { id: 1, title: 'تحديث الصكوك الورقية القديمة', icon: 'FileText', desc: 'تحويل الصكوك اليدوية والقديمة إلى صكوك إلكترونية معتمدة في البورصة العقارية وبوابة ناجز.' },
+    { id: 2, title: 'فرز ودمج الصكوك والوحدات', icon: 'Layers', desc: 'إصدار القرارات المساحية واعتماد تقسيم وفرز الأراضي والفلل والعمائر والوحدات السكنية والتجارية.' },
+    { id: 3, title: 'الرفع المساحي الدقيق بنظام GPS', icon: 'Compass', desc: 'رصد إحداثيات الأراضي والمباني والمنشآت وتحديد الأضلاع والحدود ومطابقتها على الطبيعة.' },
+    { id: 4, title: 'معاملات منصة إحكام وتملك العقارات', icon: 'Building2', desc: 'إعداد الرفوعات المساحية والمصورات الجوية والتقارير الفنية المعتمدة للجان النظر في طلبات تملك العقارات.' },
   ];
   const items = config?.items || defaultItems;
   return <section id="services" className="py-20 bg-white">
