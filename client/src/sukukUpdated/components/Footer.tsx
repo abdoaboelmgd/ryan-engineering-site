@@ -17,30 +17,6 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex justify-center gap-3">
-            <a
-              href="#"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:bg-rkGold hover:text-[#2B0F16] hover:border-rkGold transition-colors"
-              aria-label="تويتر"
-            >
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:bg-rkGold hover:text-[#2B0F16] hover:border-rkGold transition-colors"
-              aria-label="انستغرام"
-            >
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:bg-rkGold hover:text-[#2B0F16] hover:border-rkGold transition-colors"
-              aria-label="سناب شات"
-            >
-              <i className="fab fa-snapchat"></i>
-            </a>
-          </div>
-
           <div className="text-xs text-gray-400" dir="ltr">
             هاتف خدمة العملاء: <span className="text-rkGold font-bold">{PHONE_DISPLAY}</span>
           </div>

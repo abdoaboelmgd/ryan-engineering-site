@@ -272,3 +272,20 @@ body {
 .pulse-wa {
   animation: pulse-wa 2s infinite;
 }
+
+/* Updated Sukuk conversion forms: readable premium glass surface */
+.sukuk-updated-page .sukuk-glass-form {
+  background: linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,255,255,.66)) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  backdrop-filter: blur(22px) saturate(145%);
+  box-shadow: 0 24px 70px rgba(43,15,22,.26), inset 0 1px 0 rgba(255,255,255,.9);
+}
+.sukuk-updated-page #contact .sukuk-glass-form {
+  background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.08)) !important;
+  border-color: rgba(255,255,255,.34);
+}
+.sukuk-updated-page .sukuk-glass-form input,
+.sukuk-updated-page .sukuk-glass-form select,
+.sukuk-updated-page .sukuk-glass-form textarea { min-height: 44px; }
+.sukuk-updated-page .sukuk-glass-form button,
+.sukuk-updated-page .sukuk-glass-form a { -webkit-tap-highlight-color: transparent; }

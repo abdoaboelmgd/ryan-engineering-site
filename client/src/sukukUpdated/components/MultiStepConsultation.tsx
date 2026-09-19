@@ -33,7 +33,7 @@ export const MultiStepConsultation: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-3xl p-6 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.35)] border-t-4 border-[#C9973C] relative">
+    <div className="sukuk-glass-form bg-white/80 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-white/70 border-t-4 border-t-[#C9973C] relative">
       {/* Form Header */}
       <div className="text-center mb-5">
         <div className="inline-flex items-center gap-1.5 bg-amber-50 text-[#9E7124] border border-[#C9973C]/30 px-3 py-1 rounded-full text-xs font-bold mb-2">
@@ -63,7 +63,7 @@ export const MultiStepConsultation: React.FC = () => {
                 className={`py-2 px-1.5 rounded-xl border text-[11px] font-bold transition-all cursor-pointer text-center leading-tight ${
                   propertyType === item
                     ? 'bg-amber-50 border-[#C9973C] text-[#5C1F2E] shadow-2xs'
-                    : 'bg-stone-50 border-stone-200 text-stone-600 hover:bg-stone-100'
+                    : 'bg-white/90 border-[#2B0F16]/15 text-stone-700 hover:bg-white'
                 }`}
               >
                 {item}
@@ -81,7 +81,7 @@ export const MultiStepConsultation: React.FC = () => {
             <select
               value={serviceType}
               onChange={(e) => setServiceType(e.target.value)}
-              className="w-full px-3 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-stone-800 text-xs font-medium focus:border-[#C9973C] focus:outline-none"
+              className="w-full px-3 py-2.5 bg-white/90 border border-[#2B0F16]/15 rounded-xl text-[#2B0F16] text-xs font-medium shadow-sm focus:border-[#C9973C] focus:outline-none focus:ring-2 focus:ring-[#C9973C]/25"
             >
               <option value="تحديث صك ورقي إلى إلكتروني">تحديث صك ورقي إلى إلكتروني</option>
               <option value="فرز وتجزئة وحدات أو فلل">فرز وتجزئة وحدات أو فلل</option>
@@ -100,7 +100,7 @@ export const MultiStepConsultation: React.FC = () => {
             <select
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              className="w-full px-3 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-stone-800 text-xs font-medium focus:border-[#C9973C] focus:outline-none"
+              className="w-full px-3 py-2.5 bg-white/90 border border-[#2B0F16]/15 rounded-xl text-[#2B0F16] text-xs font-medium shadow-sm focus:border-[#C9973C] focus:outline-none focus:ring-2 focus:ring-[#C9973C]/25"
             >
               <option value="الرياض">الرياض</option>
               <option value="المنطقة الشرقية">المنطقة الشرقية</option>
@@ -113,7 +113,7 @@ export const MultiStepConsultation: React.FC = () => {
         </div>
 
         {/* 3. بيانات الاتصال السريعة */}
-        <div className="pt-1 border-t border-stone-100">
+        <div className="pt-1 border-t border-[#2B0F16]/10">
           <label className="block text-xs font-extrabold text-[#2B0F16] mb-1.5">
             3. بيانات التواصل السريع
           </label>
@@ -123,7 +123,7 @@ export const MultiStepConsultation: React.FC = () => {
                 type="text"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full px-3 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-stone-800 text-xs focus:border-[#C9973C] focus:outline-none"
+                className="w-full px-3 py-2.5 bg-white/90 border border-[#2B0F16]/15 rounded-xl text-[#2B0F16] text-xs shadow-sm focus:border-[#C9973C] focus:outline-none focus:ring-2 focus:ring-[#C9973C]/25"
                 placeholder="الاسم الكريم (اختياري)"
               />
             </div>
@@ -134,7 +134,7 @@ export const MultiStepConsultation: React.FC = () => {
                 dir="ltr"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full px-3 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-stone-800 text-xs text-right focus:border-[#C9973C] focus:outline-none"
+                className="w-full px-3 py-2.5 bg-white/90 border border-[#2B0F16]/15 rounded-xl text-[#2B0F16] text-xs text-right shadow-sm focus:border-[#C9973C] focus:outline-none focus:ring-2 focus:ring-[#C9973C]/25"
                 placeholder="رقم الجوال (05x xxx xxxx) *"
               />
             </div>
