@@ -7,12 +7,10 @@ import { WorkProcess } from './components/WorkProcess';
 import { PartnersMarquee } from './components/PartnersMarquee';
 import { ProjectsGallery } from './components/ProjectsGallery';
 import { StatsBar } from './components/StatsBar';
-import { Testimonials } from './components/Testimonials';
 import { FAQ } from './components/FAQ';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingActions } from './components/FloatingActions';
-import { TrustRibbon } from './components/TrustRibbon';
 import { SmartCalculator } from './components/SmartCalculator';
 import { StickyConversionBar } from './components/StickyConversionBar';
 import { CodeViewerModal } from './components/CodeViewerModal';
@@ -50,8 +48,6 @@ export default function App() {
       <main className="flex-grow">
         {/* 1. Hero with interactive quick consultation */}
         <Hero />
-        <TrustRibbon />
-
         {/* 2. Why Choose Us */}
         <WhyUs />
 
@@ -73,10 +69,7 @@ export default function App() {
         {/* 7. Animated Statistics Bar */}
         <StatsBar />
 
-        {/* 8. Client Testimonials */}
-        <Testimonials />
-
-        {/* 9. Frequently Asked Questions */}
+        {/* 8. Frequently Asked Questions */}
         <FAQ />
 
         {/* 10. Contact Section & Branches */}
