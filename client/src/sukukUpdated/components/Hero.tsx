@@ -2,7 +2,6 @@ import React from 'react';
 import { PHONE_NUMBER, WHATSAPP_NUMBER } from '../data/siteData';
 import { Phone, CheckCircle2, ShieldCheck, Award, Zap } from 'lucide-react';
 import { MultiStepConsultation } from './MultiStepConsultation';
-import { sukukUpdatedAsset } from '../asset';
 
 export const Hero: React.FC = () => {
   return (
@@ -10,7 +9,6 @@ export const Hero: React.FC = () => {
       {/* صورة خدمة الصكوك مع طبقة بيج عميقة تحافظ على وضوح النص والنموذج */}
       <div
         className="sukuk-hero-image absolute inset-0 z-0"
-        style={{ backgroundImage: `url(${sukukUpdatedAsset('hero-sukuk.png')})` }}
         aria-hidden="true"
       />
 

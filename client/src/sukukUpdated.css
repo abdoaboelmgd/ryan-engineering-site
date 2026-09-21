@@ -290,35 +290,33 @@ body {
 .sukuk-updated-page .sukuk-glass-form button,
 .sukuk-updated-page .sukuk-glass-form a { -webkit-tap-highlight-color: transparent; }
 
-/* Static Sukuk Hero image treatment and cream navigation/contact palette */
+/* Calm deep Hero background: no image, optimized for readable Arabic content */
 .sukuk-updated-page .sukuk-hero-image {
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #D9C3A5;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(201,151,60,.20) 0%, rgba(201,151,60,0) 34%),
+    radial-gradient(circle at 14% 86%, rgba(117,54,55,.34) 0%, rgba(117,54,55,0) 38%),
+    linear-gradient(128deg, #1D1017 0%, #2B0F16 42%, #4A1D2A 73%, #25131C 100%);
+  background-color: #2B0F16;
 }
 .sukuk-updated-page .sukuk-hero-image::after {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(43,15,22,.83) 0%, rgba(92,31,46,.62) 48%, rgba(217,195,165,.72) 100%),
-    linear-gradient(180deg, rgba(92,58,31,.30), rgba(217,195,165,.58));
+    linear-gradient(90deg, rgba(22,10,16,.20), rgba(43,15,22,.06) 52%, rgba(244,235,221,.08)),
+    linear-gradient(180deg, rgba(15,8,13,.18), rgba(15,8,13,.04) 55%, rgba(15,8,13,.28));
 }
-.sukuk-updated-page #main-header,
-.sukuk-updated-page #main-header #mobile-nav-dropdown { color: #2B0F16; }
-.sukuk-updated-page #main-header .text-white { color: #2B0F16 !important; }
-.sukuk-updated-page #main-header .text-gray-300,
-.sukuk-updated-page #main-header .text-gray-400 { color: #5C1F2E !important; }
-.sukuk-updated-page #main-header .border-white\/10 { border-color: rgba(92,31,46,.18); }
-.sukuk-updated-page #contact .sukuk-glass-form { box-shadow: 0 24px 70px rgba(43,15,22,.16), inset 0 1px 0 rgba(255,255,255,.85); }
 @media (max-width: 767px) {
-  .sukuk-updated-page .sukuk-hero-image { background-position: 62% center; }
+  .sukuk-updated-page .sukuk-hero-image {
+    background:
+      radial-gradient(circle at 50% 12%, rgba(201,151,60,.18) 0%, rgba(201,151,60,0) 38%),
+      radial-gradient(circle at 10% 86%, rgba(117,54,55,.30) 0%, rgba(117,54,55,0) 44%),
+      linear-gradient(160deg, #1D1017 0%, #2B0F16 52%, #4A1D2A 100%);
+  }
   .sukuk-updated-page .sukuk-hero-image::after {
-    background: linear-gradient(180deg, rgba(43,15,22,.72) 0%, rgba(92,31,46,.64) 52%, rgba(217,195,165,.76) 100%);
+    background: linear-gradient(180deg, rgba(15,8,13,.16), rgba(15,8,13,.02) 48%, rgba(15,8,13,.30));
   }
 }
-
 /* Final reference-brand header and contact form refinements */
 .sukuk-updated-page #main-header {
   background: linear-gradient(135deg, rgba(244,235,221,.98) 0%, rgba(232,215,193,.97) 52%, rgba(217,195,165,.96) 100%) !important;
