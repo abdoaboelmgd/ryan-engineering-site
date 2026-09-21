@@ -291,14 +291,14 @@ body {
 .sukuk-updated-page .sukuk-glass-form a { -webkit-tap-highlight-color: transparent; }
 
 /* Calm deep Hero background: no image, optimized for readable Arabic content */
-.sukuk-updated-page .sukuk-hero-image {
+.sukuk-updated-page .sukuk-hero-surface {
   background:
     radial-gradient(circle at 82% 18%, rgba(201,151,60,.20) 0%, rgba(201,151,60,0) 34%),
     radial-gradient(circle at 14% 86%, rgba(117,54,55,.34) 0%, rgba(117,54,55,0) 38%),
     linear-gradient(128deg, #1D1017 0%, #2B0F16 42%, #4A1D2A 73%, #25131C 100%);
   background-color: #2B0F16;
 }
-.sukuk-updated-page .sukuk-hero-image::after {
+.sukuk-updated-page .sukuk-hero-surface::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -307,13 +307,13 @@ body {
     linear-gradient(180deg, rgba(15,8,13,.18), rgba(15,8,13,.04) 55%, rgba(15,8,13,.28));
 }
 @media (max-width: 767px) {
-  .sukuk-updated-page .sukuk-hero-image {
+  .sukuk-updated-page .sukuk-hero-surface {
     background:
       radial-gradient(circle at 50% 12%, rgba(201,151,60,.18) 0%, rgba(201,151,60,0) 38%),
       radial-gradient(circle at 10% 86%, rgba(117,54,55,.30) 0%, rgba(117,54,55,0) 44%),
       linear-gradient(160deg, #1D1017 0%, #2B0F16 52%, #4A1D2A 100%);
   }
-  .sukuk-updated-page .sukuk-hero-image::after {
+  .sukuk-updated-page .sukuk-hero-surface::after {
     background: linear-gradient(180deg, rgba(15,8,13,.16), rgba(15,8,13,.02) 48%, rgba(15,8,13,.30));
   }
 }

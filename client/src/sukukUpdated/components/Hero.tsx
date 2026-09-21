@@ -6,9 +6,9 @@ import { MultiStepConsultation } from './MultiStepConsultation';
 export const Hero: React.FC = () => {
   return (
     <section id="home" className="min-h-[92vh] flex flex-col justify-center pt-28 pb-16 relative overflow-hidden bg-[#fef3c7]">
-      {/* صورة خدمة الصكوك مع طبقة بيج عميقة تحافظ على وضوح النص والنموذج */}
+      {/* خلفية لونية هادئة وعميقة تحافظ على وضوح النص والنموذج */}
       <div
-        className="sukuk-hero-image absolute inset-0 z-0"
+        className="sukuk-hero-surface absolute inset-0 z-0"
         aria-hidden="true"
       />
 
