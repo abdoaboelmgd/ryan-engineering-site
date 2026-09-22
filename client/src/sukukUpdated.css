@@ -345,3 +345,24 @@ body {
 .sukuk-updated-page #contact .sukuk-glass-form button .text-white {
   color: #fff !important;
 }
+
+/* Centered service-card layout for the surveying, consulting, and permits landing pages */
+.sukuk-updated-page .landing-services-grid {
+  width: min(100%, 1120px);
+  margin-inline: auto;
+}
+@media (min-width: 1024px) {
+  .sukuk-updated-page .landing-services-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: center;
+    align-items: stretch;
+  }
+  .sukuk-updated-page .landing-services-grid > :last-child:nth-child(odd) {
+    grid-column: 2;
+  }
+}
+@media (max-width: 1023px) {
+  .sukuk-updated-page .landing-services-grid > :last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+}
