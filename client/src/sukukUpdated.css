@@ -353,16 +353,18 @@ body {
 }
 @media (min-width: 1024px) {
   .sukuk-updated-page .landing-services-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
+    gap: 1.5rem;
   }
-  .sukuk-updated-page .landing-services-grid > :last-child:nth-child(odd) {
-    grid-column: 2;
+  .sukuk-updated-page .landing-services-grid > * {
+    flex: 0 1 calc((100% - 3rem) / 3);
   }
 }
 @media (max-width: 1023px) {
-  .sukuk-updated-page .landing-services-grid > :last-child:nth-child(odd) {
-    grid-column: auto;
+  .sukuk-updated-page .landing-services-grid {
+    display: grid;
   }
 }
