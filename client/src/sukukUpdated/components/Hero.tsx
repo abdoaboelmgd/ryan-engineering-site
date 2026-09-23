@@ -43,8 +43,8 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Subtitle Container with Crystal-Clear Translucent Burgundy Backdrop */}
-            <div className="bg-gradient-to-l from-[#3F1620]/22 via-[#2B0F16]/14 to-[#3F1620]/08 backdrop-blur-[2px] rounded-2xl p-3.5 sm:p-4.5 border border-[#C9973C]/20 shadow-lg mb-8 max-w-2xl mx-auto lg:mx-0">
-              <p className="text-sm sm:text-base md:text-lg text-white leading-relaxed font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)] m-0">
+            <div className="bg-gradient-to-l from-[#3F1620]/22 via-[#2B0F16]/14 to-[#3F1620]/08 backdrop-blur-[2px] rounded-2xl p-3.5 sm:p-4.5 border border-[#C9973C]/20 shadow-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-center text-sm sm:text-base md:text-lg text-white leading-relaxed font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)] m-0">
                 مكتب ريان للمساحة والاستشارات الهندسية — نجمع بين دقة الرصد الميداني والخبرة النظامية الشاملة في تحديث،
                 فرز، دمج، وتوثيق الصكوك العقارية إلكترونياً بأعلى معايير الاعتماد والسرعة.
               </p>
