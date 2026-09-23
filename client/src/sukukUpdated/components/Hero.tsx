@@ -1,7 +1,6 @@
 import React from 'react';
 import { PHONE_NUMBER, WHATSAPP_NUMBER } from '../data/siteData';
 import { Phone, CheckCircle2, ShieldCheck, Award, Zap } from 'lucide-react';
-import { MultiStepConsultation } from './MultiStepConsultation';
 
 export const Hero: React.FC = () => {
   return (
@@ -16,11 +15,11 @@ export const Hero: React.FC = () => {
         2. المحتوى الأمامي ونموذج الاستشارة
       */}
       <div className="container mx-auto px-4 lg:max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Main Text Content */}
-          <div className="lg:col-span-7 text-center lg:text-right">
+          <div className="text-center">
             {/* Trust and License Badges Bar */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-6">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
               <div className="inline-flex items-center gap-2 bg-neutral-900/80 text-[#FEB922] px-3.5 py-1.5 rounded-full text-xs font-bold border border-amber-400/30 backdrop-blur-md shadow-lg">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#FEB922] shrink-0" />
                 <span>مكتب استشارات هندسية ومساحية مرخص</span>
@@ -52,7 +51,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Direct High-Converting CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('السلام عليكم، أرغب في استشارة هندسية سريعة لتحديث صك عقاري (حملة إعلانية)')}`}
                 target="_blank"
@@ -110,10 +109,6 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Interactive Consultation Form */}
-          <div className="lg:col-span-5 relative z-10">
-            <MultiStepConsultation />
-          </div>
         </div>
       </div>
     </section>
