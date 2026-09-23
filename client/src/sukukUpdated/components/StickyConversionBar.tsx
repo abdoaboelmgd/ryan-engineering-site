@@ -35,9 +35,9 @@ export const StickyConversionBar: React.FC = () => {
         <a
           href={`tel:${PHONE_NUMBER}`}
           id="sticky-call-btn"
-          className="flex-1 bg-[#C9973C] hover:bg-[#B8860B] active:scale-95 text-[#2B0F16] font-extrabold text-xs sm:text-sm py-3 px-3 rounded-xl flex items-center justify-center gap-1.5 shadow-md border border-amber-300 transition-all text-center"
+          className="flex-1 bg-[#C9A063] hover:bg-[#A47C45] active:scale-95 text-[#3F1620] font-extrabold text-xs sm:text-sm py-3 px-3 rounded-xl flex items-center justify-center gap-1.5 shadow-md border border-amber-300 transition-all text-center"
         >
-          <Phone className="w-4 h-4 text-[#2B0F16] shrink-0" />
+          <Phone className="w-4 h-4 text-[#3F1620] shrink-0" />
           <span>اتصال مباشر</span>
         </a>
 

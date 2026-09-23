@@ -77,12 +77,12 @@ export const SmartCalculator: React.FC = () => {
     <section id="calculator" className="py-20 bg-gradient-to-b from-[#F7F4EE] via-white to-[#F7F4EE] border-t border-stone-200/70">
       <div className="container mx-auto px-4 lg:max-w-6xl">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 bg-amber-100/70 border border-amber-300/80 text-[#9E7124] text-xs font-black px-4 py-1.5 rounded-full mb-3 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#C9973C]" />
+          <div className="inline-flex items-center gap-2 bg-amber-100/70 border border-amber-300/80 text-[#8B6535] text-xs font-black px-4 py-1.5 rounded-full mb-3 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#C9A063]" />
             <span>حاسبة المتطلبات والمدة التقديرية الفورية</span>
           </div>
 
-          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2B0F16] mb-4 tracking-tight">
+          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3F1620] mb-4 tracking-tight">
             كم تستغرق معاملتك وما هي متطلباتها؟
           </h2>
 
@@ -103,11 +103,11 @@ export const SmartCalculator: React.FC = () => {
                   onClick={() => setSelectedService(item.id)}
                   className={`py-3 px-3 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-200 flex flex-col items-center justify-center gap-1 cursor-pointer text-center ${
                     isActive
-                      ? 'bg-[#5C1F2E] text-white shadow-md'
-                      : 'bg-white/70 hover:bg-white text-stone-700 hover:text-[#5C1F2E]'
+                      ? 'bg-[#5C2430] text-white shadow-md'
+                      : 'bg-white/70 hover:bg-white text-stone-700 hover:text-[#5C2430]'
                   }`}
                 >
-                  <span className={`text-[10px] font-bold ${isActive ? 'text-[#FEB922]' : 'text-stone-400'}`}>
+                  <span className={`text-[10px] font-bold ${isActive ? 'text-[#C89A52]' : 'text-stone-400'}`}>
                     {item.category}
                   </span>
                   <span className="leading-snug line-clamp-1">{item.name}</span>
@@ -122,25 +122,25 @@ export const SmartCalculator: React.FC = () => {
               {/* Left Column: Requirements & Process */}
               <div className="lg:col-span-7 space-y-6 text-right">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-[#C9973C] shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-[#C9A063] shrink-0">
                     <FileText className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-black text-[#2B0F16]">{current.name}</h3>
+                    <h3 className="text-xl sm:text-2xl font-black text-[#3F1620]">{current.name}</h3>
                     <p className="text-xs sm:text-sm text-stone-500">وفق اشتراطات كتابة العدل ومنصة بلدي</p>
                   </div>
                 </div>
 
                 {/* Requirements */}
                 <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200">
-                  <h4 className="font-extrabold text-sm text-[#2B0F16] mb-3 flex items-center gap-2">
+                  <h4 className="font-extrabold text-sm text-[#3F1620] mb-3 flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                     <span>المستندات المطلوبة للبدء:</span>
                   </h4>
                   <ul className="space-y-2">
                     {current.reqs.map((req, idx) => (
                       <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C9973C] mt-2 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C9A063] mt-2 shrink-0"></span>
                         <span>{req}</span>
                       </li>
                     ))}
@@ -149,8 +149,8 @@ export const SmartCalculator: React.FC = () => {
 
                 {/* Stages */}
                 <div>
-                  <h4 className="font-extrabold text-sm text-[#2B0F16] mb-3 flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-[#C9973C]" />
+                  <h4 className="font-extrabold text-sm text-[#3F1620] mb-3 flex items-center gap-2">
+                    <ArrowRight className="w-4 h-4 text-[#C9A063]" />
                     <span>مراحل التنفيذ الفني:</span>
                   </h4>
                   <div className="space-y-2">
@@ -159,7 +159,7 @@ export const SmartCalculator: React.FC = () => {
                         key={sIdx}
                         className="flex items-center gap-3 text-xs sm:text-sm bg-white p-3 rounded-xl border border-stone-200/70"
                       >
-                        <span className="w-6 h-6 rounded-full bg-[#5C1F2E] text-white text-xs font-bold flex items-center justify-center shrink-0">
+                        <span className="w-6 h-6 rounded-full bg-[#5C2430] text-white text-xs font-bold flex items-center justify-center shrink-0">
                           {sIdx + 1}
                         </span>
                         <span className="text-stone-800 font-medium">{stage}</span>
@@ -170,16 +170,16 @@ export const SmartCalculator: React.FC = () => {
               </div>
 
               {/* Right Column: Time Estimate & CTA Card */}
-              <div className="lg:col-span-5 bg-gradient-to-br from-[#2B0F16] via-[#3F1620] to-[#5C1F2E] p-7 rounded-3xl text-white shadow-xl relative overflow-hidden text-center lg:text-right">
+              <div className="lg:col-span-5 bg-gradient-to-br from-[#3F1620] via-[#3F1620] to-[#5C2430] p-7 rounded-3xl text-white shadow-xl relative overflow-hidden text-center lg:text-right">
                 <div className="absolute top-0 left-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl"></div>
 
                 <div className="relative z-10 space-y-6">
                   <div>
-                    <span className="text-xs font-bold text-[#FEB922] bg-[#FEB922]/15 px-3 py-1 rounded-full border border-[#FEB922]/30 inline-block mb-3">
+                    <span className="text-xs font-bold text-[#C89A52] bg-[#C89A52]/15 px-3 py-1 rounded-full border border-[#C89A52]/30 inline-block mb-3">
                       المدة التقديرية للإنجاز
                     </span>
                     <div className="text-3xl sm:text-4xl font-black text-white flex items-center justify-center lg:justify-start gap-3">
-                      <Clock className="w-8 h-8 text-[#FEB922]" />
+                      <Clock className="w-8 h-8 text-[#C89A52]" />
                       <span>{current.avgDuration}</span>
                     </div>
                     <p className="text-xs text-stone-300 mt-2 leading-relaxed">
@@ -189,7 +189,7 @@ export const SmartCalculator: React.FC = () => {
 
                   <div className="pt-4 border-t border-white/10 space-y-3">
                     <div className="text-xs text-amber-200 flex items-center justify-center lg:justify-start gap-2">
-                      <AlertCircle className="w-4 h-4 shrink-0 text-[#FEB922]" />
+                      <AlertCircle className="w-4 h-4 shrink-0 text-[#C89A52]" />
                       <span>ضمان استرداد كامل الأتعاب حال عدم مطابقة المخطط</span>
                     </div>
 

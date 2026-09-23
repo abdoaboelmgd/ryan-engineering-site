@@ -46,7 +46,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="relative max-w-5xl w-full bg-[#2B0F16] rounded-3xl overflow-hidden shadow-2xl border border-rkGold/30 flex flex-col max-h-[92vh]"
+        className="relative max-w-5xl w-full bg-[#3F1620] rounded-3xl overflow-hidden shadow-2xl border border-rkGold/30 flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header Bar */}
@@ -54,7 +54,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({
           <div className="flex items-center gap-3">
             <button
               onClick={onClose}
-              className="w-10 h-10 bg-black/40 hover:bg-rkGold hover:text-[#2B0F16] text-white rounded-full flex items-center justify-center transition-all"
+              className="w-10 h-10 bg-black/40 hover:bg-rkGold hover:text-[#3F1620] text-white rounded-full flex items-center justify-center transition-all"
               aria-label="إغلاق المعاينة"
               title="إغلاق (Esc)"
             >
@@ -99,7 +99,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({
                 e.stopPropagation();
                 onPrev();
               }}
-              className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-11 h-11 bg-black/60 hover:bg-rkGold text-white hover:text-[#2B0F16] rounded-full flex items-center justify-center transition-all shadow-lg border border-white/10"
+              className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-11 h-11 bg-black/60 hover:bg-rkGold text-white hover:text-[#3F1620] rounded-full flex items-center justify-center transition-all shadow-lg border border-white/10"
               title="المشروع السابق"
               aria-label="السابق"
             >
@@ -113,7 +113,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({
                 e.stopPropagation();
                 onNext();
               }}
-              className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-11 h-11 bg-black/60 hover:bg-rkGold text-white hover:text-[#2B0F16] rounded-full flex items-center justify-center transition-all shadow-lg border border-white/10"
+              className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-11 h-11 bg-black/60 hover:bg-rkGold text-white hover:text-[#3F1620] rounded-full flex items-center justify-center transition-all shadow-lg border border-white/10"
               title="المشروع التالي"
               aria-label="التالي"
             >
@@ -123,7 +123,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({
         </div>
 
         {/* Modal Footer & Specifications */}
-        <div className="p-5 sm:p-6 bg-[#2B0F16] text-right border-t border-rkGold/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="p-5 sm:p-6 bg-[#3F1620] text-right border-t border-rkGold/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="space-y-1.5 flex-grow">
             <h3 className="text-xl sm:text-2xl font-black text-white">{project.title}</h3>
             <p className="text-xs sm:text-sm text-rkGoldLight">{project.subtitle}</p>
@@ -156,7 +156,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({
               href={whatsappInquiryUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full md:w-auto bg-rkGold hover:bg-rkGoldDark text-[#2B0F16] font-bold text-sm py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md hover:scale-105"
+              className="w-full md:w-auto bg-rkGold hover:bg-rkGoldDark text-[#3F1620] font-bold text-sm py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md hover:scale-105"
             >
               <MessageSquare className="w-4 h-4" />
               <span>طلب تسعيرة لهذا المشروع</span>

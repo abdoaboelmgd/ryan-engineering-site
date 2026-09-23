@@ -43,7 +43,7 @@ export const StatsBar: React.FC = () => {
   }, [hasAnimated]);
 
   return (
-    <section ref={sectionRef} className="rk-stats py-16 bg-[#2B0F16] border-y border-rkGold/20 text-white relative">
+    <section ref={sectionRef} className="rk-stats py-16 bg-[#3F1620] border-y border-rkGold/20 text-white relative">
       <div className="container mx-auto px-4 lg:max-w-6xl relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-white/10">
           {STATS_DATA.map((stat, idx) => (

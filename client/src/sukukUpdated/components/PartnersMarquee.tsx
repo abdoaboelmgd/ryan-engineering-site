@@ -48,7 +48,7 @@ export const PartnersMarquee: React.FC = () => {
         </div>
 
         {/* Section 2: Accreditations */}
-        <div className="text-center mb-10 pt-4 border-t border-[#5C1F2E]/15">
+        <div className="text-center mb-10 pt-4 border-t border-[#5C2430]/15">
           <h2 className="text-3xl md:text-4xl font-black text-rkNavy mb-4">معتمدون لدى</h2>
           <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed text-sm md:text-base">
             نحن فخورون بكوننا مكتباً هندسياً ومساحياً معتمداً ومؤهلاً لدى نخبة من أهم الهيئات والجهات

@@ -28,7 +28,7 @@ export default function SukukUpdatedPage() {
     canonical.href = `${window.location.origin}${import.meta.env.BASE_URL}sukuk/`;
   }, []);
   return (
-    <div dir="rtl" className="sukuk-updated-page min-h-screen flex flex-col bg-[#F7F4EE] text-[#2F2F2F] relative selection:bg-rkGold selection:text-[#2B0F16] pb-16 lg:pb-0">
+    <div dir="rtl" className="sukuk-updated-page min-h-screen flex flex-col bg-[#F7F4EE] text-[#2F2F2F] relative selection:bg-rkGold selection:text-[#3F1620] pb-16 lg:pb-0">
       {/* Main Header */}
       <Header />
 

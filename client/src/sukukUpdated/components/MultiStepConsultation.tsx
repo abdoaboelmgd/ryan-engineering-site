@@ -33,14 +33,14 @@ export const MultiStepConsultation: React.FC = () => {
   };
 
   return (
-    <div className="sukuk-glass-form bg-white/80 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-white/70 border-t-4 border-t-[#C9973C] relative">
+    <div className="sukuk-glass-form bg-white/80 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-white/70 border-t-4 border-t-[#C9A063] relative">
       {/* Form Header */}
       <div className="text-center mb-5">
-        <div className="inline-flex items-center gap-1.5 bg-amber-50 text-[#9E7124] border border-[#C9973C]/30 px-3 py-1 rounded-full text-xs font-bold mb-2">
-          <CheckCircle2 className="w-3.5 h-3.5 text-[#C9973C]" />
+        <div className="inline-flex items-center gap-1.5 bg-amber-50 text-[#8B6535] border border-[#C9A063]/30 px-3 py-1 rounded-full text-xs font-bold mb-2">
+          <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A063]" />
           <span>استشارة مجانية • تسعيرة فورية</span>
         </div>
-        <h3 className="text-xl sm:text-2xl font-black text-[#2B0F16]">
+        <h3 className="text-xl sm:text-2xl font-black text-[#3F1620]">
           طلب دراسة واستشارة سريعة
         </h3>
         <p className="text-xs text-stone-500 mt-1">
@@ -51,7 +51,7 @@ export const MultiStepConsultation: React.FC = () => {
       <form onSubmit={handleSubmit} className="space-y-4 text-right">
         {/* 1. نوع العقار */}
         <div>
-          <label className="block text-xs font-extrabold text-[#2B0F16] mb-1.5">
+          <label className="block text-xs font-extrabold text-[#3F1620] mb-1.5">
             1. نوع العقار
           </label>
           <div className="grid grid-cols-3 gap-1.5">
@@ -62,8 +62,8 @@ export const MultiStepConsultation: React.FC = () => {
                 onClick={() => setPropertyType(item)}
                 className={`py-2 px-1.5 rounded-xl border text-[11px] font-bold transition-all cursor-pointer text-center leading-tight ${
                   propertyType === item
-                    ? 'bg-amber-50 border-[#C9973C] text-[#5C1F2E] shadow-2xs'
-                    : 'bg-white/90 border-[#2B0F16]/15 text-stone-700 hover:bg-white'
+                    ? 'bg-amber-50 border-[#C9A063] text-[#5C2430] shadow-2xs'
+                    : 'bg-white/90 border-[#3F1620]/15 text-stone-700 hover:bg-white'
                 }`}
               >
                 {item}
@@ -75,13 +75,13 @@ export const MultiStepConsultation: React.FC = () => {
         {/* 2. الإجراء والخدمة المطلوبة + المدينة */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           <div>
-            <label className="block text-xs font-extrabold text-[#2B0F16] mb-1.5">
+            <label className="block text-xs font-extrabold text-[#3F1620] mb-1.5">
               2. الإجراء المطلوب
             </label>
             <select
               value={serviceType}
               onChange={(e) => setServiceType(e.target.value)}
-              className="w-full px-3 py-2.5 bg-white/90 border border-[#2B0F16]/15 rounded-xl text-[#2B0F16] text-xs font-medium shadow-sm focus:border-[#C9973C] focus:outline-none focus:ring-2 focus:ring-[#C9973C]/25"
+              className="w-full px-3 py-2.5 bg-white/90 border border-[#3F1620]/15 rounded-xl text-[#3F1620] text-xs font-medium shadow-sm focus:border-[#C9A063] focus:outline-none focus:ring-2 focus:ring-[#C9A063]/25"
             >
               <option value="تحديث صك ورقي إلى إلكتروني">تحديث صك ورقي إلى إلكتروني</option>
               <option value="فرز وتجزئة وحدات أو فلل">فرز وتجزئة وحدات أو فلل</option>
@@ -94,13 +94,13 @@ export const MultiStepConsultation: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-extrabold text-[#2B0F16] mb-1.5">
+            <label className="block text-xs font-extrabold text-[#3F1620] mb-1.5">
               المدينة / المنطقة
             </label>
             <select
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              className="w-full px-3 py-2.5 bg-white/90 border border-[#2B0F16]/15 rounded-xl text-[#2B0F16] text-xs font-medium shadow-sm focus:border-[#C9973C] focus:outline-none focus:ring-2 focus:ring-[#C9973C]/25"
+              className="w-full px-3 py-2.5 bg-white/90 border border-[#3F1620]/15 rounded-xl text-[#3F1620] text-xs font-medium shadow-sm focus:border-[#C9A063] focus:outline-none focus:ring-2 focus:ring-[#C9A063]/25"
             >
               <option value="الرياض">الرياض</option>
               <option value="المنطقة الشرقية">المنطقة الشرقية</option>
@@ -113,8 +113,8 @@ export const MultiStepConsultation: React.FC = () => {
         </div>
 
         {/* 3. بيانات الاتصال السريعة */}
-        <div className="pt-1 border-t border-[#2B0F16]/10">
-          <label className="block text-xs font-extrabold text-[#2B0F16] mb-1.5">
+        <div className="pt-1 border-t border-[#3F1620]/10">
+          <label className="block text-xs font-extrabold text-[#3F1620] mb-1.5">
             3. بيانات التواصل السريع
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -123,7 +123,7 @@ export const MultiStepConsultation: React.FC = () => {
                 type="text"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full px-3 py-2.5 bg-white/90 border border-[#2B0F16]/15 rounded-xl text-[#2B0F16] text-xs shadow-sm focus:border-[#C9973C] focus:outline-none focus:ring-2 focus:ring-[#C9973C]/25"
+                className="w-full px-3 py-2.5 bg-white/90 border border-[#3F1620]/15 rounded-xl text-[#3F1620] text-xs shadow-sm focus:border-[#C9A063] focus:outline-none focus:ring-2 focus:ring-[#C9A063]/25"
                 placeholder="الاسم الكريم (اختياري)"
               />
             </div>
@@ -134,7 +134,7 @@ export const MultiStepConsultation: React.FC = () => {
                 dir="ltr"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full px-3 py-2.5 bg-white/90 border border-[#2B0F16]/15 rounded-xl text-[#2B0F16] text-xs text-right shadow-sm focus:border-[#C9973C] focus:outline-none focus:ring-2 focus:ring-[#C9973C]/25"
+                className="w-full px-3 py-2.5 bg-white/90 border border-[#3F1620]/15 rounded-xl text-[#3F1620] text-xs text-right shadow-sm focus:border-[#C9A063] focus:outline-none focus:ring-2 focus:ring-[#C9A063]/25"
                 placeholder="رقم الجوال (05x xxx xxxx) *"
               />
             </div>

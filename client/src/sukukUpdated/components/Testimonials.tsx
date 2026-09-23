@@ -11,7 +11,7 @@ export const Testimonials: React.FC = () => {
             <span>آراء وتجارب العملاء</span>
           </div>
 
-          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2B0F16] mb-4 tracking-tight">
+          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3F1620] mb-4 tracking-tight">
             ماذا يقول عملاؤنا
           </h2>
 
@@ -39,11 +39,11 @@ export const Testimonials: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-3 border-t border-stone-100 pt-4 text-right">
-                <div className="w-12 h-12 rounded-full bg-[#5C1F2E]/10 text-[#5C1F2E] border border-rkGold/30 flex items-center justify-center font-bold text-lg shrink-0">
+                <div className="w-12 h-12 rounded-full bg-[#5C2430]/10 text-[#5C2430] border border-rkGold/30 flex items-center justify-center font-bold text-lg shrink-0">
                   {t.initial}
                 </div>
                 <div>
-                  <div className="font-extrabold text-[#2B0F16] text-sm sm:text-base">{t.name}</div>
+                  <div className="font-extrabold text-[#3F1620] text-sm sm:text-base">{t.name}</div>
                   <div className="text-xs text-stone-500">{t.role}</div>
                 </div>
               </div>

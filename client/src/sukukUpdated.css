@@ -2,19 +2,19 @@
 
 @theme {
   /* Colors in standard kebab-case */
-  --color-rk-maroon: #5C1F2E;
+  --color-rk-maroon: #5C2430;
   --color-rk-maroon-dark: #3F1620;
-  --color-rk-maroon-deep: #2B0F16;
-  --color-rk-maroon-light: #7E2F40;
+  --color-rk-maroon-deep: #3F1620;
+  --color-rk-maroon-light: #7A2C40;
 
-  --color-rk-navy: #5C1F2E;
+  --color-rk-navy: #5C2430;
   --color-rk-navy-dark: #3F1620;
-  --color-rk-navy-deep: #2B0F16;
+  --color-rk-navy-deep: #3F1620;
 
-  --color-rk-gold: #C9973C;
+  --color-rk-gold: #C9A063;
   --color-rk-gold-light: #D8B87E;
-  --color-rk-gold-dark: #9E7124;
-  --color-rk-amber: #FEB922;
+  --color-rk-gold-dark: #8B6535;
+  --color-rk-amber: #C89A52;
 
   --color-rk-wa: #25D366;
   --color-rk-bg: #F7F4EE;
@@ -26,18 +26,18 @@
 }
 
 /* Fallback direct utility classes ensuring 100% compatibility in all build environments */
-.bg-rkGold, .bg-rk-gold { background-color: #C9973C !important; }
-.bg-rkGoldDark, .bg-rk-gold-dark { background-color: #9E7124 !important; }
+.bg-rkGold, .bg-rk-gold { background-color: #C9A063 !important; }
+.bg-rkGoldDark, .bg-rk-gold-dark { background-color: #8B6535 !important; }
 .bg-rkGoldLight, .bg-rk-gold-light { background-color: #D8B87E !important; }
-.text-rkGold, .text-rk-gold { color: #C9973C !important; }
-.text-rkGoldDark, .text-rk-gold-dark { color: #9E7124 !important; }
+.text-rkGold, .text-rk-gold { color: #C9A063 !important; }
+.text-rkGoldDark, .text-rk-gold-dark { color: #8B6535 !important; }
 .text-rkGoldLight, .text-rk-gold-light { color: #D8B87E !important; }
-.border-rkGold, .border-rk-gold { border-color: #C9973C !important; }
-.border-rkGoldDark, .border-rk-gold-dark { border-color: #9E7124 !important; }
+.border-rkGold, .border-rk-gold { border-color: #C9A063 !important; }
+.border-rkGoldDark, .border-rk-gold-dark { border-color: #8B6535 !important; }
 
-.bg-rkNavy, .bg-rk-navy, .bg-rkMaroon, .bg-rk-maroon { background-color: #5C1F2E !important; }
+.bg-rkNavy, .bg-rk-navy, .bg-rkMaroon, .bg-rk-maroon { background-color: #5C2430 !important; }
 .bg-rkNavyDark, .bg-rk-navy-dark, .bg-rkMaroonDark, .bg-rk-maroon-dark { background-color: #3F1620 !important; }
-.text-rkNavy, .text-rk-navy, .text-rkMaroon, .text-rk-maroon { color: #5C1F2E !important; }
+.text-rkNavy, .text-rk-navy, .text-rkMaroon, .text-rk-maroon { color: #5C2430 !important; }
 .text-rkMuted, .text-rk-muted { color: #6B7280 !important; }
 
 
@@ -71,7 +71,7 @@ body {
 .rk-card-hover:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 45px rgba(92, 31, 46, 0.16);
-  border-color: #C9973C;
+  border-color: #C9A063;
 }
 
 .rk-icon-hover {
@@ -79,7 +79,7 @@ body {
 }
 .rk-card-hover:hover .rk-icon-hover {
   transform: scale(1.12) rotate(-4deg);
-  background: #C9973C;
+  background: #C9A063;
   color: #fff !important;
 }
 
@@ -113,7 +113,7 @@ body {
   display: block;
   width: 60px;
   height: 4px;
-  background: linear-gradient(90deg, #C9973C, #D8B87E);
+  background: linear-gradient(90deg, #C9A063, #D8B87E);
   margin: 14px auto 0;
   border-radius: 4px;
 }
@@ -212,7 +212,7 @@ body {
 }
 
 .partner-logo:hover {
-  border-color: #C9973C;
+  border-color: #C9A063;
   box-shadow: 0 5px 15px rgba(201,151,60,0.22);
 }
 .partner-logo:hover img {
@@ -278,7 +278,7 @@ body {
   background: linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,255,255,.66)) !important;
   -webkit-backdrop-filter: blur(22px) saturate(145%);
   backdrop-filter: blur(22px) saturate(145%);
-  box-shadow: 0 24px 70px rgba(43,15,22,.26), inset 0 1px 0 rgba(255,255,255,.9);
+  box-shadow: 0 24px 70px rgba(63,22,32,.26), inset 0 1px 0 rgba(255,255,255,.9);
 }
 .sukuk-updated-page #contact .sukuk-glass-form {
   background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.08)) !important;
@@ -293,25 +293,25 @@ body {
 /* Calm deep Hero background: no image, optimized for readable Arabic content */
 .sukuk-updated-page .sukuk-hero-surface {
   background:
-    radial-gradient(circle at 82% 18%, rgba(201,151,60,.20) 0%, rgba(201,151,60,0) 34%),
+    radial-gradient(circle at 82% 18%, rgba(201,160,99,.20) 0%, rgba(201,151,60,0) 34%),
     radial-gradient(circle at 14% 86%, rgba(117,54,55,.34) 0%, rgba(117,54,55,0) 38%),
-    linear-gradient(128deg, #1D1017 0%, #2B0F16 42%, #4A1D2A 73%, #25131C 100%);
-  background-color: #2B0F16;
+    linear-gradient(128deg, #1D1017 0%, #3F1620 42%, #4A1D2A 73%, #25131C 100%);
+  background-color: #3F1620;
 }
 .sukuk-updated-page .sukuk-hero-surface::after {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(22,10,16,.20), rgba(43,15,22,.06) 52%, rgba(244,235,221,.08)),
+    linear-gradient(90deg, rgba(22,10,16,.20), rgba(63,22,32,.06) 52%, rgba(244,235,221,.08)),
     linear-gradient(180deg, rgba(15,8,13,.18), rgba(15,8,13,.04) 55%, rgba(15,8,13,.28));
 }
 @media (max-width: 767px) {
   .sukuk-updated-page .sukuk-hero-surface {
     background:
-      radial-gradient(circle at 50% 12%, rgba(201,151,60,.18) 0%, rgba(201,151,60,0) 38%),
+      radial-gradient(circle at 50% 12%, rgba(201,160,99,.18) 0%, rgba(201,151,60,0) 38%),
       radial-gradient(circle at 10% 86%, rgba(117,54,55,.30) 0%, rgba(117,54,55,0) 44%),
-      linear-gradient(160deg, #1D1017 0%, #2B0F16 52%, #4A1D2A 100%);
+      linear-gradient(160deg, #1D1017 0%, #3F1620 52%, #4A1D2A 100%);
   }
   .sukuk-updated-page .sukuk-hero-surface::after {
     background: linear-gradient(180deg, rgba(15,8,13,.16), rgba(15,8,13,.02) 48%, rgba(15,8,13,.30));
@@ -320,26 +320,26 @@ body {
 /* Final reference-brand header and contact form refinements */
 .sukuk-updated-page #main-header {
   background: linear-gradient(135deg, rgba(244,235,221,.98) 0%, rgba(232,215,193,.97) 52%, rgba(217,195,165,.96) 100%) !important;
-  color: #2B0F16;
-  box-shadow: 0 8px 30px rgba(43,15,22,.14);
+  color: #3F1620;
+  box-shadow: 0 8px 30px rgba(63,22,32,.14);
 }
 .sukuk-updated-page #main-header #mobile-nav-dropdown {
-  background: linear-gradient(180deg, #F4EBDD 0%, #E8D7C1 100%) !important;
+  background: linear-gradient(180deg, #F7F4EE 0%, #E8DFD0 100%) !important;
 }
 .sukuk-updated-page #contact .sukuk-glass-form,
 .sukuk-updated-page #contact .sukuk-glass-form h3,
 .sukuk-updated-page #contact .sukuk-glass-form label,
 .sukuk-updated-page #contact .sukuk-glass-form p {
-  color: #5C1F2E !important;
+  color: #5C2430 !important;
 }
 .sukuk-updated-page #contact .sukuk-glass-form label {
   font-weight: 700;
 }
 .sukuk-updated-page #contact .sukuk-glass-form label .text-white\/70 {
-  color: rgba(92,31,46,.70) !important;
+  color: rgba(92,36,48,.70) !important;
 }
 .sukuk-updated-page #contact .sukuk-glass-form .text-white {
-  color: #5C1F2E !important;
+  color: #5C2430 !important;
 }
 .sukuk-updated-page #contact .sukuk-glass-form button,
 .sukuk-updated-page #contact .sukuk-glass-form button .text-white {

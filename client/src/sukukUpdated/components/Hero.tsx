@@ -20,8 +20,8 @@ export const Hero: React.FC = () => {
           <div className="text-center">
             {/* Trust and License Badges Bar */}
             <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
-              <div className="inline-flex items-center gap-2 bg-neutral-900/80 text-[#FEB922] px-3.5 py-1.5 rounded-full text-xs font-bold border border-amber-400/30 backdrop-blur-md shadow-lg">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#FEB922] shrink-0" />
+              <div className="inline-flex items-center gap-2 bg-neutral-900/80 text-[#C89A52] px-3.5 py-1.5 rounded-full text-xs font-bold border border-amber-400/30 backdrop-blur-md shadow-lg">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#C89A52] shrink-0" />
                 <span>مكتب استشارات هندسية ومساحية مرخص</span>
               </div>
               <div className="inline-flex items-center gap-1.5 bg-neutral-900/80 text-stone-200 px-3 py-1.5 rounded-full text-xs font-medium border border-white/15 backdrop-blur-md shadow-lg">
@@ -33,17 +33,17 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Heading Container with Crystal-Clear Translucent Burgundy Backdrop */}
-            <div className="bg-gradient-to-l from-[#3F1620]/28 via-[#2B0F16]/18 to-[#3F1620]/10 backdrop-blur-[2.5px] rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-[#C9973C]/25 shadow-xl mb-3.5 w-full">
+            <div className="bg-gradient-to-l from-[#3F1620]/28 via-[#3F1620]/18 to-[#3F1620]/10 backdrop-blur-[2.5px] rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-[#C9A063]/25 shadow-xl mb-3.5 w-full">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] xl:text-[2.9rem] font-black text-white leading-[1.3] sm:leading-[1.25] tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] drop-shadow-[0_6px_20px_rgba(43,15,22,0.95)] m-0">
                 أفضل مكتب معتمد في المملكة <br className="hidden sm:inline" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-l from-[#F2C230] via-[#FEB922] to-[#F7D97A] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-l from-[#C89A52] via-[#C89A52] to-[#E0C28C] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
                   لتحديث الصكوك
                 </span>
               </h1>
             </div>
 
             {/* Subtitle Container with Crystal-Clear Translucent Burgundy Backdrop */}
-            <div className="bg-gradient-to-l from-[#3F1620]/22 via-[#2B0F16]/14 to-[#3F1620]/08 backdrop-blur-[2px] rounded-2xl p-3.5 sm:p-4.5 border border-[#C9973C]/20 shadow-lg mb-8 max-w-2xl mx-auto">
+            <div className="bg-gradient-to-l from-[#3F1620]/22 via-[#3F1620]/14 to-[#3F1620]/08 backdrop-blur-[2px] rounded-2xl p-3.5 sm:p-4.5 border border-[#C9A063]/20 shadow-lg mb-8 max-w-2xl mx-auto">
               <p className="text-center text-sm sm:text-base md:text-lg text-white leading-relaxed font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)] m-0">
                 مكتب ريان للمساحة والاستشارات الهندسية — نجمع بين دقة الرصد الميداني والخبرة النظامية الشاملة في تحديث،
                 فرز، دمج، وتوثيق الصكوك العقارية إلكترونياً بأعلى معايير الاعتماد والسرعة.
@@ -68,18 +68,18 @@ export const Hero: React.FC = () => {
               <a
                 href={`tel:${PHONE_NUMBER}`}
                 id="hero-call-cta"
-                className="w-full sm:w-auto rk-btn rk-btn-call bg-[#C9973C] hover:bg-[#B8860B] text-[#2B0F16] font-extrabold py-3.5 px-8 rounded-xl flex items-center justify-center gap-2.5 text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all border border-amber-200"
+                className="w-full sm:w-auto rk-btn rk-btn-call bg-[#C9A063] hover:bg-[#A47C45] text-[#3F1620] font-extrabold py-3.5 px-8 rounded-xl flex items-center justify-center gap-2.5 text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all border border-amber-200"
               >
-                <Phone className="w-5 h-5 fill-current text-[#2B0F16]" />
-                <span className="text-[#2B0F16]">اتصل بنا الآن</span>
+                <Phone className="w-5 h-5 fill-current text-[#3F1620]" />
+                <span className="text-[#3F1620]">اتصل بنا الآن</span>
               </a>
             </div>
 
             {/* Trust Pillars */}
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-8 border-t border-neutral-800/60">
               <div className="flex items-center gap-3 bg-neutral-900/80 p-3 rounded-2xl border border-white/10 text-right backdrop-blur-md shadow-lg">
-                <div className="w-10 h-10 rounded-xl bg-[#C9973C]/25 border border-[#C9973C]/40 flex items-center justify-center text-[#FEB922] shrink-0">
-                  <ShieldCheck className="w-5 h-5 text-[#FEB922]" />
+                <div className="w-10 h-10 rounded-xl bg-[#C9A063]/25 border border-[#C9A063]/40 flex items-center justify-center text-[#C89A52] shrink-0">
+                  <ShieldCheck className="w-5 h-5 text-[#C89A52]" />
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-sm">اعتماد رسمي</h4>
@@ -88,8 +88,8 @@ export const Hero: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-3 bg-neutral-900/80 p-3 rounded-2xl border border-white/10 text-right backdrop-blur-md shadow-lg">
-                <div className="w-10 h-10 rounded-xl bg-[#C9973C]/25 border border-[#C9973C]/40 flex items-center justify-center text-[#FEB922] shrink-0">
-                  <Award className="w-5 h-5 text-[#FEB922]" />
+                <div className="w-10 h-10 rounded-xl bg-[#C9A063]/25 border border-[#C9A063]/40 flex items-center justify-center text-[#C89A52] shrink-0">
+                  <Award className="w-5 h-5 text-[#C89A52]" />
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-sm">خبرة 15+ سنة</h4>
@@ -98,8 +98,8 @@ export const Hero: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-3 bg-neutral-900/80 p-3 rounded-2xl border border-white/10 text-right backdrop-blur-md shadow-lg">
-                <div className="w-10 h-10 rounded-xl bg-[#C9973C]/25 border border-[#C9973C]/40 flex items-center justify-center text-[#FEB922] shrink-0">
-                  <Zap className="w-5 h-5 text-[#FEB922]" />
+                <div className="w-10 h-10 rounded-xl bg-[#C9A063]/25 border border-[#C9A063]/40 flex items-center justify-center text-[#C89A52] shrink-0">
+                  <Zap className="w-5 h-5 text-[#C89A52]" />
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-sm">إنجاز قياسي</h4>

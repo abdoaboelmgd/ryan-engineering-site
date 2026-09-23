@@ -4,7 +4,7 @@ import { PHONE_DISPLAY } from '../data/siteData';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#2B0F16] py-12 border-t-2 border-rkGold/30 text-white">
+    <footer className="bg-[#3F1620] py-12 border-t-2 border-rkGold/30 text-white">
       <div className="container mx-auto px-4 text-center">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 max-w-5xl mx-auto mb-8 pb-8 border-b border-white/10">
           <div className="flex items-center gap-3 text-right">

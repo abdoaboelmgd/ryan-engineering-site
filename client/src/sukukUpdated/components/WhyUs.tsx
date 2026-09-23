@@ -4,17 +4,17 @@ import { ShieldCheck, Compass, Satellite } from 'lucide-react';
 export const WhyUs: React.FC = () => {
   const reasons = [
     {
-      icon: <ShieldCheck className="w-8 h-8 text-[#C9973C]" />,
+      icon: <ShieldCheck className="w-8 h-8 text-[#C9A063]" />,
       title: 'اعتماد رسمي موثوق',
       desc: 'معتمدون لدى البلديات ووزارة الشؤون البلدية والقروية والإسكان، منصة بلدي، منصة إحكام، وكافة كتابات العدل لضمان سلامة معاملاتك.',
     },
     {
-      icon: <Compass className="w-8 h-8 text-[#C9973C]" />,
+      icon: <Compass className="w-8 h-8 text-[#C9A063]" />,
       title: 'حلول هندسية متكاملة',
       desc: 'فريق متكامل من مهندسين ومساحين مرخصين ومصنفين يضمنون لك إنجاز كافة معاملات الصكوك والمخططات بدقة وسرعة متناهية.',
     },
     {
-      icon: <Satellite className="w-8 h-8 text-[#C9973C]" />,
+      icon: <Satellite className="w-8 h-8 text-[#C9A063]" />,
       title: 'أحدث التقنيات المساحية',
       desc: 'نستخدم أحدث أجهزة GPS والمحطات الشاملة (Total Station) لتقديم تقارير مساحية دقيقة معتمدة وخالية تماماً من الأخطاء.',
     },
@@ -29,7 +29,7 @@ export const WhyUs: React.FC = () => {
             <span>الموثوقية والخبرة الهندسية في المملكة</span>
           </div>
 
-          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2B0F16] mb-4 tracking-tight">
+          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3F1620] mb-4 tracking-tight">
             لماذا تختار مكتب ريان لتحديث الصكوك؟
           </h2>
 
@@ -45,10 +45,10 @@ export const WhyUs: React.FC = () => {
               className="bg-white p-8 rounded-3xl border border-stone-200/80 rk-card-hover shadow-sm hover:shadow-xl hover:border-rkGold transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="w-16 h-16 bg-[#5C1F2E] rounded-2xl flex items-center justify-center mb-6 shadow-md border border-[#C9973C]/40 text-[#C9973C]">
+                <div className="w-16 h-16 bg-[#5C2430] rounded-2xl flex items-center justify-center mb-6 shadow-md border border-[#C9A063]/40 text-[#C9A063]">
                   {item.icon}
                 </div>
-                <h4 className="text-xl font-extrabold text-[#2B0F16] mb-3">{item.title}</h4>
+                <h4 className="text-xl font-extrabold text-[#3F1620] mb-3">{item.title}</h4>
                 <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
               </div>
 

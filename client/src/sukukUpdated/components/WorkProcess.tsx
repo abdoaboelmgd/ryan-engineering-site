@@ -10,7 +10,7 @@ export const WorkProcess: React.FC = () => {
             <span>خطوات العمل المعتمدة</span>
           </div>
 
-          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2B0F16] mb-4 tracking-tight">
+          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3F1620] mb-4 tracking-tight">
             آلية وإجراءات العمل
           </h2>
 
@@ -21,17 +21,17 @@ export const WorkProcess: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           {/* Connecting line on desktop */}
-          <div className="hidden lg:block absolute top-14 right-[12%] left-[12%] h-0.5 bg-[#C9973C]/40 z-0 border-t border-dashed border-[#C9973C]"></div>
+          <div className="hidden lg:block absolute top-14 right-[12%] left-[12%] h-0.5 bg-[#C9A063]/40 z-0 border-t border-dashed border-[#C9A063]"></div>
 
           {WORK_PROCESS_STEPS.map((item) => (
             <div
               key={item.step}
               className="bg-white rounded-2xl p-8 text-center border border-stone-200/80 relative z-10 shadow-sm hover:-translate-y-2 transition-all duration-300 flex flex-col items-center hover:border-rkGold hover:shadow-xl"
             >
-              <div className="w-14 h-14 rounded-full bg-[#5C1F2E] text-rkGold font-black text-2xl flex items-center justify-center mb-4 ring-4 ring-amber-50 shadow-md border border-rkGold/30">
+              <div className="w-14 h-14 rounded-full bg-[#5C2430] text-rkGold font-black text-2xl flex items-center justify-center mb-4 ring-4 ring-amber-50 shadow-md border border-rkGold/30">
                 {item.step}
               </div>
-              <h4 className="font-extrabold text-[#2B0F16] mb-2 text-lg">{item.title}</h4>
+              <h4 className="font-extrabold text-[#3F1620] mb-2 text-lg">{item.title}</h4>
               <p className="text-sm text-stone-600 leading-relaxed">{item.desc}</p>
             </div>
           ))}

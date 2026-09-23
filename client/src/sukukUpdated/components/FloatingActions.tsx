@@ -25,7 +25,7 @@ export const FloatingActions: React.FC = () => {
       {/* Direct Phone Call Button */}
       <a
         href={`tel:${PHONE_NUMBER}`}
-        className="w-12 h-12 bg-[#C9973C] hover:bg-[#B8860B] text-[#2B0F16] rounded-full flex items-center justify-center text-xl shadow-xl transition-transform hover:scale-110 border border-amber-200"
+        className="w-12 h-12 bg-[#C9A063] hover:bg-[#A47C45] text-[#3F1620] rounded-full flex items-center justify-center text-xl shadow-xl transition-transform hover:scale-110 border border-amber-200"
         aria-label="اتصال هاتفي مباشر"
         title="اتصال هاتفي مباشر"
       >

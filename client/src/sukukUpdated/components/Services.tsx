@@ -18,14 +18,14 @@ import {
 } from 'lucide-react';
 
 const SERVICE_ICONS: Record<number, React.ReactNode> = {
-  1: <FileText className="w-7 h-7 text-[#C9973C]" />,
-  2: <Layers className="w-7 h-7 text-[#C9973C]" />,
-  3: <Boxes className="w-7 h-7 text-[#C9973C]" />,
-  4: <FileCheck2 className="w-7 h-7 text-[#C9973C]" />,
-  5: <FileSearch className="w-7 h-7 text-[#C9973C]" />,
-  6: <Users className="w-7 h-7 text-[#C9973C]" />,
-  7: <MapPin className="w-7 h-7 text-[#C9973C]" />,
-  8: <Landmark className="w-7 h-7 text-[#C9973C]" />,
+  1: <FileText className="w-7 h-7 text-[#C9A063]" />,
+  2: <Layers className="w-7 h-7 text-[#C9A063]" />,
+  3: <Boxes className="w-7 h-7 text-[#C9A063]" />,
+  4: <FileCheck2 className="w-7 h-7 text-[#C9A063]" />,
+  5: <FileSearch className="w-7 h-7 text-[#C9A063]" />,
+  6: <Users className="w-7 h-7 text-[#C9A063]" />,
+  7: <MapPin className="w-7 h-7 text-[#C9A063]" />,
+  8: <Landmark className="w-7 h-7 text-[#C9A063]" />,
 };
 
 export const Services: React.FC = () => {
@@ -36,7 +36,7 @@ export const Services: React.FC = () => {
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage:
-            'radial-gradient(#5C1F2E 1px, transparent 1px), radial-gradient(#C9973C 1px, #fff 1px)',
+            'radial-gradient(#5C2430 1px, transparent 1px), radial-gradient(#C9A063 1px, #fff 1px)',
           backgroundSize: '32px 32px',
         }}
       ></div>
@@ -49,7 +49,7 @@ export const Services: React.FC = () => {
             <span>خدمات هندسية ومساحية معتمدة لدى الأمانات وكتابة العدل</span>
           </div>
 
-          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2B0F16] mb-4 tracking-tight">
+          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3F1620] mb-4 tracking-tight">
             خدماتنا المتخصصة في الصكوك العقارية
           </h2>
 
@@ -82,7 +82,7 @@ export const Services: React.FC = () => {
                       {formattedIndex}
                     </span>
                     {srv.badge && (
-                      <span className="text-[11px] font-bold text-[#5C1F2E] bg-[#5C1F2E]/5 border border-[#5C1F2E]/10 px-2.5 py-0.5 rounded-full">
+                      <span className="text-[11px] font-bold text-[#5C2430] bg-[#5C2430]/5 border border-[#5C2430]/10 px-2.5 py-0.5 rounded-full">
                         {srv.badge}
                       </span>
                     )}
@@ -90,10 +90,10 @@ export const Services: React.FC = () => {
 
                   {/* Icon & Title */}
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-50 to-[#F7F4EE] border border-[#C9973C]/40 text-[#C9973C] group-hover:bg-[#5C1F2E] transition-all duration-300 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105">
-                      {SERVICE_ICONS[srv.id] || <FileText className="w-7 h-7 text-[#C9973C]" />}
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-50 to-[#F7F4EE] border border-[#C9A063]/40 text-[#C9A063] group-hover:bg-[#5C2430] transition-all duration-300 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105">
+                      {SERVICE_ICONS[srv.id] || <FileText className="w-7 h-7 text-[#C9A063]" />}
                     </div>
-                    <h3 className="font-extrabold text-[#2B0F16] text-base md:text-lg group-hover:text-[#5C1F2E] transition-colors leading-snug">
+                    <h3 className="font-extrabold text-[#3F1620] text-base md:text-lg group-hover:text-[#5C2430] transition-colors leading-snug">
                       {srv.title}
                     </h3>
                   </div>
@@ -111,7 +111,7 @@ export const Services: React.FC = () => {
                     <div className="mt-auto pt-3 border-t border-stone-100 space-y-2 mb-5">
                       {srv.features.map((feature, fIdx) => (
                         <div key={fIdx} className="flex items-center gap-2 text-xs text-stone-700">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#C9973C] shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A063] shrink-0" />
                           <span className="truncate">{feature}</span>
                         </div>
                       ))}
@@ -125,20 +125,20 @@ export const Services: React.FC = () => {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-grow bg-[#5C1F2E] hover:bg-[#3F1620] text-white hover:text-[#FEB922] text-xs font-bold py-2.5 px-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm"
+                    className="flex-grow bg-[#5C2430] hover:bg-[#3F1620] text-white hover:text-[#C89A52] text-xs font-bold py-2.5 px-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm"
                   >
-                    <MessageSquare className="w-3.5 h-3.5 text-[#FEB922]" />
+                    <MessageSquare className="w-3.5 h-3.5 text-[#C89A52]" />
                     <span className="text-white font-bold">طلب الخدمة</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-white/80" />
                   </a>
 
                   <a
                     href={`tel:${PHONE_NUMBER}`}
-                    className="w-9 h-9 rounded-xl border border-stone-200 hover:border-rkGold hover:bg-amber-50 text-[#5C1F2E] hover:text-rkGoldDark flex items-center justify-center transition-colors shrink-0"
+                    className="w-9 h-9 rounded-xl border border-stone-200 hover:border-rkGold hover:bg-amber-50 text-[#5C2430] hover:text-rkGoldDark flex items-center justify-center transition-colors shrink-0"
                     title={`اتصال هاتفي مباشر بخصوص ${srv.title}`}
                     aria-label={`اتصال بخصوص ${srv.title}`}
                   >
-                    <Phone className="w-3.5 h-3.5 text-[#5C1F2E]" />
+                    <Phone className="w-3.5 h-3.5 text-[#5C2430]" />
                   </a>
                 </div>
               </div>
@@ -147,7 +147,7 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Bottom Trust & Assurance Ribbon */}
-        <div className="mt-14 p-6 bg-gradient-to-r from-[#2B0F16] via-[#3F1620] to-[#5C1F2E] rounded-3xl border border-rkGold/30 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="mt-14 p-6 bg-gradient-to-r from-[#3F1620] via-[#3F1620] to-[#5C2430] rounded-3xl border border-rkGold/30 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4 text-right">
             <div className="w-12 h-12 rounded-2xl bg-rkGold/20 border border-rkGold/40 text-rkGold flex items-center justify-center shrink-0">
               <Zap className="w-6 h-6" />
@@ -167,7 +167,7 @@ export const Services: React.FC = () => {
               href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('السلام عليكم، أحتاج استشارة هندسية وفنية بشأن معاملة صك عقاري')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full md:w-auto bg-rkGold hover:bg-rkGoldDark text-[#2B0F16] font-bold text-sm py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md hover:scale-105"
+              className="w-full md:w-auto bg-rkGold hover:bg-rkGoldDark text-[#3F1620] font-bold text-sm py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md hover:scale-105"
             >
               <i className="fab fa-whatsapp text-lg"></i>
               <span>استشارة مجانية فورية</span>

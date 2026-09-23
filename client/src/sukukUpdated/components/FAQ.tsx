@@ -17,7 +17,7 @@ export const FAQ: React.FC = () => {
             <span>إجابات واضحة ومباشرة</span>
           </div>
 
-          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2B0F16] mb-4 tracking-tight">
+          <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3F1620] mb-4 tracking-tight">
             الأسئلة الأكثر شيوعاً
           </h2>
 
@@ -36,12 +36,12 @@ export const FAQ: React.FC = () => {
               >
                 <button
                   onClick={() => toggle(item.id)}
-                  className="w-full p-5 font-bold text-[#2B0F16] text-right flex justify-between items-center gap-4 hover:bg-stone-100/70 transition-colors cursor-pointer"
+                  className="w-full p-5 font-bold text-[#3F1620] text-right flex justify-between items-center gap-4 hover:bg-stone-100/70 transition-colors cursor-pointer"
                 >
                   <span className="text-base sm:text-lg">{item.question}</span>
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${
-                      isOpen ? 'bg-rkGold text-[#2B0F16]' : 'bg-stone-200 text-stone-600'
+                      isOpen ? 'bg-rkGold text-[#3F1620]' : 'bg-stone-200 text-stone-600'
                     }`}
                   >
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
