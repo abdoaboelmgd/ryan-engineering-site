@@ -21,7 +21,7 @@ type LandingPage = {
 
 function Hero({ page }: { page: LandingPage }) {
   return <section id="home" className="min-h-[92vh] flex flex-col justify-center pt-28 pb-16 relative overflow-hidden bg-[#3F1620]">
-    <div className="sukuk-hero-surface absolute inset-0 z-0" aria-hidden="true" />
+    <div className="sukuk-hero-surface absolute inset-0 z-0" aria-hidden="true" style={page.slug === 'surveying-riyadh' ? { backgroundImage: `linear-gradient(90deg, rgba(20, 10, 12, 0.88) 0%, rgba(34, 16, 21, 0.66) 48%, rgba(34, 16, 21, 0.42) 100%), url(${import.meta.env.BASE_URL}assets/surveying-hero-custom.webp)`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined} />
     <div className="container mx-auto px-4 lg:max-w-7xl relative z-10"><div className="max-w-4xl mx-auto text-center">
       <div>
         <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-6"><div className="inline-flex items-center gap-2 bg-neutral-900/80 text-[#C89A52] px-3.5 py-1.5 rounded-full text-xs font-bold border border-amber-400/30 backdrop-blur-md shadow-lg"><CheckCircle2 className="w-3.5 h-3.5"/><span>مكتب استشارات هندسية ومساحية مرخص</span></div><div className="inline-flex items-center gap-1.5 bg-neutral-900/80 text-stone-200 px-3 py-1.5 rounded-full text-xs font-medium border border-white/15 backdrop-blur-md shadow-lg"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400"/><span>اعتماد بلدي • حلول دقيقة • متابعة مهنية</span></div></div>
