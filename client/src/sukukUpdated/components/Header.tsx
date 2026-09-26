@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { PHONE_DISPLAY, PHONE_NUMBER } from '../data/siteData';
 import { Phone, MessageSquare, Menu, X } from 'lucide-react';
 
-export const Header: React.FC = () => {
+export const Header: React.FC<{ landingMode?: boolean }> = ({ landingMode = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -18,8 +18,8 @@ export const Header: React.FC = () => {
   const navLinks = [
     { label: 'الرئيسية', href: '#home' },
     { label: 'خدماتنا', href: '#services' },
-    { label: 'حاسبة المدة', href: '#calculator' },
-    { label: 'لماذا نحن', href: '#about' },
+    ...(landingMode ? [] : [{ label: 'حاسبة المدة', href: '#calculator' }]),
+    { label: 'لماذا نحن', href: landingMode ? '#why-ryan' : '#about' },
     { label: 'أعمالنا', href: '#projects' },
     { label: 'تواصل معنا', href: '#contact' },
   ];
