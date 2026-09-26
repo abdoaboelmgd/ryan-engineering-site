@@ -6,10 +6,8 @@ export const Hero: React.FC = () => {
   return (
     <section id="home" className="min-h-[92vh] flex flex-col justify-center pt-28 pb-16 relative overflow-hidden bg-[#fef3c7]">
       {/* خلفية لونية هادئة وعميقة تحافظ على وضوح النص والنموذج */}
-      <div
-        className="sukuk-hero-surface absolute inset-0 z-0"
-        aria-hidden="true"
-      />
+      <div className="landing-hero-surface landing-hero-surface-desktop absolute inset-0 z-0" aria-hidden="true" style={{ backgroundImage: `linear-gradient(90deg, rgba(20, 10, 12, 0.88) 0%, rgba(34, 16, 21, 0.58) 52%, rgba(34, 16, 21, 0.4) 100%), url(${import.meta.env.BASE_URL}assets/hero-sukuk-desktop.webp)` }} />
+      <div className="landing-hero-surface landing-hero-surface-mobile absolute inset-0 z-0" aria-hidden="true" style={{ backgroundImage: `linear-gradient(180deg, rgba(20, 10, 12, 0.62) 0%, rgba(34, 16, 21, 0.74) 48%, rgba(20, 10, 12, 0.94) 100%), url(${import.meta.env.BASE_URL}assets/hero-sukuk-mobile.webp)` }} />
 
       {/* 
         2. المحتوى الأمامي ونموذج الاستشارة

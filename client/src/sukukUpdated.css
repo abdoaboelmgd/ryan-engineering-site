@@ -390,3 +390,25 @@ body {
     background-position: 67% center;
   }
 }
+
+/* Shared responsive art direction for generated landing-page hero backgrounds */
+.landing-hero-surface {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.landing-hero-surface-desktop {
+  display: block;
+  background-position: center center;
+}
+.landing-hero-surface-mobile {
+  display: none;
+}
+@media (max-width: 767px) {
+  .landing-hero-surface-desktop {
+    display: none;
+  }
+  .landing-hero-surface-mobile {
+    display: block;
+    background-position: center center;
+  }
+}
