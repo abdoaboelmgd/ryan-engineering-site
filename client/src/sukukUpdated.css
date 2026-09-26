@@ -368,3 +368,25 @@ body {
     display: grid;
   }
 }
+
+/* Surveying landing page: responsive art direction for desktop and mobile */
+.surveying-hero-surface {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.surveying-hero-surface-desktop {
+  display: block;
+  background-position: center center;
+}
+.surveying-hero-surface-mobile {
+  display: none;
+}
+@media (max-width: 767px) {
+  .surveying-hero-surface-desktop {
+    display: none;
+  }
+  .surveying-hero-surface-mobile {
+    display: block;
+    background-position: 67% center;
+  }
+}
