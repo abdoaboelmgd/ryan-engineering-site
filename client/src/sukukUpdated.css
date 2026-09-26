@@ -410,5 +410,6 @@ body {
   .landing-hero-surface-mobile {
     display: block;
     background-position: center center;
+    background-size: 100% 100%;
   }
 }
