@@ -20,7 +20,6 @@ export const Header: React.FC<{ onOpenCodeModal?: () => void }> = ({ onOpenCodeM
     { label: 'خدماتنا', href: '#services' },
     { label: 'حاسبة المدة', href: '#calculator' },
     { label: 'لماذا نحن', href: '#about' },
-    { label: 'أعمالنا', href: '#projects' },
     { label: 'تواصل معنا', href: '#contact' },
   ];
 

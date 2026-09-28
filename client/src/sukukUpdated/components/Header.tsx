@@ -20,7 +20,6 @@ export const Header: React.FC<{ landingMode?: boolean }> = ({ landingMode = fals
     { label: 'خدماتنا', href: '#services' },
     ...(landingMode ? [] : [{ label: 'حاسبة المدة', href: '#calculator' }]),
     { label: 'لماذا نحن', href: landingMode ? '#why-ryan' : '#about' },
-    { label: 'أعمالنا', href: '#projects' },
     { label: 'تواصل معنا', href: '#contact' },
   ];
 
