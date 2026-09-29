@@ -28,6 +28,17 @@ const SERVICE_ICONS: Record<number, React.ReactNode> = {
   8: <Landmark className="w-7 h-7 text-[#C9A063]" />,
 };
 
+const SERVICE_IMAGES: Record<number, string> = {
+  1: 'service-sukuk-property-deed-update.webp',
+  2: 'service-sukuk-deed-subdivision.webp',
+  3: 'service-sukuk-deed-merger.webp',
+  4: 'service-sukuk-deed-boundaries.webp',
+  5: 'service-sukuk-replacement-deed.webp',
+  6: 'service-sukuk-ownership-inheritance.webp',
+  7: 'service-sukuk-plan-croquis.webp',
+  8: 'service-sukuk-notary-balady.webp',
+};
+
 export const Services: React.FC = () => {
   return (
     <section id="services" className="py-20 sm:py-24 bg-gradient-to-b from-[#F7F4EE]/50 via-white to-[#F7F4EE]/30 relative overflow-hidden">
@@ -73,6 +84,18 @@ export const Services: React.FC = () => {
               >
                 {/* Top Accent Gradient on Hover */}
                 <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-rkGold via-rkGoldLight to-rkGold opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                {/* Service Image */}
+                <div className="relative aspect-[3/2] overflow-hidden bg-[#3F1620]">
+                  <img
+                    src={`${import.meta.env.BASE_URL}assets/${SERVICE_IMAGES[srv.id]}`}
+                    alt={srv.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#3F1620]/55 via-transparent to-transparent" />
+                </div>
 
                 {/* Card Content */}
                 <div className="p-6 flex flex-col flex-grow">
