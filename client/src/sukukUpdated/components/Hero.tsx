@@ -6,8 +6,8 @@ export const Hero: React.FC = () => {
   return (
     <section id="home" className="min-h-[92vh] flex flex-col justify-center pt-28 pb-16 relative overflow-hidden bg-[#fef3c7]">
       {/* خلفية لونية هادئة وعميقة تحافظ على وضوح النص والنموذج */}
-      <div className="landing-hero-surface landing-hero-surface-desktop absolute inset-0 z-0" aria-hidden="true" style={{ backgroundImage: `linear-gradient(90deg, rgba(20, 10, 12, 0.92) 0%, rgba(34, 16, 21, 0.66) 52%, rgba(34, 16, 21, 0.52) 100%), url(${import.meta.env.BASE_URL}assets/hero-sukuk-desktop.webp)` }} />
-      <div className="landing-hero-surface landing-hero-surface-mobile absolute inset-0 z-0" aria-hidden="true" style={{ backgroundImage: `linear-gradient(180deg, rgba(20, 10, 12, 0.70) 0%, rgba(34, 16, 21, 0.82) 48%, rgba(20, 10, 12, 0.97) 100%), url(${import.meta.env.BASE_URL}assets/hero-sukuk-mobile.webp)` }} />
+      <div className="landing-hero-surface landing-hero-surface-desktop absolute inset-0 z-0" aria-hidden="true" style={{ backgroundImage: `linear-gradient(90deg, rgba(20, 10, 12, 0.95) 0%, rgba(34, 16, 21, 0.76) 52%, rgba(34, 16, 21, 0.64) 100%), url(${import.meta.env.BASE_URL}assets/hero-sukuk-desktop.webp)` }} />
+      <div className="landing-hero-surface landing-hero-surface-mobile absolute inset-0 z-0" aria-hidden="true" style={{ backgroundImage: `linear-gradient(180deg, rgba(20, 10, 12, 0.78) 0%, rgba(34, 16, 21, 0.90) 48%, rgba(20, 10, 12, 0.985) 100%), url(${import.meta.env.BASE_URL}assets/hero-sukuk-mobile.webp)` }} />
 
       {/* 
         2. المحتوى الأمامي ونموذج الاستشارة
